@@ -127,9 +127,9 @@ public class BrandManagementController extends MultiActionController{
 		
 		String selectedBrandToEdit = request.getParameter("selectedBrandId");
 		Brand selectedBrand = brandService.getBrandonId(Long.parseLong(selectedBrandToEdit));
-		
+		int currentPeriod = ((Integer) request.getSession().getAttribute(Constants.CURRENT_PERIOD)).intValue();
 		Team loggedInTeam = (Team)request.getSession().getAttribute(Constants.TEAM_OBJECT);
-		ResearchProject[] researchProjs = researchProjectService.getResearchProjectsForTeamCurrentPeriod(loggedInTeam);
+		ResearchProject[] researchProjs = researchProjectService.getCompletedResearchProjectsForTeam(loggedInTeam.getId(), currentPeriod);
 		
 		mav.addObject("selectedBrandToEdit", selectedBrand);
 		mav.addObject("availableResearchProjs", researchProjs);

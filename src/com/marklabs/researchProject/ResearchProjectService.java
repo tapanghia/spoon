@@ -46,7 +46,7 @@ public class ResearchProjectService extends HibernateDaoSupport implements IRese
 	@Override
 	public ResearchProject[] getCompletedResearchProjectsForTeam(long teamId, int currentPeriod) {
 		String query = "from ResearchProject where teamId = "+teamId +" and " +
-			"projectFinishPeriod < "+currentPeriod + " and currentPeriod = "+currentPeriod;
+			"projectFinishPeriod <= "+currentPeriod + " and currentPeriod = "+currentPeriod;
 		List<ResearchProject> result = getHibernateTemplate().find(query);
 		if (result != null && result.size() > 0)
 			return (ResearchProject[])result.toArray(new ResearchProject[result.size()]);

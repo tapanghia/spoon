@@ -249,6 +249,12 @@ public class BrandAdvController extends MultiActionController{
 				else if (perceptualObjSelected.equalsIgnoreCase("noObjective")) {
 					if ((Brand)request.getSession().getAttribute(Constants.SELECTED_BRAND_ADV) != null) {
 							deleteExisitingPerceptualObjective((Brand)request.getSession().getAttribute(Constants.SELECTED_BRAND_ADV));
+							
+							// Now add a new entry for No Objective Sematic Scale
+							PerceptualObj noObjPerceptualObj = new PerceptualObj();
+							noObjPerceptualObj.setBrand((Brand)request.getSession().getAttribute(Constants.SELECTED_BRAND_ADV));
+							noObjPerceptualObj.setScale(PerceptualObjectiveScales.NO_OBJECTIVE.getPerceptualObjScale());
+							perceptualObjService.savePerceptualObj(noObjPerceptualObj);
 					}
 				}
 				
