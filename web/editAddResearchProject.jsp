@@ -122,23 +122,23 @@ $("#addResearchProjForm").validate({
 		rules: {
 			design: {
       			required: true,
-      			range: [0, 100]
+      			range: [1, 100]
     			},
 			fragrance: {
       			required: true,
-      			range: [0, 100]
+      			range: [1, 100]
     			},
 			persistence: {
       			required: true,
-      			range: [0, 100]
+      			range: [1, 100]
     			},
 			packaging: {
       			required: true,
-      			range: [0, 100]
+      			range: [1, 100]
     			},
 			safety: {
       			required: true,
-      			range: [0, 100]
+      			range: [1, 100]
     			},
 			minBaseCost: {
       			required: true,
@@ -168,6 +168,9 @@ $("#addResearchProjForm").validate({
 			max: 100,
 			slide: function( event, ui ) {
 				$( "#amount" ).val( "" + ui.value );
+				$( "#minBaseCost" ).val("");
+				$( "#requestedBaseCost" ).val("");
+				$( "#budgetRequired" ).val("");
 			}
 		});
 		$( "#amount" ).val( "" + $( "#design" ).slider( "value" ) );
@@ -180,6 +183,9 @@ $("#addResearchProjForm").validate({
 			max: 100,
 			slide: function( event, ui ) {
 				$( "#amount2" ).val( "" + ui.value );
+				$( "#minBaseCost" ).val("");
+				$( "#requestedBaseCost" ).val("");
+				$( "#budgetRequired" ).val("");
 			}
 		});
 		$( "#amount2" ).val( "" + $( "#fragrance" ).slider( "value" ) );
@@ -192,6 +198,9 @@ $("#addResearchProjForm").validate({
 			max: 100,
 			slide: function( event, ui ) {
 				$( "#amount3" ).val( "" + ui.value );
+				$( "#minBaseCost" ).val("");
+				$( "#requestedBaseCost" ).val("");
+				$( "#budgetRequired" ).val("");
 			}
 		});
 		$( "#amount3" ).val( "" + $( "#persistence" ).slider( "value" ) );
@@ -204,6 +213,9 @@ $("#addResearchProjForm").validate({
 			max: 100,
 			slide: function( event, ui ) {
 				$( "#amount4" ).val( "" + ui.value );
+				$( "#minBaseCost" ).val("");
+				$( "#requestedBaseCost" ).val("");
+				$( "#budgetRequired" ).val("");
 			}
 		});
 		$( "#amount4" ).val( "" + $( "#packaging" ).slider( "value" ) );
@@ -216,6 +228,9 @@ $("#addResearchProjForm").validate({
 			max: 100,
 			slide: function( event, ui ) {
 				$( "#amount5" ).val( "" + ui.value );
+				$( "#minBaseCost" ).val("");
+				$( "#requestedBaseCost" ).val("");
+				$( "#budgetRequired" ).val("");
 			}
 		});
 		$( "#amount5" ).val( "" + $( "#safety" ).slider( "value" ) );
@@ -252,7 +267,7 @@ function SetSliderValue(sliderId, textBoxControl) {
 						<b class="toggle"></b>
 						<span>Intelligence Reports</span>
 						<ul class="with-icon icon-report">
-							<li><a href="reports.htm?reportName=RnDReport">Project Characteristics</a></li>
+							<li><a href="reports.htm?reportName=Benchmarking">Benchmarking</a></li>
 							<li><a href="reports.htm?reportName=BrandCharacteristicReport">Brand Characteristics</a></li>
 							<li><a href="reports.htm?reportName=BrandAwarenessReport">Brand Awareness</a></li>
 							<li><a href="reports.htm?reportName=BrandPurchaseIntentionReport">Brand Purchase Intention</a></li>
@@ -265,7 +280,6 @@ function SetSliderValue(sliderId, textBoxControl) {
 							<li><a href="reports.htm?reportName=DistributionMarketShareReport">Distribution Market Share</a></li>
 							<li><a href="reports.htm?reportName=CompetitiveSalesForceReport">Competitive Sales Force</a></li>
 							<li><a href="reports.htm?reportName=CompetitiveMarginReport">Competitive Margin</a></li>
-							<li><a href="reports.htm?reportName=Benchmarking">Benchmarking</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -418,8 +432,8 @@ function SetSliderValue(sliderId, textBoxControl) {
 
 					<div class="columns">
 <input type="hidden" name="budgetRequiredAtMinBaseCost" id="budgetRequiredAtMinBaseCost" readonly maxlength="10" value="<%=requiredBudgetAtMinBaseCost %>"/> 
-	  					<input type="button" class="button update" value="Update"/>
-	  					<input type="button" class="button delete" value="Delete"/>
+	  					<input type="submit" class="button update" value="Update" onClick="javascript:updateResearchProject()"/>
+	  					<input type="submit" class="button delete" value="Delete" onClick="javascript:deleteResearchProject()"/>
 					</div>					
 				</fieldset>
 </div>										

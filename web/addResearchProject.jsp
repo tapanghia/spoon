@@ -70,6 +70,11 @@ $(function(){
            $("input[name='persistence']").val(data.persistence);
            $("input[name='packaging']").val(data.packaging);
            $("input[name='safety']").val(data.safety);
+	     $("#design").slider('option', 'value', data.design);
+	     $("#fragrance").slider('option', 'value', data.fragrance);
+	     $("#persistence").slider('option', 'value', data.persistence);
+	     $("#packaging").slider('option', 'value', data.packaging);
+	     $("#safety").slider('option', 'value', data.safety);
          }
        });
     });
@@ -99,29 +104,32 @@ $(document).ready(function() {
 	
 $("#addResearchProjForm").validate({
 		rules: {
-			projectName: "required",
+			projectName: {
+				required: true,
+				minlength: 3
+			},
 			previousPerProj: {
 				required: "#useCompletedProject:checked"
 			},
 			design: {
       			required: true,
-      			range: [0, 100]
+      			range: [1, 100]
     			},
 			fragrance: {
       			required: true,
-      			range: [0, 100]
+      			range: [1, 100]
     			},
 			persistence: {
       			required: true,
-      			range: [0, 100]
+      			range: [1, 100]
     			},
 			packaging: {
       			required: true,
-      			range: [0, 100]
+      			range: [1, 100]
     			},
 			safety: {
       			required: true,
-      			range: [0, 100]
+      			range: [1, 100]
     			},
 			minBaseCost: {
       			required: true,
@@ -142,6 +150,9 @@ $("#addResearchProjForm").validate({
 		}
 	});
 
+$('#addResearchProjForm')[0].reset();
+document.getElementById('previousPerProj').disabled = true;
+
 });
 
 </script>
@@ -155,6 +166,9 @@ $("#addResearchProjForm").validate({
 			max: 100,
 			slide: function( event, ui ) {
 				$( "#amount" ).val( "" + ui.value );
+				$( "#minBaseCost" ).val("");
+				$( "#requestedBaseCost" ).val("");
+				$( "#budgetRequired" ).val("");
 			}
 		});
 		$( "#amount" ).val( "" + $( "#design" ).slider( "value" ) );
@@ -167,6 +181,9 @@ $("#addResearchProjForm").validate({
 			max: 100,
 			slide: function( event, ui ) {
 				$( "#amount2" ).val( "" + ui.value );
+				$( "#minBaseCost" ).val("");
+				$( "#requestedBaseCost" ).val("");
+				$( "#budgetRequired" ).val("");
 			}
 		});
 		$( "#amount2" ).val( "" + $( "#fragrance" ).slider( "value" ) );
@@ -179,6 +196,9 @@ $("#addResearchProjForm").validate({
 			max: 100,
 			slide: function( event, ui ) {
 				$( "#amount3" ).val( "" + ui.value );
+				$( "#minBaseCost" ).val("");
+				$( "#requestedBaseCost" ).val("");
+				$( "#budgetRequired" ).val("");
 			}
 		});
 		$( "#amount3" ).val( "" + $( "#persistence" ).slider( "value" ) );
@@ -191,6 +211,9 @@ $("#addResearchProjForm").validate({
 			max: 100,
 			slide: function( event, ui ) {
 				$( "#amount4" ).val( "" + ui.value );
+				$( "#minBaseCost" ).val("");
+				$( "#requestedBaseCost" ).val("");
+				$( "#budgetRequired" ).val("");
 			}
 		});
 		$( "#amount4" ).val( "" + $( "#packaging" ).slider( "value" ) );
@@ -203,6 +226,9 @@ $("#addResearchProjForm").validate({
 			max: 100,
 			slide: function( event, ui ) {
 				$( "#amount5" ).val( "" + ui.value );
+				$( "#minBaseCost" ).val("");
+				$( "#requestedBaseCost" ).val("");
+				$( "#budgetRequired" ).val("");
 			}
 		});
 		$( "#amount5" ).val( "" + $( "#safety" ).slider( "value" ) );
@@ -242,7 +268,6 @@ function SetSliderValue(sliderId, textBoxControl) {
 						<b class="toggle"></b>
 						<span>Intelligence Reports</span>
 						<ul class="with-icon icon-report">
-							<li><a href="reports.htm?reportName=RnDReport">Project Characteristics</a></li>
 							<li><a href="reports.htm?reportName=BrandCharacteristicReport">Brand Characteristics</a></li>
 							<li><a href="reports.htm?reportName=BrandAwarenessReport">Brand Awareness</a></li>
 							<li><a href="reports.htm?reportName=BrandPurchaseIntentionReport">Brand Purchase Intention</a></li>
@@ -269,6 +294,26 @@ function SetSliderValue(sliderId, textBoxControl) {
 			<div class="block-border"><form class="block-content form" id="addResearchProjForm" name="addResearchProjForm" method="post" 
 				action="researchProject.htm?do=saveResearchProject">
 				<h1>New Project</h1>
+
+<% if((Integer)request.getSession().getAttribute(Constants.CURRENT_PERIOD) == 1)
+{
+%>
+<p class="message warning">Sorry. You cannot add a project in Period 1</p>
+</div>
+				</div>
+				
+			</form></div>
+		</section>
+		
+		<div class="clear"></div>
+		
+	</article>
+<%@ include file="footer.jsp" %>
+<%
+}
+else
+{
+%>
 				
 				<div class="columns">
 
@@ -298,7 +343,7 @@ teamName = (String)request.getSession().getAttribute(Constants.TEAM_NAME);
 co = teamName.substring(0,1);
 %>
 
-	    				<strong><%=co%>R</strong><input type="text" name="projectName" id="projectName" maxlength="3">
+	    				<strong><%=co%>R</strong><input type="text" name="projectName" id="projectName" maxlength="3" onChange="javascript:this.value=this.value.toUpperCase();">
 					</div>
 					</div>
 
@@ -463,3 +508,6 @@ co = teamName.substring(0,1);
 
 
 <%@ include file="footer.jsp" %>
+<%
+}
+%>

@@ -46,12 +46,26 @@ $(document).ready(function(){
     thisForm.submit();
   });
 
-var total = parseInt($('#isReportSelected:checked').length) * 100;
-$( "#totcost" ).val(total);
+var sum = 0;
+var inp = document.getElementsByName("isReportSelected");
+for (var i = 0; i < inp.length; i++)
+{
+if (inp[i].checked) { sum  += parseFloat(inp[i].alt); }
+}
 
-$("#isReportSelected").live("change", function(){ 
-var total = parseInt($('#isReportSelected:checked').length) * 100;
-$( "#totcost" ).val(total);
+$( "#totcost" ).val(sum);
+
+
+$("#isReportSelected").live("change", function(){
+var sum = 0;
+var inp = document.getElementsByName("isReportSelected");
+for (var i = 0; i < inp.length; i++)
+{
+if (inp[i].checked) { sum  += parseFloat(inp[i].alt); }
+}
+
+$( "#totcost" ).val(sum);
+
 });
 });
 </script>
@@ -77,7 +91,7 @@ $( "#totcost" ).val(total);
 						<b class="toggle"></b>
 						<span>Intelligence Reports</span>
 						<ul class="with-icon icon-report">
-							<li><a href="reports.htm?reportName=RnDReport">Project Characteristics</a></li>
+							<li><a href="reports.htm?reportName=Benchmarking">Benchmarking</a></li>
 							<li><a href="reports.htm?reportName=BrandCharacteristicReport">Brand Characteristics</a></li>
 							<li><a href="reports.htm?reportName=BrandAwarenessReport">Brand Awareness</a></li>
 							<li><a href="reports.htm?reportName=BrandPurchaseIntentionReport">Brand Purchase Intention</a></li>
@@ -90,7 +104,6 @@ $( "#totcost" ).val(total);
 							<li><a href="reports.htm?reportName=DistributionMarketShareReport">Distribution Market Share</a></li>
 							<li><a href="reports.htm?reportName=CompetitiveSalesForceReport">Competitive Sales Force</a></li>
 							<li><a href="reports.htm?reportName=CompetitiveMarginReport">Competitive Margin</a></li>
-							<li><a href="reports.htm?reportName=Benchmarking">Benchmarking</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -109,10 +122,10 @@ $( "#totcost" ).val(total);
  
     <thead>
         <tr>
-            <th scope="col">&nbsp;</th>
-            <th scope="col">Study Titles</th>
-            <th scope="col">Cost</th>
-            <th scope="col">Buy</th>
+            <th scope="col" width="5%">&nbsp;</th>
+            <th scope="col" width="50%">Study Titles</th>
+            <th scope="col" width="20%">Cost</th>
+            <th scope="col" width="25%">Buy</th>
         </tr>
     </thead>
 		
@@ -143,7 +156,7 @@ $( "#totcost" ).val(total);
 		    	 <input type="checkbox" name="isReportSelected" id="isReportSelected" 
 		    	 	value="<%=reportTeamPurchaseMap.getReport().getId()%>"
 			    	 <% if ((reportTeamPurchaseMap.getAccessFlag()).equalsIgnoreCase(DeleteFlag.DELETEFLAG_YES.getDeletFlag())) {%>
-			    	 checked="checked" <%}%> >
+			    	 checked="checked" <%}%> alt="<%=reportTeamPurchaseMap.getReport().getReportCost()%>">
 	    	</td>
 			</tr>
 			<% count++; 
@@ -155,7 +168,7 @@ $( "#totcost" ).val(total);
 		 <% } %>
 <tr>
 <td colspan="3">Total Cost</td> 
-<td><input type="text" name="totcost" id="totcost" size="2" disabled class="past"></td>
+<td><input type="text" name="totcost" id="totcost" size="5" readonly class="past"></td>
 </tr>
 
     </tbody>

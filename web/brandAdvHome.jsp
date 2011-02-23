@@ -126,17 +126,12 @@ $("#brandAdvHomeForm").validate({
 			targetSegTotal: {
 				required: true,
 				number: true,
-				range: [99,100]
+				equal: 100
 			},
 			targetMedTotal: {
 				required: true,
 				number: true,
-				range: [99,100]
-			},
-			internet_medium: {
-				required: true,
-				number: true,
-				range: [0,100]
+				equal: 100
 			},
 			semanticScaleDim1Obj: {
 				required: function() {
@@ -166,7 +161,11 @@ $("#brandAdvHomeForm").validate({
 				number: true,
 				range: [0, 20]
 			}
-		}
+		},
+		messages: {
+			targetSegTotal: "Target Segment total should add up to 100%",
+			targetMedTotal: "Medium Selection total should add up to 100%"
+			}	
 	});
 
 });
@@ -177,7 +176,7 @@ $("#brandAdvHomeForm").validate({
 		$( "#bluebloods").slider({
 			range: "min",
 			value: <%= ((thisPeriodBrandAdv != null)?thisPeriodBrandAdv.getSegBlueBloods():"")%>,
-			min: 1,
+			min: 0,
 			max: 100,
 			slide: function( event, ui ) {
 				var p = $( "#amount5" ).val();
@@ -195,7 +194,7 @@ $("#brandAdvHomeForm").validate({
 		$( "#raffles").slider({
 			range: "min",
 			value: <%= ((thisPeriodBrandAdv != null)?thisPeriodBrandAdv.getSegRaffles():"")%>,
-			min: 1,
+			min: 0,
 			max: 100,
 			slide: function( event, ui ) {
 				var p = $( "#amount5" ).val();
@@ -213,7 +212,7 @@ $("#brandAdvHomeForm").validate({
 		$( "#wannabes").slider({
 			range: "min",
 			value: <%= ((thisPeriodBrandAdv != null)?thisPeriodBrandAdv.getSegWannabees():"")%>,
-			min: 1,
+			min: 0,
 			max: 100,
 			slide: function( event, ui ) {
 				var p = $( "#amount5" ).val();
@@ -231,7 +230,7 @@ $("#brandAdvHomeForm").validate({
 		$( "#deprived").slider({
 			range: "min",
 			value: <%= ((thisPeriodBrandAdv != null)?thisPeriodBrandAdv.getSegDeprived():"")%>,
-			min: 1,
+			min: 0,
 			max: 100,
 			slide: function( event, ui ) {
 				var p = $( "#amount5" ).val();
@@ -249,7 +248,7 @@ $("#brandAdvHomeForm").validate({
 		$( "#strugglers").slider({
 			range: "min",
 			value: <%= ((thisPeriodBrandAdv != null)?thisPeriodBrandAdv.getSegStrugglers():"")%>,
-			min: 1,
+			min: 0,
 			max: 100,
 			slide: function( event, ui ) {
 				var p = $( "#amount4" ).val();
@@ -267,7 +266,7 @@ $("#brandAdvHomeForm").validate({
 		$( "#print").slider({
 			range: "min",
 			value: <%= ((thisPeriodBrandAdv != null)?thisPeriodBrandAdv.getMediumPrint():"")%>,
-			min: 1,
+			min: 0,
 			max: 100,
 			slide: function( event, ui ) {
 				var b = $( "#amount9" ).val();
@@ -284,7 +283,7 @@ $("#brandAdvHomeForm").validate({
 		$( "#television").slider({
 			range: "min",
 			value: <%= ((thisPeriodBrandAdv != null)?thisPeriodBrandAdv.getMediumTelevision():"")%>,
-			min: 1,
+			min: 0,
 			max: 100,
 			slide: function( event, ui ) {
 				var b = $( "#amount9" ).val();
@@ -302,7 +301,7 @@ $("#brandAdvHomeForm").validate({
 		$( "#radio").slider({
 			range: "min",
 			value: <%= ((thisPeriodBrandAdv != null)?thisPeriodBrandAdv.getMediumRadio():"")%>,
-			min: 1,
+			min: 0,
 			max: 100,
 			slide: function( event, ui ) {
 				var b = $( "#amount9" ).val();
@@ -319,7 +318,7 @@ $("#brandAdvHomeForm").validate({
 		$( "#internet").slider({
 			range: "min",
 			value: <%= ((thisPeriodBrandAdv != null)?thisPeriodBrandAdv.getMediumInternet():"")%>,
-			min: 1,
+			min: 0,
 			max: 100,
 			slide: function( event, ui ) {
 				var b = $( "#amount8" ).val();
@@ -414,7 +413,7 @@ function SetSliderValue(sliderId, textBoxControl) {
 						<b class="toggle"></b>
 						<span>Intelligence Reports</span>
 						<ul class="with-icon icon-report">
-							<li><a href="reports.htm?reportName=RnDReport">Project Characteristics</a></li>
+							<li><a href="reports.htm?reportName=Benchmarking">Benchmarking</a></li>
 							<li><a href="reports.htm?reportName=BrandCharacteristicReport">Brand Characteristics</a></li>
 							<li><a href="reports.htm?reportName=BrandAwarenessReport">Brand Awareness</a></li>
 							<li><a href="reports.htm?reportName=BrandPurchaseIntentionReport">Brand Purchase Intention</a></li>
@@ -427,7 +426,6 @@ function SetSliderValue(sliderId, textBoxControl) {
 							<li><a href="reports.htm?reportName=DistributionMarketShareReport">Distribution Market Share</a></li>
 							<li><a href="reports.htm?reportName=CompetitiveSalesForceReport">Competitive Sales Force</a></li>
 							<li><a href="reports.htm?reportName=CompetitiveMarginReport">Competitive Margin</a></li>
-							<li><a href="reports.htm?reportName=Benchmarking">Benchmarking</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -544,18 +542,6 @@ function SetSliderValue(sliderId, textBoxControl) {
 
 					<div class="columns">
         				<div class="colx3-left">
-					<span class="label">Deprived</span>
-					</div>
-					<div class="colx3-center">
-						<span class="label"></span><div id="deprived"></div>	
-					</div>
-					<div class="colx3-right">
-						<span class="label"></span><input type="text" id="amount4" name="deprived_targetSeg" class="tarSegFld depSegTotal" onKeyUp="SetSliderValue('#deprived', this)">
-					</div>
-					</div>
-
-					<div class="columns">
-        				<div class="colx3-left">
 					<span class="label">Strugglers</span>
 					</div>
 					<div class="colx3-center">
@@ -568,13 +554,25 @@ function SetSliderValue(sliderId, textBoxControl) {
 
 					<div class="columns">
         				<div class="colx3-left">
+					<span class="label">Deprived</span>
+					</div>
+					<div class="colx3-center">
+						<span class="label"></span><div id="deprived"></div>	
+					</div>
+					<div class="colx3-right">
+						<span class="label"></span><input type="text" id="amount4" name="deprived_targetSeg" class="tarSegFld depSegTotal" onKeyUp="SetSliderValue('#deprived', this)">
+					</div>
+					</div>
+
+					<div class="columns">
+        				<div class="colx3-left">
 					<span class="label">Total</span>
 					</div>
 					<div class="colx3-center">
 						<span class="label"></span>	
 					</div>
 					<div class="colx3-right">
-						<span class="label"></span><input type="text" id="targetSegTotal" class="targetSegTotal" name="targetSegTotal" disabled>
+						<span class="label"></span><input type="text" id="targetSegTotal" class="targetSegTotal" name="targetSegTotal" readonly>
 					</div>
 					</div>
 					</fieldset>
@@ -636,7 +634,7 @@ function SetSliderValue(sliderId, textBoxControl) {
 						<span class="label"></span>	
 					</div>
 					<div class="colx3-right">
-						<span class="label"></span><input type="text" id="targetMedTotal" class="targetMedTotal" name="targetMedTotal" disabled>
+						<span class="label"></span><input type="text" id="targetMedTotal" class="targetMedTotal" name="targetMedTotal" readonly>
 					</div>
 					</div>
 
@@ -692,11 +690,12 @@ function SetSliderValue(sliderId, textBoxControl) {
           		thisBrandPerceptualObj.getDimension1().equalsIgnoreCase(SemanticScale.SAFETY.getSemanticScale())) {
 	          %> selected
 	          <%}%>>Safety</option>
-	          <option id="1" value="price"
+ 		  <option id="1" value="price"
               <% if (thisBrandPerceptualObj != null && 
           		thisBrandPerceptualObj.getDimension1().equalsIgnoreCase(SemanticScale.PRICE.getSemanticScale())) {
 	          %> selected
 	          <%}%>>Price</option>
+
             </select>	
 					</div>
 					<div class="colx5-center2">

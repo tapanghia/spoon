@@ -20,7 +20,7 @@
 						<b class="toggle"></b>
 						<span>Intelligence Reports</span>
 						<ul class="with-icon icon-report">
-							<li><a href="reports.htm?reportName=RnDReport">Project Characteristics</a></li>
+							<li><a href="reports.htm?reportName=Benchmarking">Benchmarking</a></li>
 							<li><a href="reports.htm?reportName=BrandCharacteristicReport">Brand Characteristics</a></li>
 							<li><a href="reports.htm?reportName=BrandAwarenessReport">Brand Awareness</a></li>
 							<li><a href="reports.htm?reportName=BrandPurchaseIntentionReport">Brand Purchase Intention</a></li>
@@ -33,7 +33,7 @@
 							<li><a href="reports.htm?reportName=DistributionMarketShareReport">Distribution Market Share</a></li>
 							<li><a href="reports.htm?reportName=CompetitiveSalesForceReport">Competitive Sales Force</a></li>
 							<li><a href="reports.htm?reportName=CompetitiveMarginReport">Competitive Margin</a></li>
-							<li><a href="reports.htm?reportName=Benchmarking">Benchmarking</a></li>
+
 						</ul>
 					</li>
 				</ul>
