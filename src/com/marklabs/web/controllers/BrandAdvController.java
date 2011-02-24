@@ -254,6 +254,10 @@ public class BrandAdvController extends MultiActionController{
 							PerceptualObj noObjPerceptualObj = new PerceptualObj();
 							noObjPerceptualObj.setBrand((Brand)request.getSession().getAttribute(Constants.SELECTED_BRAND_ADV));
 							noObjPerceptualObj.setScale(PerceptualObjectiveScales.NO_OBJECTIVE.getPerceptualObjScale());
+							noObjPerceptualObj.setDimension1("-");
+							noObjPerceptualObj.setObjective1(0);
+							noObjPerceptualObj.setDimension2("-");
+							noObjPerceptualObj.setObjective1(0);
 							perceptualObjService.savePerceptualObj(noObjPerceptualObj);
 					}
 				}
