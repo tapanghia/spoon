@@ -88,12 +88,12 @@
 					<textElement textAlignment="Right" verticalAlignment="Top">
 						<font fontName="Times New Roman" size="24" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Competitive Advertisement Expense Report]]></text>
+				<text><![CDATA[Competitive Advertisement Expense Report   ]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
-						x="380"
+						x="376"
 						y="32"
 						width="150"
 						height="28"

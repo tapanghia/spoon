@@ -90,12 +90,12 @@
 					<textElement textAlignment="Right" verticalAlignment="Top">
 						<font fontName="Times New Roman" size="24" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Market Share Report]]></text>
+				<text><![CDATA[Market Share Report   ]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
-						x="380"
+						x="363"
 						y="32"
 						width="150"
 						height="28"
@@ -281,8 +281,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{team}.equalsIgnoreCase("Total Sales(units)")? (new DecimalFormat("###0").format(new java.lang.Double(  ($F{blueblood}.doubleValue()) /(new Double(100).doubleValue()) ))) : (new DecimalFormat("###0.0").format($F{blueblood})) + " %"
-]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{team}.equalsIgnoreCase("Total Sales(units)")? (new DecimalFormat("###0").format(new java.lang.Double(  ($F{blueblood}.doubleValue()) /(new Double(100).doubleValue()) ))) : (new DecimalFormat("###0.0").format($F{blueblood})) + " %"]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -295,8 +294,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{team}.equalsIgnoreCase("Total Sales(units)")? (new DecimalFormat("###0").format(new java.lang.Double(  ($F{raffles}.doubleValue()) /(new Double(100).doubleValue()) ))) : (new DecimalFormat("###0.0").format($F{raffles})) + " %"
-]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{team}.equalsIgnoreCase("Total Sales(units)")? (new DecimalFormat("###0").format(new java.lang.Double(  ($F{raffles}.doubleValue()) /(new Double(100).doubleValue()) ))) : (new DecimalFormat("###0.0").format($F{raffles})) + " %"]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -309,8 +307,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{team}.equalsIgnoreCase("Total Sales(units)")? (new DecimalFormat("###0").format(new java.lang.Double(  ($F{wannabes}.doubleValue()) /(new Double(100).doubleValue()) ))) : (new DecimalFormat("###0.0").format($F{wannabes})) + " %"
-]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{team}.equalsIgnoreCase("Total Sales(units)")? (new DecimalFormat("###0").format(new java.lang.Double(  ($F{wannabes}.doubleValue()) /(new Double(100).doubleValue()) ))) : (new DecimalFormat("###0.0").format($F{wannabes})) + " %"]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -323,8 +320,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{team}.equalsIgnoreCase("Total Sales(units)")? (new DecimalFormat("###0").format(new java.lang.Double(  ($F{strugglers}.doubleValue()) /(new Double(100).doubleValue()) ))) : (new DecimalFormat("###0.0").format($F{strugglers})) + " %"
-]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{team}.equalsIgnoreCase("Total Sales(units)")? (new DecimalFormat("###0").format(new java.lang.Double(  ($F{strugglers}.doubleValue()) /(new Double(100).doubleValue()) ))) : (new DecimalFormat("###0.0").format($F{strugglers})) + " %"]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -337,8 +333,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{team}.equalsIgnoreCase("Total Sales(units)")? (new DecimalFormat("###0").format(new java.lang.Double(  ($F{deprived}.doubleValue()) /(new Double(100).doubleValue()) ))) : (new DecimalFormat("###0.0").format($F{deprived})) + " %"
-]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{team}.equalsIgnoreCase("Total Sales(units)")? (new DecimalFormat("###0").format(new java.lang.Double(  ($F{deprived}.doubleValue()) /(new Double(100).doubleValue()) ))) : (new DecimalFormat("###0.0").format($F{deprived})) + " %"]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -351,8 +346,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{team}.equalsIgnoreCase("Total Sales(units)")? (new DecimalFormat("###0").format(new java.lang.Double(  ($F{total}.doubleValue()) /(new Double(100).doubleValue()) ))) : (new DecimalFormat("###0.0").format($F{total})) + " %"
-]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{team}.equalsIgnoreCase("Total Sales(units)")? (new DecimalFormat("###0").format(new java.lang.Double(  ($F{total}.doubleValue()) /(new Double(100).doubleValue()) ))) : (new DecimalFormat("###0.0").format($F{total})) + " %"]]></textFieldExpression>
 				</textField>
 				<line direction="TopDown">
 					<reportElement

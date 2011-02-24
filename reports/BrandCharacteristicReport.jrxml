@@ -90,12 +90,12 @@
 					<textElement textAlignment="Right" verticalAlignment="Top">
 						<font fontName="Times New Roman" size="24" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Brand Characteristic Report]]></text>
+				<text><![CDATA[Brand Characteristic Report   ]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
-						x="380"
+						x="363"
 						y="32"
 						width="260"
 						height="28"

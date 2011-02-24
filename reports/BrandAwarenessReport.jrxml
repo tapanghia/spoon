@@ -28,9 +28,7 @@
 	</parameter>
 	<queryString><![CDATA[select id, period, team, brand, (blueblood * 100) as blueblood, (raffles * 100) as raffles,
 (wannabes * 100) as wannabes, (strugglers * 100) as strugglers, (deprived * 100) as deprived,
-(total * 100) as total from rep_brand_awareness WHERE period = $P{period} order by team
-
-]]></queryString>
+(total * 100) as total from rep_brand_awareness WHERE period = $P{period} order by team]]></queryString>
 
 	<field name="id" class="java.lang.Integer"/>
 	<field name="period" class="java.lang.Integer"/>
@@ -92,12 +90,12 @@
 					<textElement textAlignment="Right" verticalAlignment="Top">
 						<font fontName="Times New Roman" size="24" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Brand Awareness Report]]></text>
+				<text><![CDATA[Brand Awareness Report  ]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
-						x="380"
+						x="370"
 						y="32"
 						width="150"
 						height="28"

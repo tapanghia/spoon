@@ -60,7 +60,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Top">
 						<font fontName="Times New Roman" size="24" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Multi Dimensional Map - Brand Map]]></text>
+				<text><![CDATA[Multi Dimensional Map - Brand Map   ]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -77,7 +77,7 @@
 					<textElement textAlignment="Right">
 						<font fontName="Times New Roman" pdfFontName="Helvetica-BoldOblique" size="18" isBold="true" isItalic="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Period: " + $P{period}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Period: " + $P{period} + "   "]]></textFieldExpression>
 				</textField>
 			</band>
 		</title>

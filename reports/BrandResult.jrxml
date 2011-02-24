@@ -100,7 +100,7 @@ UNION
 					<textElement textAlignment="Right" verticalAlignment="Top">
 						<font fontName="Times New Roman" size="24" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Contribution By Brand]]></text>
+				<text><![CDATA[Contribution By Brand   ]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -117,7 +117,7 @@ UNION
 					<textElement textAlignment="Right">
 						<font fontName="Times New Roman" pdfFontName="Helvetica-BoldOblique" size="18" isBold="true" isItalic="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Period: " + $P{period}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Period: " + $P{period} + "   "]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -182,7 +182,7 @@ UNION
 						key="staticText-2"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left" verticalAlignment="Middle">
-						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Brands
 ]]></text>
@@ -199,7 +199,7 @@ UNION
 						key="staticText-2"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left" verticalAlignment="Middle">
-						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Base R&D Project]]></text>
 				</staticText>
@@ -224,7 +224,7 @@ UNION
 						</reportElement>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left" verticalAlignment="Middle">
-						<font size="12"/>
+						<font size="14"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$V{label}.substring(1)]]></textFieldExpression>
 				</textField>
@@ -241,7 +241,7 @@ UNION
 						</reportElement>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left" verticalAlignment="Middle">
-						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$V{label}.substring(1)]]></textFieldExpression>
 				</textField>
@@ -260,14 +260,14 @@ UNION
 						mode="Opaque"
 						x="0"
 						y="0"
-						width="70"
+						width="90"
 						height="30"
 						forecolor="#FFFFFF"
 						backcolor="#516C79"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$V{Brand Name}]]></textFieldExpression>
 				</textField>
@@ -286,14 +286,14 @@ UNION
 						mode="Opaque"
 						x="0"
 						y="0"
-						width="70"
+						width="89"
 						height="30"
 						forecolor="#FFFFFF"
 						backcolor="#516C79"
 						key="textField-18"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$V{Base Research Project}]]></textFieldExpression>
 				</textField>
@@ -304,21 +304,21 @@ UNION
 					<measure name="value_Nothing" class="java.lang.Double">
 						<measureExpression><![CDATA[$F{value}]]></measureExpression>
 					</measure>
-					<crosstabCell width="70" height="30">
+					<crosstabCell width="90" height="30">
 						<cellContents mode="Transparent">
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="false" pattern="¤ #,##0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="0"
 						y="0"
-						width="70"
+						width="89"
 						height="30"
 						key="textField">
 							<printWhenExpression><![CDATA[((($V{label}.substring(1).equalsIgnoreCase("Sales")) || ($V{label}.substring(1).equalsIgnoreCase("Production")) || ($V{label}.substring(1).equalsIgnoreCase("Marketing")))?new Boolean("false"):new Boolean("true"))]]></printWhenExpression>
 						</reportElement>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="14"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.Double"><![CDATA[$V{value_Nothing}]]></textFieldExpression>
 				</textField>
@@ -329,7 +329,7 @@ UNION
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 						</cellContents>
 					</crosstabCell>
-					<crosstabCell width="70" height="0" rowTotalGroup="label">
+					<crosstabCell width="90" height="0" rowTotalGroup="label">
 						<cellContents mode="Transparent">
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 						</cellContents>
