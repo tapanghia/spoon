@@ -217,7 +217,7 @@ UNION
 						x="0"
 						y="0"
 						width="200"
-						height="30"
+						height="35"
 						backcolor="#829FAD"
 						key="textField">
 							<printWhenExpression><![CDATA[((($V{label}.substring(1).equalsIgnoreCase("Sales")) || ($V{label}.substring(1).equalsIgnoreCase("Production")) || ($V{label}.substring(1).equalsIgnoreCase("Marketing")))?new Boolean("false"):new Boolean("true"))]]></printWhenExpression>
@@ -234,7 +234,7 @@ UNION
 						x="0"
 						y="0"
 						width="200"
-						height="30"
+						height="35"
 						backcolor="#829FAD"
 						key="textField-18">
 							<printWhenExpression><![CDATA[((($V{label}.substring(1).equalsIgnoreCase("Sales")) || ($V{label}.substring(1).equalsIgnoreCase("Production")) || ($V{label}.substring(1).equalsIgnoreCase("Marketing")))?new Boolean("true"):new Boolean("false"))]]></printWhenExpression>
@@ -260,7 +260,7 @@ UNION
 						mode="Opaque"
 						x="0"
 						y="0"
-						width="90"
+						width="100"
 						height="30"
 						forecolor="#FFFFFF"
 						backcolor="#516C79"
@@ -286,7 +286,7 @@ UNION
 						mode="Opaque"
 						x="0"
 						y="0"
-						width="89"
+						width="100"
 						height="30"
 						forecolor="#FFFFFF"
 						backcolor="#516C79"
@@ -304,32 +304,32 @@ UNION
 					<measure name="value_Nothing" class="java.lang.Double">
 						<measureExpression><![CDATA[$F{value}]]></measureExpression>
 					</measure>
-					<crosstabCell width="90" height="30">
+					<crosstabCell width="100" height="35">
 						<cellContents mode="Transparent">
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 				<textField isStretchWithOverflow="false" pattern="¤ #,##0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="0"
 						y="0"
-						width="89"
-						height="30"
+						width="100"
+						height="35"
 						key="textField">
 							<printWhenExpression><![CDATA[((($V{label}.substring(1).equalsIgnoreCase("Sales")) || ($V{label}.substring(1).equalsIgnoreCase("Production")) || ($V{label}.substring(1).equalsIgnoreCase("Marketing")))?new Boolean("false"):new Boolean("true"))]]></printWhenExpression>
 						</reportElement>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font size="14"/>
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.Double"><![CDATA[$V{value_Nothing}]]></textFieldExpression>
 				</textField>
 						</cellContents>
 					</crosstabCell>
-					<crosstabCell width="0" height="30" columnTotalGroup="Brand Name">
+					<crosstabCell width="0" height="35" columnTotalGroup="Brand Name">
 						<cellContents mode="Transparent">
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 						</cellContents>
 					</crosstabCell>
-					<crosstabCell width="90" height="0" rowTotalGroup="label">
+					<crosstabCell width="100" height="0" rowTotalGroup="label">
 						<cellContents mode="Transparent">
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 						</cellContents>
@@ -339,7 +339,7 @@ UNION
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 						</cellContents>
 					</crosstabCell>
-					<crosstabCell width="0" height="30" columnTotalGroup="Base Research Project">
+					<crosstabCell width="0" height="35" columnTotalGroup="Base Research Project">
 						<cellContents mode="Transparent">
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 						</cellContents>

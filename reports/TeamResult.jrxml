@@ -183,7 +183,7 @@ UNION
 						x="0"
 						y="0"
 						width="200"
-						height="40"
+						height="35"
 						backcolor="#829FAD"
 						key="textField">
 							<printWhenExpression><![CDATA[((($V{label}.substring(1).equalsIgnoreCase("Sales")) || ($V{label}.substring(1).equalsIgnoreCase("Production")) || ($V{label}.substring(1).equalsIgnoreCase("Marketing")) || ($V{label}.substring(1).equalsIgnoreCase("Other Expenses")))?new Boolean("false"):new Boolean("true"))]]></printWhenExpression>
@@ -200,7 +200,7 @@ UNION
 						x="0"
 						y="0"
 						width="200"
-						height="40"
+						height="35"
 						backcolor="#829FAD"
 						key="textField-18">
 							<printWhenExpression><![CDATA[((($V{label}.substring(1).equalsIgnoreCase("Sales")) || ($V{label}.substring(1).equalsIgnoreCase("Production")) || ($V{label}.substring(1).equalsIgnoreCase("Marketing")) || ($V{label}.substring(1).equalsIgnoreCase("Other Expenses")))?new Boolean("true"):new Boolean("false"))]]></printWhenExpression>
@@ -223,15 +223,15 @@ UNION
 					<measure name="value_Nothing" class="java.lang.Double">
 						<measureExpression><![CDATA[$F{value}]]></measureExpression>
 					</measure>
-					<crosstabCell width="80" height="40">
+					<crosstabCell width="120" height="35">
 						<cellContents mode="Transparent">
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 				<textField isStretchWithOverflow="false" pattern="¤ #,##0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="0"
 						y="0"
-						width="80"
-						height="40"
+						width="120"
+						height="35"
 						key="textField">
 							<printWhenExpression><![CDATA[((($V{label}.substring(1).equalsIgnoreCase("Sales")) || ($V{label}.substring(1).equalsIgnoreCase("Production")) || ($V{label}.substring(1).equalsIgnoreCase("Marketing"))  || ($V{label}.substring(1).equalsIgnoreCase("Other Expenses")))?new Boolean("false"):new Boolean("true"))]]></printWhenExpression>
 						</reportElement>
@@ -243,12 +243,12 @@ UNION
 				</textField>
 						</cellContents>
 					</crosstabCell>
-					<crosstabCell width="0" height="40" columnTotalGroup="Team Name">
+					<crosstabCell width="0" height="35" columnTotalGroup="Team Name">
 						<cellContents mode="Transparent">
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 						</cellContents>
 					</crosstabCell>
-					<crosstabCell width="80" height="0" rowTotalGroup="label">
+					<crosstabCell width="120" height="0" rowTotalGroup="label">
 						<cellContents mode="Transparent">
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 						</cellContents>
