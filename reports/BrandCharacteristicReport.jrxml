@@ -6,12 +6,12 @@
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
-		 pageWidth="700"
-		 pageHeight="842"
-		 columnWidth="640"
+		 pageWidth="740"
+		 pageHeight="760"
+		 columnWidth="680"
 		 columnSpacing="0"
-		 leftMargin="30"
-		 rightMargin="30"
+		 leftMargin="20"
+		 rightMargin="20"
 		 topMargin="20"
 		 bottomMargin="20"
 		 whenNoDataType="NoPages"
@@ -51,7 +51,7 @@
 						mode="Opaque"
 						x="0"
 						y="10"
-						width="639"
+						width="700"
 						height="25"
 						forecolor="#FFFFFF"
 						backcolor="#688B9D"
@@ -60,7 +60,7 @@
 					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font fontName="Arial" size="14" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Team: "+$F{team}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["    Team: "+$F{team}]]></textFieldExpression>
 				</textField>
 			</band>
 			</groupHeader>
@@ -78,33 +78,33 @@
 				<staticText>
 					<reportElement
 						mode="Opaque"
-						x="0"
+						x="-20"
 						y="0"
-						width="639"
-						height="32"
-						forecolor="#EFE1E1"
+						width="740"
+						height="35"
+						forecolor="#FFFFFF"
 						backcolor="#006699"
 						key="staticText-1"
 						isRemoveLineWhenBlank="true"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Right" verticalAlignment="Top">
+					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Times New Roman" size="24" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Brand Characteristic Report   ]]></text>
+				<text><![CDATA[Brand Characteristic Report    ]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
-						x="363"
-						y="32"
-						width="260"
-						height="28"
+						x="400"
+						y="35"
+						width="290"
+						height="25"
 						forecolor="#666666"
 						backcolor="#FFFFFF"
 						key="textField-1"
 						isRemoveLineWhenBlank="true"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Right">
+					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Times New Roman" size="18"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA["Period: " + $F{period}]]></textFieldExpression>
@@ -120,32 +120,15 @@
 				<staticText>
 					<reportElement
 						mode="Opaque"
-						x="0"
+						x="160"
 						y="0"
-						width="69"
-						height="50"
-						forecolor="#FFFFFF"
-						backcolor="#70A9C6"
-						key="staticText-2"
-						isPrintInFirstWholeBand="true"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="16" isBold="true"/>
-					</textElement>
-				<text><![CDATA[Brand]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						mode="Opaque"
-						x="140"
-						y="0"
-						width="370"
+						width="390"
 						height="25"
 						forecolor="#FFFFFF"
 						backcolor="#70A9C6"
 						key="staticText-3"
 						isPrintInFirstWholeBand="true"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<box topBorder="Thin" topBorderColor="#FFFFFF" leftBorder="None" leftBorderColor="#FFFFFF" rightBorder="None" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="16" isBold="true"/>
 					</textElement>
@@ -154,32 +137,32 @@
 				<staticText>
 					<reportElement
 						mode="Opaque"
-						x="510"
+						x="550"
 						y="0"
-						width="60"
+						width="70"
 						height="50"
 						forecolor="#FFFFFF"
 						backcolor="#70A9C6"
 						key="staticText-4"
 						isPrintInFirstWholeBand="true"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<box topBorder="Thin" topBorderColor="#FFFFFF" leftBorder="Thin" leftBorderColor="#FFFFFF" rightBorder="Thin" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="13" isBold="true"/>
+						<font fontName="Arial" size="16" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Base Cost]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						mode="Opaque"
-						x="140"
+						x="160"
 						y="25"
-						width="80"
+						width="75"
 						height="25"
 						forecolor="#FFFFFF"
 						backcolor="#70A9C6"
 						key="staticText-5"
 						isPrintInFirstWholeBand="true"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="13" isBold="true"/>
 					</textElement>
@@ -188,15 +171,15 @@
 				<staticText>
 					<reportElement
 						mode="Opaque"
-						x="220"
+						x="235"
 						y="25"
-						width="70"
+						width="80"
 						height="25"
 						forecolor="#FFFFFF"
 						backcolor="#70A9C6"
 						key="staticText-6"
 						isPrintInFirstWholeBand="true"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="13" isBold="true"/>
 					</textElement>
@@ -205,15 +188,15 @@
 				<staticText>
 					<reportElement
 						mode="Opaque"
-						x="290"
+						x="315"
 						y="25"
-						width="80"
+						width="85"
 						height="25"
 						forecolor="#FFFFFF"
 						backcolor="#70A9C6"
 						key="staticText-7"
 						isPrintInFirstWholeBand="true"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="13" isBold="true"/>
 					</textElement>
@@ -222,15 +205,15 @@
 				<staticText>
 					<reportElement
 						mode="Opaque"
-						x="370"
+						x="400"
 						y="25"
-						width="70"
+						width="80"
 						height="25"
 						forecolor="#FFFFFF"
 						backcolor="#70A9C6"
 						key="staticText-8"
 						isPrintInFirstWholeBand="true"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="13" isBold="true"/>
 					</textElement>
@@ -239,7 +222,7 @@
 				<staticText>
 					<reportElement
 						mode="Opaque"
-						x="440"
+						x="480"
 						y="25"
 						width="70"
 						height="25"
@@ -247,7 +230,7 @@
 						backcolor="#70A9C6"
 						key="staticText-9"
 						isPrintInFirstWholeBand="true"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="13" isBold="true"/>
 					</textElement>
@@ -256,36 +239,53 @@
 				<staticText>
 					<reportElement
 						mode="Opaque"
-						x="69"
+						x="620"
 						y="0"
-						width="71"
-						height="50"
-						forecolor="#FFFFFF"
-						backcolor="#70A9C6"
-						key="staticText-10"
-						isPrintInFirstWholeBand="true"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="16" isBold="true"/>
-					</textElement>
-				<text><![CDATA[Status]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						mode="Opaque"
-						x="570"
-						y="0"
-						width="70"
+						width="80"
 						height="50"
 						forecolor="#FFFFFF"
 						backcolor="#70A9C6"
 						key="staticText-11"
 						isPrintInFirstWholeBand="true"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<box topBorder="Thin" topBorderColor="#FFFFFF" leftBorder="None" leftBorderColor="#FFFFFF" rightBorder="Thin" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="13" isBold="true"/>
+						<font fontName="Arial" size="16" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Retail Price]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="0"
+						width="75"
+						height="50"
+						forecolor="#FFFFFF"
+						backcolor="#70A9C6"
+						key="staticText-2"
+						isPrintInFirstWholeBand="true"/>
+					<box topBorder="Thin" topBorderColor="#FFFFFF" leftBorder="Thin" leftBorderColor="#FFFFFF" rightBorder="None" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="16" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Brand]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="75"
+						y="0"
+						width="85"
+						height="50"
+						forecolor="#FFFFFF"
+						backcolor="#70A9C6"
+						key="staticText-10"
+						isPrintInFirstWholeBand="true"/>
+					<box topBorder="Thin" topBorderColor="#FFFFFF" leftBorder="Thin" leftBorderColor="#FFFFFF" rightBorder="Thin" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="16" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Status]]></text>
 				</staticText>
 			</band>
 		</columnHeader>
@@ -295,7 +295,7 @@
 					<reportElement
 						x="0"
 						y="0"
-						width="70"
+						width="75"
 						height="25"
 						key="textField-7"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -306,9 +306,9 @@
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="70"
+						x="75"
 						y="0"
-						width="69"
+						width="85"
 						height="25"
 						key="textField-8"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -319,9 +319,9 @@
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="139"
+						x="160"
 						y="0"
-						width="81"
+						width="75"
 						height="25"
 						key="textField-9"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -332,9 +332,9 @@
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="220"
+						x="235"
 						y="0"
-						width="69"
+						width="80"
 						height="25"
 						key="textField-10"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -345,9 +345,9 @@
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="289"
+						x="315"
 						y="0"
-						width="81"
+						width="85"
 						height="25"
 						key="textField-11"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -358,9 +358,9 @@
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="370"
+						x="400"
 						y="0"
-						width="69"
+						width="80"
 						height="25"
 						key="textField-12"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -371,7 +371,7 @@
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="439"
+						x="480"
 						y="0"
 						width="70"
 						height="25"
@@ -386,16 +386,16 @@
 					<reportElement
 						x="0"
 						y="27"
-						width="640"
+						width="700"
 						height="0"
 						key="line-2"/>
 					<graphicElement stretchType="NoStretch"/>
 				</line>
 				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="509"
+						x="550"
 						y="1"
-						width="61"
+						width="70"
 						height="25"
 						key="textField-14"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -406,9 +406,9 @@
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="570"
+						x="620"
 						y="1"
-						width="70"
+						width="80"
 						height="25"
 						key="textField-15"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -423,9 +423,9 @@
 			<band height="10"  isSplitAllowed="true" >
 				<line direction="TopDown">
 					<reportElement
-						x="0"
+						x="-20"
 						y="5"
-						width="640"
+						width="740"
 						height="0"
 						key="line-1"/>
 					<graphicElement stretchType="NoStretch"/>
@@ -437,14 +437,15 @@
 				<textField isStretchWithOverflow="false" pattern="MMMMM dd, yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
-						x="0"
+						x="-20"
 						y="0"
-						width="170"
+						width="148"
 						height="15"
+						forecolor="#FFFFFF"
 						backcolor="#006699"
 						key="textField-3"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle">
+					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font/>
 					</textElement>
 				<textFieldExpression   class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
@@ -452,10 +453,11 @@
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
-						x="170"
+						x="128"
 						y="0"
-						width="315"
+						width="437"
 						height="15"
+						forecolor="#FFFFFF"
 						backcolor="#006699"
 						key="textField-4"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -467,10 +469,11 @@
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
-						x="486"
+						x="565"
 						y="0"
 						width="110"
 						height="15"
+						forecolor="#FFFFFF"
 						backcolor="#006699"
 						key="textField-5"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -482,10 +485,11 @@
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
-						x="596"
+						x="675"
 						y="0"
-						width="44"
+						width="45"
 						height="15"
+						forecolor="#FFFFFF"
 						backcolor="#006699"
 						key="textField-6"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
