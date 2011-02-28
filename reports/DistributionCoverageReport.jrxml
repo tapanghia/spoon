@@ -23,9 +23,7 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<parameter name="period" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
-	</parameter>
+	<parameter name="period" isForPrompting="false" class="java.lang.String"/>
 	<queryString><![CDATA[select id, period, team, brand, (supermarket * 100) as supermarket, (general * 100) as general,
 (kirana * 100) as kirana  from rep_distribution_cov WHERE period = $P{period}]]></queryString>
 
@@ -124,7 +122,7 @@
 						backcolor="#70A9C6"
 						key="staticText-2"
 						isPrintInFirstWholeBand="true"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<box topBorder="Thin" topBorderColor="#FFFFFF" leftBorder="Thin" leftBorderColor="#FFFFFF" rightBorder="Thin" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="16" isBold="true"/>
 					</textElement>
@@ -141,7 +139,7 @@
 						backcolor="#70A9C6"
 						key="staticText-3"
 						isPrintInFirstWholeBand="true"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<box topBorder="Thin" topBorderColor="#FFFFFF" leftBorder="None" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="16" isBold="true"/>
 					</textElement>
@@ -158,7 +156,7 @@
 						backcolor="#70A9C6"
 						key="staticText-5"
 						isPrintInFirstWholeBand="true"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="13" isBold="true"/>
 					</textElement>
@@ -175,7 +173,7 @@
 						backcolor="#70A9C6"
 						key="staticText-6"
 						isPrintInFirstWholeBand="true"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="13" isBold="true"/>
 					</textElement>
@@ -192,7 +190,7 @@
 						backcolor="#70A9C6"
 						key="staticText-7"
 						isPrintInFirstWholeBand="true"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="13" isBold="true"/>
 					</textElement>

@@ -23,12 +23,8 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<parameter name="period" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
-	</parameter>
-	<parameter name="teamName" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["Alpha"]]></defaultValueExpression>
-	</parameter>
+	<parameter name="period" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="teamName" isForPrompting="false" class="java.lang.String"/>
 	<queryString><![CDATA[select * from rep_project_characteristics WHERE period = $P{period} and team = $P{teamName} order by periodavailable]]></queryString>
 
 	<field name="id" class="java.lang.Integer"/>
@@ -177,7 +173,7 @@
 						mode="Opaque"
 						x="80"
 						y="25"
-						width="70"
+						width="65"
 						height="25"
 						forecolor="#FFFFFF"
 						backcolor="#70A9C6"
@@ -192,7 +188,7 @@
 				<staticText>
 					<reportElement
 						mode="Opaque"
-						x="150"
+						x="145"
 						y="25"
 						width="75"
 						height="25"
@@ -209,9 +205,9 @@
 				<staticText>
 					<reportElement
 						mode="Opaque"
-						x="225"
+						x="220"
 						y="25"
-						width="75"
+						width="80"
 						height="25"
 						forecolor="#FFFFFF"
 						backcolor="#70A9C6"
@@ -228,7 +224,7 @@
 						mode="Opaque"
 						x="300"
 						y="25"
-						width="75"
+						width="80"
 						height="25"
 						forecolor="#FFFFFF"
 						backcolor="#70A9C6"
@@ -243,9 +239,9 @@
 				<staticText>
 					<reportElement
 						mode="Opaque"
-						x="375"
+						x="380"
 						y="25"
-						width="70"
+						width="65"
 						height="25"
 						forecolor="#FFFFFF"
 						backcolor="#70A9C6"

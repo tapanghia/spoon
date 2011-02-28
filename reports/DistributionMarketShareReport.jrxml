@@ -23,9 +23,7 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<parameter name="period" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
-	</parameter>
+	<parameter name="period" isForPrompting="false" class="java.lang.String"/>
 	<queryString><![CDATA[select id, period, team, brand, (supermarket * 100) as supermarket, (general * 100) as general,
 (kirana * 100) as kirana, (total * 100) as total from rep_distribution_cov_mkt_share WHERE period = $P{period}]]></queryString>
 

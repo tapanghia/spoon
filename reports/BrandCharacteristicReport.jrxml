@@ -156,7 +156,7 @@
 						mode="Opaque"
 						x="160"
 						y="25"
-						width="75"
+						width="70"
 						height="25"
 						forecolor="#FFFFFF"
 						backcolor="#70A9C6"
@@ -171,7 +171,7 @@
 				<staticText>
 					<reportElement
 						mode="Opaque"
-						x="235"
+						x="230"
 						y="25"
 						width="80"
 						height="25"
@@ -188,9 +188,9 @@
 				<staticText>
 					<reportElement
 						mode="Opaque"
-						x="315"
+						x="310"
 						y="25"
-						width="85"
+						width="90"
 						height="25"
 						forecolor="#FFFFFF"
 						backcolor="#70A9C6"

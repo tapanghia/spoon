@@ -7,11 +7,11 @@
 		 printOrder="Vertical"
 		 orientation="Portrait"
 		 pageWidth="740"
-		 pageHeight="842"
+		 pageHeight="760"
 		 columnWidth="680"
 		 columnSpacing="0"
-		 leftMargin="30"
-		 rightMargin="30"
+		 leftMargin="20"
+		 rightMargin="20"
 		 topMargin="20"
 		 bottomMargin="20"
 		 whenNoDataType="NoPages"
@@ -87,26 +87,26 @@ UNION
 				<staticText>
 					<reportElement
 						mode="Opaque"
-						x="0"
+						x="-20"
 						y="0"
-						width="680"
+						width="740"
 						height="32"
 						forecolor="#FFFFFF"
 						backcolor="#006699"
 						key="staticText-1"
 						isRemoveLineWhenBlank="true"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Right" verticalAlignment="Top">
+					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Times New Roman" size="24" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Company Performance   ]]></text>
+				<text><![CDATA[Company Performance    ]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
 						x="380"
 						y="32"
-						width="299"
+						width="340"
 						height="28"
 						forecolor="#FFFFFF"
 						backcolor="#70A9C6"
@@ -114,16 +114,16 @@ UNION
 						isRemoveLineWhenBlank="true"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
-						<font fontName="Times New Roman" pdfFontName="Helvetica-BoldOblique" size="18" isBold="true" isItalic="true"/>
+						<font fontName="Times New Roman" pdfFontName="Helvetica-Bold" size="18" isBold="true" isItalic="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Period: " + $P{period} + "   "]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Period: " + $P{period} + "        "]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
-						x="1"
+						x="-20"
 						y="32"
-						width="379"
+						width="400"
 						height="28"
 						forecolor="#FFFFFF"
 						backcolor="#70A9C6"
@@ -131,9 +131,9 @@ UNION
 						isRemoveLineWhenBlank="true"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left">
-						<font fontName="Times New Roman" pdfFontName="Helvetica-BoldOblique" size="18" isBold="true" isItalic="true"/>
+						<font fontName="Times New Roman" pdfFontName="Helvetica-Bold" size="18" isBold="true" isItalic="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Team: " + $P{teamName}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["    Team: " + $P{teamName}]]></textFieldExpression>
 				</textField>
 			</band>
 		</title>
@@ -146,13 +146,222 @@ UNION
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="100"  isSplitAllowed="true" >
+			<band height="570"  isSplitAllowed="true" >
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="0"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-1"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="30"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-2"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="60"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-3"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="120"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-4"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="180"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-5"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="240"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-6"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="300"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-7"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="90"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-8"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="150"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-9"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="210"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-10"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="270"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-11"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="360"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-12"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="420"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-13"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="480"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-14"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="330"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-15"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="390"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-16"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="450"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-17"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="510"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-18"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="540"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-19"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
 				<crosstab >
 					<reportElement
-						x="0"
+						x="-20"
 						y="0"
-						width="680"
-						height="100"
+						width="740"
+						height="570"
 						key="crosstab-1"/>
 					<crosstabDataset>
 						<dataset >
@@ -170,7 +379,7 @@ UNION
 					<crosstabHeaderCell>						<cellContents mode="Transparent">
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 						</cellContents>
-					</crosstabHeaderCell>					<rowGroup name="label" width="200">
+					</crosstabHeaderCell>					<rowGroup name="label" width="400">
 						<bucket>
 							<bucketExpression class="java.lang.String"><![CDATA[$F{label}]]></bucketExpression>
 						</bucket>
@@ -182,34 +391,36 @@ UNION
 						mode="Opaque"
 						x="0"
 						y="0"
-						width="200"
-						height="35"
-						backcolor="#829FAD"
+						width="400"
+						height="30"
+						forecolor="#FFFFFF"
+						backcolor="#ABB2B8"
 						key="textField">
-							<printWhenExpression><![CDATA[((($V{label}.substring(1).equalsIgnoreCase("Sales")) || ($V{label}.substring(1).equalsIgnoreCase("Production")) || ($V{label}.substring(1).equalsIgnoreCase("Marketing")) || ($V{label}.substring(1).equalsIgnoreCase("Other Expenses")))?new Boolean("false"):new Boolean("true"))]]></printWhenExpression>
+							<printWhenExpression><![CDATA[((($V{label}.substring(1).equalsIgnoreCase("Sales")) || ($V{label}.substring(1).equalsIgnoreCase("Production")) || ($V{label}.substring(1).equalsIgnoreCase("Marketing")) || ($V{label}.substring(1).equalsIgnoreCase("Other Expenses"))|| ($V{label}.substring(1).equalsIgnoreCase("Net Contribution")))?new Boolean("false"):new Boolean("true"))]]></printWhenExpression>
 						</reportElement>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$V{label}.substring(1)]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["        "+ $V{label}.substring(1)]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
 						x="0"
 						y="0"
-						width="200"
-						height="35"
+						width="400"
+						height="30"
+						forecolor="#FFFFFF"
 						backcolor="#829FAD"
 						key="textField-18">
-							<printWhenExpression><![CDATA[((($V{label}.substring(1).equalsIgnoreCase("Sales")) || ($V{label}.substring(1).equalsIgnoreCase("Production")) || ($V{label}.substring(1).equalsIgnoreCase("Marketing")) || ($V{label}.substring(1).equalsIgnoreCase("Other Expenses")))?new Boolean("true"):new Boolean("false"))]]></printWhenExpression>
+							<printWhenExpression><![CDATA[((($V{label}.substring(1).equalsIgnoreCase("Sales")) || ($V{label}.substring(1).equalsIgnoreCase("Production")) || ($V{label}.substring(1).equalsIgnoreCase("Marketing")) || ($V{label}.substring(1).equalsIgnoreCase("Other Expenses"))|| ($V{label}.substring(1).equalsIgnoreCase("Net Contribution")))?new Boolean("true"):new Boolean("false"))]]></printWhenExpression>
 						</reportElement>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left" verticalAlignment="Middle">
-						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$V{label}.substring(1)]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["     "+ $V{label}.substring(1)]]></textFieldExpression>
 				</textField>
 						</cellContents>
 						</crosstabRowHeader>
@@ -223,15 +434,17 @@ UNION
 					<measure name="value_Nothing" class="java.lang.Double">
 						<measureExpression><![CDATA[$F{value}]]></measureExpression>
 					</measure>
-					<crosstabCell width="120" height="35">
+					<crosstabCell width="340" height="30">
 						<cellContents mode="Transparent">
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 				<textField isStretchWithOverflow="false" pattern="#,##0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
+						mode="Transparent"
 						x="0"
 						y="0"
-						width="120"
-						height="35"
+						width="200"
+						height="30"
+						backcolor="#FFFFFF"
 						key="textField">
 							<printWhenExpression><![CDATA[((($V{label}.substring(1).equalsIgnoreCase("Sales")) || ($V{label}.substring(1).equalsIgnoreCase("Production")) || ($V{label}.substring(1).equalsIgnoreCase("Marketing"))  || ($V{label}.substring(1).equalsIgnoreCase("Other Expenses")))?new Boolean("false"):new Boolean("true"))]]></printWhenExpression>
 						</reportElement>
@@ -243,12 +456,12 @@ UNION
 				</textField>
 						</cellContents>
 					</crosstabCell>
-					<crosstabCell width="0" height="35" columnTotalGroup="Team Name">
+					<crosstabCell width="0" height="30" columnTotalGroup="Team Name">
 						<cellContents mode="Transparent">
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 						</cellContents>
 					</crosstabCell>
-					<crosstabCell width="120" height="0" rowTotalGroup="label">
+					<crosstabCell width="340" height="0" rowTotalGroup="label">
 						<cellContents mode="Transparent">
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 						</cellContents>
@@ -268,9 +481,9 @@ UNION
 			<band height="10"  isSplitAllowed="true" >
 				<line direction="TopDown">
 					<reportElement
-						x="0"
+						x="-20"
 						y="5"
-						width="679"
+						width="740"
 						height="0"
 						key="line-1"/>
 					<graphicElement stretchType="NoStretch"/>
@@ -282,14 +495,15 @@ UNION
 				<textField isStretchWithOverflow="false" pattern="MMMMM dd, yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
-						x="0"
+						x="-20"
 						y="0"
-						width="170"
+						width="148"
 						height="15"
+						forecolor="#FFFFFF"
 						backcolor="#006699"
 						key="textField-3"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle">
+					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font/>
 					</textElement>
 				<textFieldExpression   class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
@@ -297,10 +511,11 @@ UNION
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
-						x="170"
+						x="128"
 						y="0"
-						width="355"
+						width="437"
 						height="15"
+						forecolor="#FFFFFF"
 						backcolor="#006699"
 						key="textField-4"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -312,10 +527,11 @@ UNION
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
-						x="526"
+						x="565"
 						y="0"
 						width="110"
 						height="15"
+						forecolor="#FFFFFF"
 						backcolor="#006699"
 						key="textField-5"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -327,10 +543,11 @@ UNION
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
-						x="636"
+						x="675"
 						y="0"
-						width="44"
+						width="45"
 						height="15"
+						forecolor="#FFFFFF"
 						backcolor="#006699"
 						key="textField-6"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>

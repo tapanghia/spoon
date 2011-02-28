@@ -23,9 +23,7 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<parameter name="period" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
-	</parameter>
+	<parameter name="period" isForPrompting="false" class="java.lang.String"/>
 	<queryString><![CDATA[select id, period, team, brand, (blueblood * 100) as blueblood, (raffles * 100) as raffles,
 (wannabes * 100) as wannabes, (strugglers * 100) as strugglers, (deprived * 100) as deprived,
 (total * 100) as total from rep_market_share WHERE period = $P{period} order by team]]></queryString>
@@ -164,7 +162,7 @@
 						isPrintInFirstWholeBand="true"/>
 					<box topBorder="Thin" topBorderColor="#FFFFFF" leftBorder="Thin" leftBorderColor="#FFFFFF" rightBorder="Thin" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="16" isBold="true"/>
+						<font fontName="Arial" size="15" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Total Market Share]]></text>
 				</staticText>
