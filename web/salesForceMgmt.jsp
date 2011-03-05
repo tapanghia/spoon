@@ -257,7 +257,7 @@ Iterator<Map.Entry<Brand, MarginOffered>> brandMarginItr2 = marginOfferedForBran
 						<b class="toggle"></b>
 						<span>Intelligence Reports</span>
 						<ul class="with-icon icon-report">
-							<li><a href="reports.htm?reportName=RnDReport">Project Characteristics</a></li>
+							<li><a href="reports.htm?reportName=Benchmarking">Benchmarking</a></li>
 							<li><a href="reports.htm?reportName=BrandCharacteristicReport">Brand Characteristics</a></li>
 							<li><a href="reports.htm?reportName=BrandAwarenessReport">Brand Awareness</a></li>
 							<li><a href="reports.htm?reportName=BrandPurchaseIntentionReport">Brand Purchase Intention</a></li>
@@ -270,7 +270,6 @@ Iterator<Map.Entry<Brand, MarginOffered>> brandMarginItr2 = marginOfferedForBran
 							<li><a href="reports.htm?reportName=DistributionMarketShareReport">Distribution Market Share</a></li>
 							<li><a href="reports.htm?reportName=CompetitiveSalesForceReport">Competitive Sales Force</a></li>
 							<li><a href="reports.htm?reportName=CompetitiveMarginReport">Competitive Margin</a></li>
-							<li><a href="reports.htm?reportName=Benchmarking">Benchmarking</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -327,12 +326,11 @@ Iterator<Map.Entry<Brand, MarginOffered>> brandMarginItr2 = marginOfferedForBran
 					</div>
 <%
 				  if(brandExists){
-				  	  Iterator<Map.Entry<Brand, MarginOffered>> brandMarginItr = marginOfferedForBrands.entrySet().iterator();
-            		while (brandMarginItr.hasNext()) {
-						Map.Entry<Brand, MarginOffered> entry = (Map.Entry<Brand,MarginOffered>) brandMarginItr.next();
-						
-						Brand thisBrand = entry.getKey();
-						MarginOffered thisBrandMarginOffered = entry.getValue();
+				  	 Iterator<Brand> itr = resultBrands.iterator();
+			      	 while(itr.hasNext()){
+					 	Brand thisBrand = itr.next();
+					 	MarginOffered thisBrandMarginOffered = marginOfferedForBrands.get(thisBrand);
+					 
 						%>
 					<div class="columns">
 					<div class="colx5-left">

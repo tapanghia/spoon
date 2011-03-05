@@ -1,30 +1,51 @@
 <%@ include file="header.jsp" %>
 
-    <div class="grid_5">
-      <ul class="leftNavigation">
-        <li class="first"><a href="researchTeamInstructions.jsp">R&amp;D Team Inst.<br></a></li>
-        <li><a href="salesTeamInstructions.jsp">Sales Team Inst.<br></a></li>
-        <li><a href="marketingTeamInstructions.jsp">Marketing Team Inst.<br></a></li>
-        <li><a href="intelligenceTeamInstructions.jsp">Intelligence Team Inst.<br></a></li>
-        <li><a href="boardRoomInstructions.jsp">Board Room Inst.<br></a></li>
-        <li class="submenutitle"><a href="basicDescription.jsp">Basic Description.</a></li>
-      </ul>
-      <div class="leftheading">Basic Description</div>
-      <ul class="highlights">
-        <li><a href="#">Regions Classifications</a></li>
-        <li><a href="#">Consumer Preferences</a></li>
-        <li><a href="#">Channel Members Preferences</a></li> 
-      </ul>
-      <div class="leftheading">Quick Start</div>
-      <ul class="highlights">
-        <li>Please provide Research and Development inputs/decisions to the R&amp;D Team.</li>
-        <li>Please provide Marketing inputs/decisions to the Marketing Team.</li>
-        <li>Please provide Sales inputs/decisions to the Sales Team.</li> 
-        <li>Please refer the Intelligence Team for the Decision Reports.</li>       
-      </ul>
-    </div>
-    
-    <div class="grid_19">
+<!-- Content -->
+	<article class="container_12">
+		
+		<section class="grid_3">
+			<div class="block-border"><div class="block-content">
+				<h1>Reports</h1>				
+				<ul class="collapsible-list with-bg">
+					<li>
+						<b class="toggle"></b>
+						<span>Company Performance</span>
+						<ul class="with-icon icon-report">
+							<li><a href="reports.htm?reportName=TeamResult">Team Performance</a></li>
+							<li><a href="reports.htm?reportName=BrandResult">Brand Performance</a></li>
+							<li><a href="reports.htm?reportName=StockMarketReport">Stock market</a></li>
+							<li><a href="reports.htm?reportName=RnDReport">R&D Report</a></li>
+						</ul>
+					</li>
+					<li>
+						<b class="toggle"></b>
+						<span>Intelligence Reports</span>
+						<ul class="with-icon icon-report">
+							<li><a href="reports.htm?reportName=Benchmarking">Benchmarking</a></li>
+							<li><a href="reports.htm?reportName=BrandCharacteristicReport">Brand Characteristics</a></li>
+							<li><a href="reports.htm?reportName=BrandAwarenessReport">Brand Awareness</a></li>
+							<li><a href="reports.htm?reportName=BrandPurchaseIntentionReport">Brand Purchase Intention</a></li>
+							<li><a href="reports.htm?reportName=MarketShareReport">Market Share</a></li>
+							<li><a href="reports.htm?reportName=SemanticScaleReport">Semantic Scale</a></li>
+							<li><a href="reports.htm?reportName=MultiDimensionalScaleReport">Multi Dimensional Scale</a></li>
+							<li><a href="reports.htm?reportName=CompetitiveAdvExpenseReport">Competitive Advertising Expense</a></li>
+							<li><a href="reports.htm?reportName=ShoppingHabitsReport">Shopping Habits</a></li>
+							<li><a href="reports.htm?reportName=DistributionCoverageReport">Distribution Coverage</a></li>
+							<li><a href="reports.htm?reportName=DistributionMarketShareReport">Distribution Market Share</a></li>
+							<li><a href="reports.htm?reportName=CompetitiveSalesForceReport">Competitive Sales Force</a></li>
+							<li><a href="reports.htm?reportName=CompetitiveMarginReport">Competitive Margin</a></li>
+						</ul>
+					</li>
+				</ul>
+				
+			</div></div>
+
+		</section>
+
+		
+		<section class="grid_9">
+			<div class="block-border"><div class="block-content">
+				<h1>Basic Description</h1>
       <table>
 				<tr>
 						<td>
@@ -106,6 +127,11 @@
 					</td>
 				</tr>
 			</table>
-  	</div>
+</div></div>
+		</section>
+		
+		<div class="clear"></div>
+		
+	</article>
 
 <%@ include file="footer.jsp" %>

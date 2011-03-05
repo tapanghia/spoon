@@ -135,7 +135,7 @@
 	<div id="control-bar" class="grey-bg clearfix"><div class="container_12">
 	
 		<div class="float-left">
-			<button type="button"><%=((request.getSession().getAttribute(Constants.TEAM_NAME)!= null)? ("Team " + (String)request.getSession().getAttribute(Constants.TEAM_NAME)):"")%></button>
+			<button type="button" onclick="javascript:window.open('basicDescription.jsp?', 'resizable=no, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no');">Basic Description</button>
 		</div>
 		
 		<div class="float-right"> 

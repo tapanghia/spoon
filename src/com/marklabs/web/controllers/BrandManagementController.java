@@ -380,10 +380,12 @@ public class BrandManagementController extends MultiActionController{
 			
 			// here will have to delete this Brand and all the information accross th system for this Brand 
 			//like the Production/Pricing and Adv expenses needs to be deleted
-			//deleteBrandSpecsForDeletedBrand(brandToDelete);
-			//deleteBrandAdvForDeletedBrand(brandToDelete);
-			//deleteBrandSalesForceForDeletedBrand(brandToDelete);
-			//deleteBrandMarginOfferedForDeletedBrand(brandToDelete);
+			deleteBrandSpecsForDeletedBrand(brandToDelete);
+			deleteBrandAdvForDeletedBrand(brandToDelete);
+			deleteBrandSalesForceForDeletedBrand(brandToDelete);
+			deleteBrandMarginOfferedForDeletedBrand(brandToDelete);
+			deleteBrandPerceptualObjective(brandToDelete);
+			
 			
 			brandService.deleteBrandCascade(brandToDelete);
 			
@@ -405,28 +407,35 @@ public class BrandManagementController extends MultiActionController{
 	
 	private void deleteBrandSpecsForDeletedBrand(Brand deletedBrand) {
 		BrandSpecs toDeleteBrandSpecs = brandSpecsService.getBrandSpecsOnBrand(deletedBrand);
-		brandSpecsService.deleteBrandSpecs(toDeleteBrandSpecs);
+		if (toDeleteBrandSpecs != null) 
+			brandSpecsService.deleteBrandSpecs(toDeleteBrandSpecs);
 	
 	}
 	
 	private void deleteBrandAdvForDeletedBrand(Brand deletedBrand) {
-		BrandAdvertisement toDeletBrandAdv = brandAdvertisementService.getBrandAdvOnBrand(deletedBrand);
-		brandAdvertisementService.deleteBrandAdvertisement(toDeletBrandAdv);
+		BrandAdvertisement toDeleteBrandAdv = brandAdvertisementService.getBrandAdvOnBrand(deletedBrand);
+		if (toDeleteBrandAdv != null)
+			brandAdvertisementService.deleteBrandAdvertisement(toDeleteBrandAdv);
 	}
 	
 	private void deleteBrandSalesForceForDeletedBrand(Brand deletedBrand) {
 		SalesForce toDeleteBrandSF = salesForceService.getSalesForceForBrand(deletedBrand);
-		salesForceService.deleteSalesForce(toDeleteBrandSF);
+		if (toDeleteBrandSF != null)
+			salesForceService.deleteSalesForce(toDeleteBrandSF);
 		
 	}
 	
 	private void deleteBrandMarginOfferedForDeletedBrand(Brand deletedBrand) {
 		MarginOffered newBrandMO = marginOfferedService.getMarginOfferedForBrand(deletedBrand);
-		marginOfferedService.deleteMarginOffered(newBrandMO);
-		
+		if (newBrandMO != null)
+			marginOfferedService.deleteMarginOffered(newBrandMO);
 	}
 	
-
+	private void deleteBrandPerceptualObjective(Brand toDeleteBrand) {
+		PerceptualObj toDeleteBrandPerceptualObj = perceptualObjService.getPerceptualObjInputForBrand(toDeleteBrand);
+		if (toDeleteBrandPerceptualObj != null) 
+			perceptualObjService.deletePerceptualObj(toDeleteBrandPerceptualObj);
+	}
 	
 	
 }

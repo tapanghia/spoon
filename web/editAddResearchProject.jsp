@@ -63,8 +63,6 @@ $(document).ready(function(){
   });
   
   $("input.update").click(function(){
-    var val1 = $(".notnull").validateNotNull();
-    var val2 = $(".numeric").numeric();
     
     //todo to be cleaned up.
     var editProjIframeForm = document.getElementById( "editAddResearchProjForm" );
@@ -73,9 +71,7 @@ $(document).ready(function(){
     	"<%=CONTEXTPATH%>/researchProject.htm?do=updateResearchProject&updatedResearchProjectId="+researchProjectId;
     
     //if valid submit the form.
-    if (val1 && val2) {
       editProjIframeForm.submit();
-    }
   });
   
   $('#generateMinBaseCost').click(function(event) {
@@ -431,6 +427,7 @@ function SetSliderValue(sliderId, textBoxControl) {
 					</div>
 
 					<div class="columns">
+<input type="hidden" name="selectResearchProjId" id="selectResearchProjId" value="<%= selectedProject.getId() %>">
 <input type="hidden" name="budgetRequiredAtMinBaseCost" id="budgetRequiredAtMinBaseCost" readonly maxlength="10" value="<%=requiredBudgetAtMinBaseCost %>"/> 
 	  					<input type="submit" class="button update" value="Update" onClick="javascript:updateResearchProject()"/>
 	  					<input type="submit" class="button delete" value="Delete" onClick="javascript:deleteResearchProject()"/>

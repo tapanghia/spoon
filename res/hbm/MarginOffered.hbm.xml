@@ -13,7 +13,7 @@
         <property name="kiranaStore_mo" type="long"/>
         
         <many-to-one name="brand" class="com.marklabs.brands.Brand" 
-			column="brandId" not-null="true" cascade="all" unique="true" />
+			column="brandId" not-null="true" cascade="none" unique="true" />
               
      </class>
 </hibernate-mapping>
