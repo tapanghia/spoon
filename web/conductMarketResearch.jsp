@@ -168,7 +168,7 @@ $( "#totcost" ).val(sum);
 		 <% } %>
 <tr>
 <td colspan="3">Total Cost</td> 
-<td><input type="text" name="totcost" id="totcost" size="5" readonly class="past"></td>
+<td><input type="text" name="totcost" id="totcost" size="" readonly class="past"></td>
 </tr>
 
     </tbody>

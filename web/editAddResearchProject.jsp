@@ -427,7 +427,7 @@ function SetSliderValue(sliderId, textBoxControl) {
 					</div>
 
 					<div class="columns">
-<input type="hidden" name="selectResearchProjId" id="selectResearchProjId" value="<%= selectedProject.getId() %>">
+<input type="hidden" name="selectResearchProjId" id="selectResearchProjId" value="<%= (selectedProject != null ? selectedProject.getId() : "") %>">
 <input type="hidden" name="budgetRequiredAtMinBaseCost" id="budgetRequiredAtMinBaseCost" readonly maxlength="10" value="<%=requiredBudgetAtMinBaseCost %>"/> 
 	  					<input type="submit" class="button update" value="Update" onClick="javascript:updateResearchProject()"/>
 	  					<input type="submit" class="button delete" value="Delete" onClick="javascript:deleteResearchProject()"/>

@@ -768,7 +768,7 @@ function SetSliderValue(sliderId, textBoxControl) {
 					<div class="colx5-center2">
 						<span class="label"></span><input type="text" name="mdsDimen1Obj" id="mdsDimen1Obj" value = "<%= ((thisBrandPerceptualObj != null && thisBrandPerceptualObj.getScale().equalsIgnoreCase(PerceptualObjectiveScales.MDS_DIMENSION.getPerceptualObjScale()))?thisBrandPerceptualObj.getObjective1():"")%>" size="10"/></div>
 					<div class="colx5-center3">
-						<span class="label"></span<select name="mdsDimen2" id="mdsDimen2">
+						<span class="label"></span><select name="mdsDimen2" id="mdsDimen2">
               <option id="-1" value="-1">--</option>
               <option id="-1" value="Economy"
               <% if (thisBrandPerceptualObj != null && 
