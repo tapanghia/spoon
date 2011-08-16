@@ -7,7 +7,7 @@
 		 printOrder="Vertical"
 		 orientation="Portrait"
 		 pageWidth="740"
-		 pageHeight="940"
+		 pageHeight="2500"
 		 columnWidth="680"
 		 columnSpacing="0"
 		 leftMargin="20"
@@ -210,6 +210,7 @@
 						isPrintInFirstWholeBand="true"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
+
 						<font fontName="Arial" size="13" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Kirana Stores]]></text>
