@@ -4,6 +4,7 @@
 <%@ page import="java.util.Iterator"%>
 <%@ page import="java.util.Collection"%>
 <%@ page import="com.marklabs.web.controllers.Constants" %>
+<%@ page import="java.util.List" %>
 
 <%@ page import="com.marklabs.researchProject.ResearchProject" %>
 <%@ page import="com.marklabs.brands.Brand" %>
@@ -14,6 +15,7 @@
 	String todo = (String) request.getAttribute("todo");
 	ResearchProject[] availableResearchProjs = (ResearchProject[]) request.getAttribute("availableResearchProjs");
 	Brand selectedBrandToEdit = (Brand) request.getAttribute("selectedBrandToEdit");
+	List<Brand> addedBrands =  (List<Brand>)request.getAttribute("addedBrands");
 	
 %>
 
@@ -58,11 +60,32 @@
 	
 <script type="text/javascript">
 	
+	Array.prototype.contains = function (element) {
+		for (var i = 0; i < this.length; i++) {
+			if (this[i] == element) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	var addedBrandsJSArray = new Array();
+	<% if (addedBrands != null) {
+		for (int i = 0; i< addedBrands.size(); i++) {%>
+			addedBrandsJSArray[<%=i%>] = "<%=addedBrands.get(i).getBrandName().substring(1).toLowerCase()%>";	
+		<%}
+	}%>
+	
 	function addBrand(){
 		var thisForm = document.addEditBrand;
 		if (thisForm.brandName.value != null && !("" == thisForm.brandName.value)) {
-        	window.opener.addNewBrandFromPopUp(thisForm.brandName.value, thisForm.selectBaseProject.value); 
-    			window.close();
+			if (!(addedBrandsJSArray.contains(thisForm.brandName.value.toLowerCase()))) {
+	        	window.opener.addNewBrandFromPopUp(thisForm.brandName.value, thisForm.selectBaseProject.value); 
+	    		window.close();
+    		}
+    		else {
+    			alert("No brands with duplicate names can be added.");
+    		}
         } else {
         	alert("Please enter name of product.");
         }

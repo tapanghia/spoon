@@ -55,10 +55,14 @@
 	
 		if (pageIndex >= 0) {
 			exporter.exportReport();
-		} else
-			message = "No Data Available for Selected Report";
+		} 
+		else {
+			//message = "No Data Available for Selected Report";
+			message = "This report has not been purchased for the current period.";
+		}	
 	}else{
-		message = "No Data Available for Selected Report";
+		//message = "No Data Available for Selected Report";
+		message = "This report has not been purchased for the current period.";
 	}
 %>
 

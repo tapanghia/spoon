@@ -238,13 +238,26 @@
 					</xyDataset>
 					<scatterPlot isShowLines="false" >
 						<plot labelRotation="3.0" >
-							<seriesColor seriesOrder="0" color="#FF00FF"/>
-							<seriesColor seriesOrder="1" color="#009933"/>
-							<seriesColor seriesOrder="2" color="#CC6600"/>
-							<seriesColor seriesOrder="3" color="#0033FF"/>
-							<seriesColor seriesOrder="4" color="#009999"/>
-							<seriesColor seriesOrder="5" color="#FF6600"/>
-							<seriesColor seriesOrder="6" color="#333333"/>
+							<seriesColor seriesOrder="0" color="#333333"/>
+							<seriesColor seriesOrder="1" color="#FF00FF"/>
+							<seriesColor seriesOrder="2" color="#9F1F1F"/>
+							<seriesColor seriesOrder="3" color="#009933"/>
+							<seriesColor seriesOrder="4" color="#CC6600"/>
+							<seriesColor seriesOrder="5" color="#0033FF"/>
+							<seriesColor seriesOrder="6" color="#009999"/>
+							<seriesColor seriesOrder="7" color="#FB1111"/>
+							<seriesColor seriesOrder="8" color="#D7DF2C"/>
+							<seriesColor seriesOrder="9" color="#FF6600"/>
+							<seriesColor seriesOrder="10" color="#925C5C"/>
+							<seriesColor seriesOrder="11" color="#0EE915"/>
+							<seriesColor seriesOrder="12" color="#E521D2"/>
+							<seriesColor seriesOrder="13" color="#F5F013"/>
+							<seriesColor seriesOrder="14" color="#34E0DC"/>
+							<seriesColor seriesOrder="15" color="#F65017"/>
+							<seriesColor seriesOrder="16" color="#891313"/>
+							<seriesColor seriesOrder="17" color="#822D7C"/>
+							<seriesColor seriesOrder="18" color="#B9E22A"/>
+							<seriesColor seriesOrder="19" color="#38D6A6"/>
 </plot>
 						<xAxisFormat>
 							<axisFormat >
