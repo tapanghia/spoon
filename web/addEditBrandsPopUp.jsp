@@ -25,38 +25,6 @@
 	<title>Add/Edit Brands</title>
 	<meta charset="utf-8">
 	
-	<!-- Global stylesheets -->
-	<link href="css/reset.css" rel="stylesheet" type="text/css">
-	<link href="css/common.css" rel="stylesheet" type="text/css">
-	<link href="css/form.css" rel="stylesheet" type="text/css">
-	<link href="css/standard.css" rel="stylesheet" type="text/css">
-	
-	<!-- Comment/uncomment one of these files to toggle between fixed and fluid layout -->
-	<!--<link href="css/960.gs.css" rel="stylesheet" type="text/css">-->
-	<link href="css/960.gs.fluid.css" rel="stylesheet" type="text/css">
-	
-	<!-- Custom styles -->
-	<link href="css/table.css" rel="stylesheet" type="text/css">
-	<link href="css/jquery-ui-1.8.7.custom.css" rel="stylesheet" type="text/css">
-	
-	<!-- Favicon -->
-	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-	
-	<!-- Generic libs -->
-	<script type="text/javascript" src="js/html5.js"></script>				<!-- this has to be loaded before anything else -->
-	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
-	
-	<!-- Template libs -->
-	<script type="text/javascript" src="js/jquery.accessibleList.js"></script>
-	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="js/common.js"></script>
-	<script type="text/javascript" src="js/standard.js"></script>
-	<!--[if lte IE 8]><script type="text/javascript" src="js/standard.ie.js"></script><![endif]-->
-	<script type="text/javascript" src="js/jquery.validate.js"></script>
-	
-	<!-- Custom styles lib -->
-	<script type="text/javascript" src="js/list.js"></script>
-
 	
 <script type="text/javascript">
 	
@@ -124,19 +92,13 @@
 </head>
 
 <body>
-<!-- The template uses conditional comments to add wrappers div for ie8 and ie7 - just add .ie, .ie7 or .ie6 prefix to your css selectors when needed -->
-<!--[if lt IE 9]><div class="ie"><![endif]-->
-<!--[if lt IE 8]><div class="ie7"><![endif]-->
-	
-	<section class="grid_12">
-		<div class="block-border">
 <form name="addEditBrand" method="post" class="block-content form" id="simple-list-form">
 						<h1>Add/Edit Brands</h1>
 <input type="hidden" name="parentFormName" value=""/>
 <table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0">
   <tr align="left" valign="top">
 
-    <td class="">
+    <td>
       <table width="100%"  border="0" cellspacing="0" cellpadding="0" class="">
         <tr>
           <td align="left" valign="top" class="back-white">
@@ -212,10 +174,6 @@ co = teamName.substring(0,1);
 
 				
 
-		</div></div>
-	</section>
 
-<!--[if lt IE 8]></div><![endif]-->
-<!--[if lt IE 9]></div><![endif]-->
 </body>
 </html>

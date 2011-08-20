@@ -57,13 +57,10 @@
 						<br><p style="text-align: justify;">So, <span style="color:#0083C3"><i>learn fast from 
 						your mistakes</i></span> and gear up for the challenges because the stakes are 
 						really high.</p>
-						<br><p style="text-align: justify;">Boardroom has <span style="color:#0083C3"><i>3 sections</span></i> as shown in the left tab:
+						<br><p style="text-align: justify;">Boardroom has <span style="color:#0083C3"><i>1 section</span></i> as shown in the top menu:
 						<span style="color:#0083C3"><i><br>Market News</span></i> - You would know all 
 						the extra information which is required for business planning and 
-						decision making in this section.
-						<span style="color:#0083C3"><i><br>Proposed Marketing Plan</span></i> - 
-						The board will review your proposed plan for the next quarter here.
-						<span style="color:#0083C3"><i><br>Results</span></i> - Yes, that&apos;s where the performance evaluation happens.</p>
+						decision making in this section.</p>
 
 					</div></div></section>
 <div class="clear"></div>

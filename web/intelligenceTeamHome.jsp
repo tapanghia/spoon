@@ -45,16 +45,16 @@
 				<h1>Intelligence Team</h1>
 
 						<span style="color:#0083C3">Welcome to the Intelligence Department</span>. 
-						<br><p style="text-align: justify;">We constitute a team of hundred people headed by <span style="color:#0083C3"><i>Mr. Arul Dasgupta</i>.</p>
+						<br><p style="text-align: justify;">We constitute a team of hundred people headed by <span style="color:#0083C3"><i>Mr. Arul Dasgupta</i>.</span></p>
  						<br><p style="text-align: justify;"><span style="color:#0083C3"><i>&quot;Knowledge Bank&quot;</span></i>
- 						- That&apos;s what we call ourselves.
+ 						- That's what we call ourselves.
  						Operating like undercover agents, our 
  						teammates are spread throughout the entire market. 
  						We act as <span style="color:#0083C3"><i>eyes and ears for the company</i></span> looking for 
  						all the information requested by various departments. 
  						All the data that we gather is compiled in this department 
  						centrally for easy access to all reports.</p>
-						<br><p style="text-align: justify;">This department has <span style="color:#0083C3"><i>2 sections</i></span> as shown in the left tab:
+						<br><p style="text-align: justify;">This department has <span style="color:#0083C3"><i>2 sections</i></span> as shown in the top menu:
 						<span style="color:#0083C3"><i><br>View Reports</span></i> - All reports of all the departments are chronicled 
 						in this section.
 						<span style="color:#0083C3"><i><br>Conduct Market Research</span></i> - Any new reports required for effective 

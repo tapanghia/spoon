@@ -49,12 +49,12 @@
 
 						<br><span style="color:#0083C3">Welcome to the Sales Department</span>. 
 						<br><p style="text-align: justify;">We constitute a team of five thousand people headed 
-						by <span style="color:#0083C3"><i>Mr. Ravi Natarajan</i>.</p>
+						by <span style="color:#0083C3"><i>Mr. Ravi Natarajan</i>.</span></p>
 						<br><p style="text-align: justify;">Most battles are not won on the battlefield but in the 
 						planning and training camps. We believe <span style="color:#0083C3"><i>&quot;selling is like war&quot;</i></span>. 
-						It&apos; as much skill and tactics as raw human effort. 
+						It takes as much skill and tactics as raw human effort. 
 						And this is that department where the sales strategy is decided. </p>
-						<br><p style="text-align: justify;">This department has <span style="color:#0083C3"><i>2 sections</i></span> as shown in the left tab:
+						<br><p style="text-align: justify;">This department has <span style="color:#0083C3"><i>2 sections</i></span> as shown in the top menu:
 						<span style="color:#0083C3"><i><br>Sales Force Management</span></i> - Different segments -> Different 
 						preferences -> Different Sales strategies. 
 						And this is the action room for all this. 

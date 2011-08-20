@@ -48,14 +48,14 @@
 
 						<span style="color:#0083C3">Welcome to the R&amp;D Department</span>.
 						<p style="text-align: justify;">We constitute a team of fight 
-						hundred people headed by <span style="color:#0083C3"><i>Dr. Alex Jordan</i>.</p>
+						hundred people headed by <span style="color:#0083C3"><i>Dr. Alex Jordan</i>.</span></p>
 						<p style="text-align: justify;">As consumer preferences evolve, the company has to <span style="color:#0083C3"><i>keep on innovating</i></span> 
 						to stay ahead of competition. Onus for this falls on the shoulders of 
 						the scientists at R&amp;D department who are always involved in cutting 
 						edge research projects. We have a strong research team and state of art 
 						equipments capable of delivering the products with the exact 
 						specifications as desired. </p>
-						<p style="text-align: justify;">This department has <span style="color:#0083C3"><i>4 sections</i></span> as shown in the left tab:
+						<p style="text-align: justify;">This department has <span style="color:#0083C3"><i>4 sections</i></span> as shown in the top menu:
 						<br><span style="color:#0083C3"><i><br>View R&amp;D Report</i></span>- Here you
 						can view reports of the projects that our department has researched so far. 
 						<br><span style="color:#0083C3"><i><br>Add Research Projects</i></span> - This 
