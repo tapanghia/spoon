@@ -80,7 +80,7 @@
 			<li class="home <%= (currentLink.equalsIgnoreCase("home"))?"current":"" %>"><a href="teamHome.htm" title="Home">Home</a>
 				<ul>
 					<li><a href="teamHome.htm" title="Dashboard">Dashboard</a></li>
-					<li><a href="#" title="Help">Help</a></li>
+					<li><a href="javascript:window.open('basicDescription.jsp?', 'resizable=no, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no');" title="Help">Basic Description</a></li>
 				</ul>
 			</li>
 			<li class="write <%= (currentLink.equalsIgnoreCase("researchproject"))?"current":"" %>"><a href="researchProject.htm" title="R&D Team">R&DTeam</a>
@@ -135,7 +135,7 @@
 	<div id="control-bar" class="grey-bg clearfix"><div class="container_12">
 	
 		<div class="float-left">
-			<button type="button" onclick="javascript:window.open('basicDescription.jsp?', 'resizable=no, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no');">Basic Description</button>
+			<button type="button" onclick=""><%=((request.getSession().getAttribute(Constants.TEAM_NAME)!= null)? ("Team " + request.getSession().getAttribute(Constants.TEAM_NAME)):"NA") %></button>
 		</div>
 		
 		<div class="float-right"> 

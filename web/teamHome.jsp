@@ -49,7 +49,7 @@
 						eyeing a share of this lucrative pie. <span style="color:#0083C3"><i>Competition</i></span>, therefore, is as 
 						intense as you can imagine.</p>
 						<p style="text-align: justify;">Your team has been entrusted with the task of managing the brands 
-						for the company <span style="color:#0083C3"><i>Alpha</span></i>. It is going to be a 
+						for the company <span style="color:#0083C3"><i><%=((request.getSession().getAttribute(Constants.TEAM_NAME)!= null)? (request.getSession().getAttribute(Constants.TEAM_NAME)):"NA") %></span></i>. It is going to be a 
 						complex task involving in depth understanding of your products, 
 						customer preferences and strategic moves of competing companies.</p>
 						<p style="text-align: justify;">The company has been organized into different departments that you 
