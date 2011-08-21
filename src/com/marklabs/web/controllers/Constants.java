@@ -35,6 +35,7 @@ public class Constants {
 	public static final String EXISTING_RESEARCH_PROJECTS = "existingResearchProjects";
 	public static final String PREVIOUS_PERIOD_RESEARCH_PROJECTS = "previousPeriodResearchProjects";
 	public static final String SELECTED_RESEARCH_PROJECT = "selectedResearchProject";
+	public static final String ALL_RESEARCH_PROJECTS_FOR_TEAM = "allResearchProjectsForTeam";
 	public static final String SELECTED_BRAND = "selectedBrand";
 	public static final String EXISTING_BRANDS = "existingBrands";
 	

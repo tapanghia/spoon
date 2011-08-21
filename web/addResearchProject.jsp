@@ -3,6 +3,7 @@
 <%@ page import="com.marklabs.researchProject.ResearchProject"%>
 <%
   ResearchProject[] previousPeriodProj = (ResearchProject[]) request.getAttribute(Constants.PREVIOUS_PERIOD_RESEARCH_PROJECTS);
+  ResearchProject[] allResearchProjForTeam = (ResearchProject[]) request.getAttribute(Constants.ALL_RESEARCH_PROJECTS_FOR_TEAM);
 %>
 <style>
 	#design, #fragrance, #persistence, #packaging, #safety {
@@ -22,7 +23,36 @@
 	#safety .ui-slider-handle { border-color: #729fcf; }
 </style>
 <script type="text/javascript">
+
+	var existingResearchProjJSArray = new Array();
+	<% if (allResearchProjForTeam != null) {
+		for (int i = 0; i< allResearchProjForTeam.length; i++) {%>
+			existingResearchProjJSArray[<%=i%>] = "<%=allResearchProjForTeam[i].getProjectName().substring(2).toLowerCase()%>";	
+		<%}
+	}%>
+	
+	Array.prototype.contains = function (element) {
+		for (var i = 0; i < this.length; i++) {
+			if (this[i] == element) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 $(function(){
+
+  $("#addResearchProjForm").submit(function(){
+  	if ($("#projectName").val() != null && !("" == $("#projectName").val())) {
+		if ($.inArray($("#projectName").val().toLowerCase(), existingResearchProjJSArray) == -1) {
+			return true;
+		}
+		else {
+			alert("No research projects with duplicate names can be added.");
+			return false;
+		}
+    } 
+  });
 
   //todo to be cleaned up.
   $("input.cancel").click(function() {

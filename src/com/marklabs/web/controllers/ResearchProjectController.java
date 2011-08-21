@@ -141,8 +141,10 @@ public class ResearchProjectController extends MultiActionController {
 		ResearchProject []previousPeriodProj = 
 			researchProjectService.getCompletedResearchProjectsForTeam(teamId, currentPeriod);
 		
+		ResearchProject []allResearchProjForTeam = researchProjectService.getAllResearchProjectsForTeam(teamId);
+		
 		mav.addObject(Constants.PREVIOUS_PERIOD_RESEARCH_PROJECTS, previousPeriodProj);
-			
+		mav.addObject(Constants.ALL_RESEARCH_PROJECTS_FOR_TEAM, allResearchProjForTeam);	
 		return mav;
 	}
 	
