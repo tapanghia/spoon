@@ -83,14 +83,14 @@
 					<li><a href="javascript:window.open('basicDescription.jsp?', 'resizable=no, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no');" title="Help">Basic Description</a></li>
 				</ul>
 			</li>
-			<li class="write <%= (currentLink.equalsIgnoreCase("researchproject"))?"current":"" %>"><a href="researchProject.htm" title="R&D Team">R&DTeam</a>
+			<!--li class="write <%= (currentLink.equalsIgnoreCase("researchproject"))?"current":"" %>"><a href="researchProject.htm" title="R&D Team">R&DTeam</a>
 				<ul>
 					<li><a href="researchProject.htm" title="R&D Team Home">R&D Team Home</a></li>
 					<li><a href="reports.htm?reportName=RnDReport" title="View R&D Reports">View R&D Reports</a></li>
 					<li><a href="researchProject.htm?do=addResearchProject" title="Add Research Project">Add Research Project</a></li>
 					<li><a href="researchProject.htm?do=getResearchProjectsForTeam" title="View/Edit Research Projects">View/Edit Research Projects</a></li>
 				</ul>
-			</li>
+			</li-->
 			<li class="comments <%= (currentLink.equalsIgnoreCase("marketing"))?"current":"" %>"><a href="marketingTeam.htm" title="Marketing Team">MarketingTeam</a>
 				<ul>
 					<li><a href="marketingTeam.htm" title="MarketingTeam">Marketing Team</a></li>

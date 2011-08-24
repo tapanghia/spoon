@@ -11,7 +11,7 @@ $(document).ready(function(){
   $("input.save").click(function(){
   	var numOfBrands = <%=resultBrands.size()%>;
   	
-  	if (numOfBrands < 5) {
+  	if (numOfBrands < 3) {
 	    var winParam = window.open('brandManagement.htm?do=addNewBrand','searchBrand',
 	      'width=400,height=250,top=50,left=100,resizable=no,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no');
 	    if (winParam != "")
