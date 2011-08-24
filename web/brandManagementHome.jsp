@@ -18,7 +18,7 @@ $(document).ready(function(){
 	      winParam.focus ();
     }  
     else {
-    	alert("No new brand can be created as you have already created 5 brands. ");
+    	alert("No new brand can be created as you have already created 3 brands. ");
     }
   });
   $("input.edit").click(function(){
