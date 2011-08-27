@@ -43,8 +43,8 @@
 		<section class="grid_9">
 			<div class="block-border"><div class="block-content">
 				<h1>Team Home</h1>
-						<span style="color:#0083C3">Hi&nbsp;!&nbsp;&nbsp;<i>Team,</i>&nbsp;&nbsp;Welcome to MarkLABS.</span><br><br>
-						<p style="text-align: justify;"><span style="color:#0083C3"><i>MarkLABS</span></i> is an emerging economy growing at breath-neck pace. 
+						<span style="color:#0083C3">Hi&nbsp;<i>Team,</i>&nbsp;&nbsp;Welcome to MarkLabs.</span><br><br>
+						<p style="text-align: justify;"><span style="color:#0083C3"><i>MarkLabs</span></i> is an emerging economy growing at breath-neck pace. 
 						The whole world has its eyes on this country and all the big brands are
 						eyeing a share of this lucrative pie. <span style="color:#0083C3"><i>Competition</i></span>, therefore, is as 
 						intense as you can imagine.</p>
@@ -72,13 +72,13 @@
 						distribution channel</i></span> for your product using the help of the Sales
 						Department. The Intelligence Department will help you by providing
 						<span style="color:#0083C3"><i>market research</i></span> reports, which you need to analyze and take effective
-						measures accordingly. You shall be <span style="color:#0083C3"><i>reviewed on a quarterly basic </i></span>and 
+						measures accordingly. You shall be <span style="color:#0083C3"><i>reviewed on a quarterly basis </i></span>and 
 						your input decisions shall be evaluated in the boardroom where meetings
 						take place once in every quarter when the financial reports of the
 						company are disclosed. </p>
 						<p style="text-align: justify;">To get you started, instructions for all the 
 						departments are presented to you on this page under different tabs on 
-						the left side of the page. </p>
+						the top of the page. </p>
 						<span style="color:#0083C3"><i>All the very best for an exciting time ahead&nbsp;!!!</i></span>
 						</div></div></section>
 <div class="clear"></div>

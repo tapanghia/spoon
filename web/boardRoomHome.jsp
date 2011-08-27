@@ -52,15 +52,17 @@
 						of the company will evaluate your performance.
 						To justify company's faith in your team, you not only have to 
 						maintain the fantastic track record of the company but also outperform
-						the other Managers of rival firms. There is cut throat competition in 
+						the other managers of rival firms. There is cut throat competition in 
 						our industry and the margin for error is minimal. </p>
 						<br><p style="text-align: justify;">So, <span style="color:#0083C3"><i>learn fast from 
 						your mistakes</i></span> and gear up for the challenges because the stakes are 
 						really high.</p>
-						<br><p style="text-align: justify;">Boardroom has <span style="color:#0083C3"><i>1 section</span></i> as shown in the top menu:
-						<span style="color:#0083C3"><i><br>Market News</span></i> - You would know all 
-						the extra information which is required for business planning and 
-						decision making in this section.</p>
+						<br><p style="text-align: justify;">There are  <span style="color:#0083C3"><i>4 important reports</span></i> which are presented to the board as shown in the left panel under company performance:
+						<span style="color:#0083C3"><i><br>Team Performance</span></i> -  This gives the snapshot of the revenue and profit numbers of your company.
+						<span style="color:#0083C3"><i><br>Brand Performance</span></i> -  This provides more detailed information to show how individual brands are performing.
+						<span style="color:#0083C3"><i><br>Stock Market</span></i> -  The ultimate indicator of your performance.
+						<span style="color:#0083C3"><i><br>R&D Report</span></i> -  The future potential of the company is gauged by the quality of research projects completed. This report provides the required information.
+						</p>
 
 					</div></div></section>
 <div class="clear"></div>

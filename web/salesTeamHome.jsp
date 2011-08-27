@@ -47,23 +47,21 @@
 			<div class="block-border"><div class="block-content">
 				<h1>Sales Home</h1>
 
-						<br><span style="color:#0083C3">Welcome to the Sales Department</span>. 
-						<br><p style="text-align: justify;">We constitute a team of five thousand people headed 
+						<span style="color:#0083C3">Welcome to the Sales Department</span>. 
+						<br><p style="text-align: justify;">We constitute a team of two hundred people headed 
 						by <span style="color:#0083C3"><i>Mr. Ravi Natarajan</i>.</span></p>
 						<br><p style="text-align: justify;">Most battles are not won on the battlefield but in the 
 						planning and training camps. We believe <span style="color:#0083C3"><i>&quot;selling is like war&quot;</i></span>. 
 						It takes as much skill and tactics as raw human effort. 
 						And this is that department where the sales strategy is decided. </p>
-						<br><p style="text-align: justify;">This department has <span style="color:#0083C3"><i>2 sections</i></span> as shown in the top menu:
+						<br><p style="text-align: justify;">This department has <span style="color:#0083C3"><i>1 section</i></span> as shown in the top menu:
 						<span style="color:#0083C3"><i><br>Sales Force Management</span></i> - Different segments -> Different 
 						preferences -> Different Sales strategies. 
 						And this is the action room for all this. 
 						Managing sales force is one of the toughest task for any organization. 
 						Your skills are tested at how efficiently you can manage your sales force
 						and the distribution channels.
-						<span style="color:#0083C3"><i><br>Intelligence Reports</span></i> - Who
-						buys what from where? And who sells what to where? Enter this 
-						section to get all the answers.</p>
+						</p>
 </div></div></section>
 <div class="clear"></div>
 		

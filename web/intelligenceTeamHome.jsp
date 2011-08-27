@@ -54,10 +54,10 @@
  						all the information requested by various departments. 
  						All the data that we gather is compiled in this department 
  						centrally for easy access to all reports.</p>
-						<br><p style="text-align: justify;">This department has <span style="color:#0083C3"><i>2 sections</i></span> as shown in the top menu:
-						<span style="color:#0083C3"><i><br>View Reports</span></i> - All reports of all the departments are chronicled 
+						<br><p style="text-align: justify;">This department has <span style="color:#0083C3"><i>2 sections</i></span>:
+						<span style="color:#0083C3"><i><br>View Reports</span></i> - You can find this section on the left panel. All reports of all the departments are chronicled 
 						in this section.
-						<span style="color:#0083C3"><i><br>Conduct Market Research</span></i> - Any new reports required for effective 
+						<span style="color:#0083C3"><i><br>Conduct Market Research</span></i> - This section is accessible via the top menu. Any new reports required for effective 
 						decision-making can be requested in this section.</p>
 					</div></div></section>
 <div class="clear"></div>

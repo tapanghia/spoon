@@ -46,7 +46,7 @@
 				<h1>Marketing Team Home</h1>
 
 						<span style="color:#0083C3"> Welcome to the Marketing Department</span>. 
-						<br><p style="text-align: justify;">We constitute a team of two thousand 
+						<br><p style="text-align: justify;">We constitute a team of two hundred 
 						people headed by <span style="color:#0083C3"><i>Mrs. Barkha Nooyi</i>.</span></p>
 
 						<br><p style="text-align: justify;">We at marketing department help the company connect with the 
@@ -54,12 +54,12 @@
 						customer buying behaviour</span></i> with the help of a well-managed and
 						professional team. All our decisions here are based on thorough 
 						primary research followed by extensive number crunching. </p>
-						<br><p style="text-align: justify;">This department has <span style="color:#0083C3"><i>4 sections</i></span> as shown in the top menu:
-						<span style="color:#0083C3"><i><br>Brand Management</span></i>- Launch, Maintenance and brand positioning decisions are taken in this section for all the brands.
-						<span style="color:#0083C3"><i><br>Production &amp; Pricing</span></i>- The forecast sales for the next period has to be submitted to the production team in this section.
+						<br><p style="text-align: justify;">This department has <span style="color:#0083C3"><i>3 sections</i></span> as shown in the top menu:
+						<span style="color:#0083C3"><i><br>Brand Management</span></i>- Launch, maintenance and brand positioning decisions are taken in this section for all the brands.
+						<span style="color:#0083C3"><i><br>Production &amp; Pricing</span></i>- The sales forcast for the next period has to be submitted to the production team in this section.
 						Pricing, as they say, can &apos;make or kill&apos; a product. Well!&nbsp;Here&apos;s where this gets decided.
 						<span style="color:#0083C3"><i><br>Advertisement</span></i>- Here you choose amongst the different communication channels and allocate the budget for each besides positioning your brands towards appropriate customer segments.
-						<span style="color:#0083C3"><i><br>Intelligence Reports</span></i>- Perhaps the most important section of this department, this is repository of all our knowledge.</p>
+						</p>
 					</div></div></section>
 <div class="clear"></div>
 		
