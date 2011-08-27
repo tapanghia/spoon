@@ -25,6 +25,7 @@ import com.marklabs.perceptualObj.PerceptualObj;
 import com.marklabs.perceptualObj.PerceptualObjectiveScales;
 import com.marklabs.researchProject.IResearchProjectService;
 import com.marklabs.researchProject.ResearchProject;
+import com.marklabs.teams.ITeamService;
 import com.marklabs.teams.Team;
 
 public class BrandManagementController extends MultiActionController{
@@ -36,8 +37,15 @@ public class BrandManagementController extends MultiActionController{
 	ISalesForceService salesForceService;
 	IMarginOfferedService marginOfferedService;
 	IPerceptualObjService perceptualObjService;
+	ITeamService teamService;
 	
 	
+	public ITeamService getTeamService() {
+		return teamService;
+	}
+	public void setTeamService(ITeamService teamService) {
+		this.teamService = teamService;
+	}
 	public IPerceptualObjService getPerceptualObjService() {
 		return perceptualObjService;
 	}
@@ -376,15 +384,24 @@ public class BrandManagementController extends MultiActionController{
 	
 	
 	public ModelAndView deleteBrandConfirmed(HttpServletRequest request, HttpServletResponse response) {
+		long brandDeleteRefundAmount = 0;
+		int currPeriod = (Integer)request.getSession().getAttribute(Constants.CURRENT_PERIOD);
 		if (request.getParameter("brandToDelete") != null) {
 			long brandToDeleteId = Long.parseLong(request.getParameter("brandToDelete"));
 			Brand brandToDelete = brandService.getBrandonId(brandToDeleteId);
 			
+			// calculating the refund amount, the amount invested in this brand and adding the amount to the budget
+			// Advertising Media Budget
+			// Advertising Research Budget
+			// Sales Force Costs for this brand
+			
+			
+			
 			// here will have to delete this Brand and all the information accross th system for this Brand 
 			//like the Production/Pricing and Adv expenses needs to be deleted
 			deleteBrandSpecsForDeletedBrand(brandToDelete);
-			deleteBrandAdvForDeletedBrand(brandToDelete);
-			deleteBrandSalesForceForDeletedBrand(brandToDelete);
+			brandDeleteRefundAmount = brandDeleteRefundAmount + deleteBrandAdvForDeletedBrand(brandToDelete);
+			brandDeleteRefundAmount = brandDeleteRefundAmount + deleteBrandSalesForceForDeletedBrand(brandToDelete, currPeriod);
 			deleteBrandMarginOfferedForDeletedBrand(brandToDelete);
 			deleteBrandPerceptualObjective(brandToDelete);
 			
@@ -396,6 +413,16 @@ public class BrandManagementController extends MultiActionController{
 			request.getSession().removeAttribute(Constants.SELECTED_BRAND);
 			request.getSession().removeAttribute(Constants.SELECTED_BRAND_ADV);
 			
+			// Adding the refund amount to the budget
+			// Updating budget
+			Team loggedInTeam = (Team)request.getSession().getAttribute(Constants.TEAM_OBJECT);
+			long teamCurrentBudget = (Long)request.getSession().getAttribute(Constants.CURRENT_BUDGET);
+			
+			request.getSession().removeAttribute(Constants.CURRENT_BUDGET);
+			request.getSession().setAttribute(Constants.CURRENT_BUDGET, teamCurrentBudget + brandDeleteRefundAmount);
+			
+			loggedInTeam.setTeamCurrentPeriodBudget(teamCurrentBudget + brandDeleteRefundAmount);
+			teamService.updateTeam(loggedInTeam);
 			try {
 				response.sendRedirect("brandManagement.htm");
 			} catch (IOException e) {
@@ -414,17 +441,26 @@ public class BrandManagementController extends MultiActionController{
 	
 	}
 	
-	private void deleteBrandAdvForDeletedBrand(Brand deletedBrand) {
+	private long deleteBrandAdvForDeletedBrand(Brand deletedBrand) {
+		long refundAmount = 0;
+		
 		BrandAdvertisement toDeleteBrandAdv = brandAdvertisementService.getBrandAdvOnBrand(deletedBrand);
-		if (toDeleteBrandAdv != null)
+		if (toDeleteBrandAdv != null) {
+			refundAmount = toDeleteBrandAdv.getAdvMediabudget() + toDeleteBrandAdv.getAdvResearchBudget(); 
 			brandAdvertisementService.deleteBrandAdvertisement(toDeleteBrandAdv);
+		}
+		return refundAmount;
 	}
 	
-	private void deleteBrandSalesForceForDeletedBrand(Brand deletedBrand) {
+	private long deleteBrandSalesForceForDeletedBrand(Brand deletedBrand, int currPeriod) {
+		long refundAmount = 0;
 		SalesForce toDeleteBrandSF = salesForceService.getSalesForceForBrand(deletedBrand);
-		if (toDeleteBrandSF != null)
+		if (toDeleteBrandSF != null) {
+			double totalSalesForce = toDeleteBrandSF.getGeneralStore_sf() + toDeleteBrandSF.getKiranaStore_sf() + toDeleteBrandSF.getSupermarket_sf();
+			refundAmount = new Double(totalSalesForce * 20000 * (1 + 0.05 * currPeriod)).longValue();
 			salesForceService.deleteSalesForce(toDeleteBrandSF);
-		
+		}
+		return refundAmount;
 	}
 	
 	private void deleteBrandMarginOfferedForDeletedBrand(Brand deletedBrand) {

@@ -1139,6 +1139,7 @@
 		<property name="salesForceService" ref="salesForceService"/>
 		<property name="marginOfferedService" ref="marginOfferedService"/>
 		<property name="perceptualObjService" ref="perceptualObjService"/>
+		<property name="teamService" ref="teamService"/>
 		<property name="methodNameResolver">
 			<bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
 				<property name="paramName"><value>do</value></property>

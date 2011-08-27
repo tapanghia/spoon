@@ -287,7 +287,6 @@ public class SalesTeamController extends MultiActionController {
 	}
 	
 	private double getTotalSalesForceCost(double totalSalesForce, int currentPeriod) {
-
         return (totalSalesForce * 20000 * (1 + 0.05 * currentPeriod));
 	}
 
