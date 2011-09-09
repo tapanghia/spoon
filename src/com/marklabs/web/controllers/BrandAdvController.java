@@ -1,6 +1,7 @@
 package com.marklabs.web.controllers;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -97,6 +98,8 @@ public class BrandAdvController extends MultiActionController{
 			// This is BrandAdv for the Brand in current period
 			BrandAdvertisement thisPeriodBrandAdv = brandAdvertisementService.getBrandAdvOnBrand(thisBrand);
 			PerceptualObj thisPeriodBrandPerceptualObj = perceptualObjService.getPerceptualObjInputForBrand(thisBrand);
+			thisPeriodBrandPerceptualObj.setObjective1(roundTwoDecimals(thisPeriodBrandPerceptualObj.getObjective1()));
+			thisPeriodBrandPerceptualObj.setObjective2(roundTwoDecimals(thisPeriodBrandPerceptualObj.getObjective1()));
 			
 			// Now getting the Brand with the same name in the previous period. And then will get its Adv
 			Brand previousPeriodBrand = 
@@ -120,6 +123,8 @@ public class BrandAdvController extends MultiActionController{
 			// This is BrandAdv for the Brand in current period
 			BrandAdvertisement thisPeriodBrandAdv = brandAdvertisementService.getBrandAdvOnBrand(thisBrand);
 			PerceptualObj thisPeriodBrandPerceptualObj = perceptualObjService.getPerceptualObjInputForBrand(thisBrand);
+			thisPeriodBrandPerceptualObj.setObjective1(roundTwoDecimals(thisPeriodBrandPerceptualObj.getObjective1()));
+			thisPeriodBrandPerceptualObj.setObjective2(roundTwoDecimals(thisPeriodBrandPerceptualObj.getObjective1()));
 			
 			// Now getting the Brand with the same name in the previous period. And then will get its Adv
 			Brand previousPeriodBrand = 
@@ -344,7 +349,7 @@ public class BrandAdvController extends MultiActionController{
 		
 		if (perceptualObjScaleDim1Obj != null) {
 			double dimensionObj = Double.parseDouble(perceptualObjScaleDim1Obj); 
-			thisBrandPerceptualObj.setObjective1(dimensionObj);
+			thisBrandPerceptualObj.setObjective1(roundTwoDecimals(dimensionObj));
 		}
 		
 		if (perceptualObjScaleDim2.equalsIgnoreCase(SemanticScale.DESIGN.getSemanticScale())) { 
@@ -377,7 +382,7 @@ public class BrandAdvController extends MultiActionController{
 		
 		if (perceptualObjScaleDim2Obj != null) {
 			double dimensionObj = Double.parseDouble(perceptualObjScaleDim2Obj); 
-			thisBrandPerceptualObj.setObjective2(dimensionObj);
+			thisBrandPerceptualObj.setObjective2(roundTwoDecimals(dimensionObj));
 		}
 
 		perceptualObjService.savePerceptualObj(thisBrandPerceptualObj);
@@ -385,6 +390,9 @@ public class BrandAdvController extends MultiActionController{
 		return thisBrandPerceptualObj;
 	}
 	
-	
+	private double roundTwoDecimals(double d) {
+	    DecimalFormat twoDForm = new DecimalFormat("#.##");
+		return Double.valueOf(twoDForm.format(d));
+	}
 	
 }
