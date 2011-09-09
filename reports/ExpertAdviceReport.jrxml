@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="ExpertAdviceReport"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="740"
+		 pageHeight="2500"
+		 columnWidth="680"
+		 columnSpacing="0"
+		 leftMargin="20"
+		 rightMargin="20"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="period" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="teamName" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["Alpha"]]></defaultValueExpression>
+	</parameter>
+	<queryString><![CDATA[select * from marklabsws.rep_expert_advice WHERE period = $P{period} and team_name = $P{teamName}]]></queryString>
+
+	<field name="id" class="java.lang.Integer"/>
+	<field name="period" class="java.lang.Integer"/>
+	<field name="team_name" class="java.lang.String"/>
+	<field name="status" class="java.lang.String"/>
+	<field name="ov_rank" class="java.lang.Integer"/>
+	<field name="spi" class="java.lang.Integer"/>
+	<field name="ms_chg" class="java.lang.Float"/>
+	<field name="ms" class="java.lang.Float"/>
+	<field name="ms_rank" class="java.lang.Integer"/>
+	<field name="rev_chg" class="java.lang.Float"/>
+	<field name="rev" class="java.lang.Float"/>
+	<field name="rev_rank" class="java.lang.Integer"/>
+	<field name="pf_mrg" class="java.lang.Float"/>
+	<field name="pf_mrg_rank" class="java.lang.Integer"/>
+	<field name="np_chg" class="java.lang.Float"/>
+	<field name="np" class="java.lang.Float"/>
+	<field name="np_rank" class="java.lang.Integer"/>
+	<field name="awareness" class="java.lang.String"/>
+	<field name="allocation" class="java.lang.String"/>
+	<field name="pricing" class="java.lang.String"/>
+	<field name="inventory" class="java.lang.String"/>
+	<field name="production" class="java.lang.String"/>
+	<field name="supply" class="java.lang.String"/>
+	<field name="global" class="java.lang.String"/>
+
+
+		<group  name="Team" >
+			<groupExpression><![CDATA[$F{team_name}]]></groupExpression>
+			<groupHeader>
+			<band height="35"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="10"
+						width="700"
+						height="25"
+						forecolor="#FFFFFF"
+						backcolor="#688B9D"
+						key="textField-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial" size="14" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["    Team: "+$F{team_name}]]></textFieldExpression>
+				</textField>
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupFooter>
+		</group>
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="60"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="-20"
+						y="0"
+						width="740"
+						height="35"
+						forecolor="#FFFFFF"
+						backcolor="#006699"
+						key="staticText-1"
+						isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="24" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Expert Advice Report    ]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="400"
+						y="35"
+						width="290"
+						height="25"
+						forecolor="#666666"
+						backcolor="#FFFFFF"
+						key="textField-1"
+						isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="18"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Period: " + $F{period}]]></textFieldExpression>
+				</textField>
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="40"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="0"
+						width="700"
+						height="40"
+						forecolor="#FFFFFF"
+						backcolor="#70A9C6"
+						key="staticText-2"
+						isPrintInFirstWholeBand="true"/>
+					<box topBorder="Thin" topBorderColor="#FFFFFF" leftBorder="Thin" leftBorderColor="#FFFFFF" rightBorder="Thin" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Expert Advice - Consultant's Views]]></text>
+				</staticText>
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="1000"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="10"
+						width="700"
+						height="30"
+						forecolor="#333333"
+						backcolor="#CCAAC6"
+						key="staticText-3"
+						isPrintInFirstWholeBand="true"/>
+					<box topBorder="Thin" topBorderColor="#FFFFFF" leftBorder="Thin" leftBorderColor="#FFFFFF" rightBorder="Thin" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[  Analysis of your Team's performance]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="116"
+						y="51"
+						width="584"
+						height="40"
+						forecolor="#333333"
+						backcolor="#FFFFCC"
+						key="textField-18"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="2" leftBorder="None" leftBorderColor="#000000" leftPadding="5" rightBorder="None" rightBorderColor="#000000" rightPadding="2" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Oblique" size="12" isBold="false" isItalic="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{status}+" Team "+$F{team_name} + ". You stand at an overall rank of "+$F{ov_rank}+ " with your company shares being valued at Rs. "+$F{spi}+"."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="116"
+						y="101"
+						width="584"
+						height="40"
+						forecolor="#333333"
+						backcolor="#FFFFCC"
+						key="textField-19"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="5" leftBorder="None" leftBorderColor="#000000" leftPadding="5" rightBorder="None" rightBorderColor="#000000" rightPadding="2" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Oblique" size="12" isBold="false" isItalic="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Your market share changed by "+$F{ms_chg}+"% and with a market share of  "+$F{ms}+"%, you stand at a rank of  "+$F{ms_rank} + " in terms of market share."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="51"
+						width="116"
+						height="40"
+						forecolor="#333333"
+						backcolor="#FFCC66"
+						key="textField-20"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="5" leftBorder="None" leftBorderColor="#000000" leftPadding="10" rightBorder="None" rightBorderColor="#000000" rightPadding="10" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Performance :"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="101"
+						width="116"
+						height="40"
+						forecolor="#333333"
+						backcolor="#FFCC66"
+						key="textField-21"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="5" leftBorder="None" leftBorderColor="#000000" leftPadding="10" rightBorder="None" rightBorderColor="#000000" rightPadding="10" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Market Share :"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="152"
+						width="116"
+						height="40"
+						forecolor="#333333"
+						backcolor="#FFCC66"
+						key="textField-22"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="5" leftBorder="None" leftBorderColor="#000000" leftPadding="10" rightBorder="None" rightBorderColor="#000000" rightPadding="10" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Revenues :"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="116"
+						y="152"
+						width="584"
+						height="40"
+						forecolor="#333333"
+						backcolor="#FFFFCC"
+						key="textField-23"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="5" leftBorder="None" leftBorderColor="#000000" leftPadding="5" rightBorder="None" rightBorderColor="#000000" rightPadding="2" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Oblique" size="12" isBold="false" isItalic="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Your revenues changed by "+$F{rev_chg}+"% and with a total revenues of "+$F{rev}+" crores, you stand at a rank of "+$F{rev_rank}+" in terms of total revenues."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="204"
+						width="116"
+						height="40"
+						forecolor="#333333"
+						backcolor="#FFCC66"
+						key="textField-24"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="5" leftBorder="None" leftBorderColor="#000000" leftPadding="10" rightBorder="None" rightBorderColor="#000000" rightPadding="10" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Net Profit :"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="116"
+						y="204"
+						width="584"
+						height="40"
+						forecolor="#333333"
+						backcolor="#FFFFCC"
+						key="textField-25"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="5" leftBorder="None" leftBorderColor="#000000" leftPadding="5" rightBorder="None" rightBorderColor="#000000" rightPadding="2" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Oblique" size="12" isBold="false" isItalic="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["With a profit margin of "+$F{pf_mrg}+"%, you stand at a rank of "+$F{pf_mrg_rank}+" in terms of profit margin. Your net profit changed by "+$F{np_chg}+"% and with a total net profit of "+$F{np} +" crores, you stand at a rank of "+$F{np_rank}+" in terms of total net profit."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="259"
+						width="700"
+						height="30"
+						forecolor="#333333"
+						backcolor="#CCAAC6"
+						key="staticText-4"
+						isPrintInFirstWholeBand="true"/>
+					<box topBorder="Thin" topBorderColor="#FFFFFF" leftBorder="Thin" leftBorderColor="#FFFFFF" rightBorder="Thin" rightBorderColor="#FFFFFF" bottomBorder="Thin" bottomBorderColor="#FFFFFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[  Some specific problems as analyzed by the Consultant Team]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="581"
+						width="116"
+						height="75"
+						forecolor="#333333"
+						backcolor="#FFCC66"
+						key="textField-26"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="5" leftBorder="None" leftBorderColor="#000000" leftPadding="10" rightBorder="None" rightBorderColor="#000000" rightPadding="10" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Awareness :"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="116"
+						y="581"
+						width="584"
+						height="75"
+						forecolor="#333333"
+						backcolor="#FFFFCC"
+						key="textField-27"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="2" leftBorder="None" leftBorderColor="#000000" leftPadding="5" rightBorder="None" rightBorderColor="#000000" rightPadding="2" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Oblique" size="12" isBold="false" isItalic="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{awareness}.equalsIgnoreCase("")? "No Major Issue":"The brand awareness for Brand "+$F{awareness}+" is low in your target segment. You might consider increasing the advertisement expenses or properly adjusting your target segment allocation and your medium selection. " ]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="397"
+						width="116"
+						height="77"
+						forecolor="#333333"
+						backcolor="#FFCC66"
+						key="textField-28"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="5" leftBorder="None" leftBorderColor="#000000" leftPadding="10" rightBorder="None" rightBorderColor="#000000" rightPadding="10" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Pricing :"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="116"
+						y="397"
+						width="584"
+						height="77"
+						forecolor="#333333"
+						backcolor="#FFFFCC"
+						key="textField-29"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="2" leftBorder="None" leftBorderColor="#000000" leftPadding="5" rightBorder="None" rightBorderColor="#000000" rightPadding="2" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Oblique" size="12" isBold="false" isItalic="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{pricing}.equalsIgnoreCase("")? "No Major Issue":"The Retail Price for Brand "+$F{pricing}+" is low compared to your cost price. You might consider increasing the Price and communicating Value to your consumers through MDS Economy objective. You might loose on volumes but you shall increase your profit margins." ]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="762"
+						width="116"
+						height="75"
+						forecolor="#333333"
+						backcolor="#FFCC66"
+						key="textField-30"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="5" leftBorder="None" leftBorderColor="#000000" leftPadding="10" rightBorder="None" rightBorderColor="#000000" rightPadding="10" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Sales Force :"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="116"
+						y="762"
+						width="584"
+						height="75"
+						forecolor="#333333"
+						backcolor="#FFFFCC"
+						key="textField-31"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="2" leftBorder="None" leftBorderColor="#000000" leftPadding="5" rightBorder="None" rightBorderColor="#000000" rightPadding="2" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Oblique" size="12" isBold="false" isItalic="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{supply}.equalsIgnoreCase("")?"No Major Issue":"The sales force for Brand "+$F{supply}+" was not properly allocated to appropriate channels. You might consider increasing the sales force or reallocating the sales force to proper channels. "]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="854"
+						width="116"
+						height="75"
+						forecolor="#333333"
+						backcolor="#FFCC66"
+						key="textField-32"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="5" leftBorder="None" leftBorderColor="#000000" leftPadding="10" rightBorder="None" rightBorderColor="#000000" rightPadding="10" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Global :"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="116"
+						y="854"
+						width="584"
+						height="75"
+						forecolor="#333333"
+						backcolor="#FFFFCC"
+						key="textField-33"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="2" leftBorder="None" leftBorderColor="#000000" leftPadding="5" rightBorder="None" rightBorderColor="#000000" rightPadding="2" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Oblique" size="12" isBold="false" isItalic="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{global}.equalsIgnoreCase("null")?"No Major Issue":"Even all the brands put together could not meet the consumer demand in this market. You might consider increasing the production level of all your brands depending on the anticipated market share and the total demand."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="490"
+						width="116"
+						height="75"
+						forecolor="#333333"
+						backcolor="#FFCC66"
+						key="textField-34"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="5" leftBorder="None" leftBorderColor="#000000" leftPadding="10" rightBorder="None" rightBorderColor="#000000" rightPadding="10" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Inventory :"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="116"
+						y="490"
+						width="584"
+						height="75"
+						forecolor="#333333"
+						backcolor="#FFFFCC"
+						key="textField-35"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="2" leftBorder="None" leftBorderColor="#000000" leftPadding="5" rightBorder="None" rightBorderColor="#000000" rightPadding="2" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Oblique" size="12" isBold="false" isItalic="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{inventory}.equalsIgnoreCase("")? "No Major Issue":"There is a huge inventory piled up for Brand "+$F{inventory}+" . You might reconsider your production level depending on the anticipated market share and the total demand for your target segment. "]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="116"
+						y="670"
+						width="584"
+						height="75"
+						forecolor="#333333"
+						backcolor="#FFFFCC"
+						key="textField-36"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="2" leftBorder="None" leftBorderColor="#000000" leftPadding="5" rightBorder="None" rightBorderColor="#000000" rightPadding="2" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Oblique" size="12" isBold="false" isItalic="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{allocation}.equalsIgnoreCase("")?"No Major Issue":"The target segment allocation for Brand "+$F{allocation}+" is not appropriate leading to wastage of advertisement budget. You might consider reallocating percentages to your target segment selection based on your product features." ]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="116"
+						y="308"
+						width="584"
+						height="75"
+						forecolor="#333333"
+						backcolor="#FFFFCC"
+						key="textField-37"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="2" leftBorder="None" leftBorderColor="#000000" leftPadding="5" rightBorder="None" rightBorderColor="#000000" rightPadding="2" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Oblique" size="12" isBold="false" isItalic="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{production}.equalsIgnoreCase("")?"No Major Issue": "The production department was unable to produce Brand "+$F{production}+" in sufficient quantities to meet the demand. You might consider increasing the quantity produced. "]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="308"
+						width="116"
+						height="75"
+						forecolor="#333333"
+						backcolor="#FFCC66"
+						key="textField-38"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="5" leftBorder="None" leftBorderColor="#000000" leftPadding="10" rightBorder="None" rightBorderColor="#000000" rightPadding="10" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Production :"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="670"
+						width="116"
+						height="75"
+						forecolor="#333333"
+						backcolor="#FFCC66"
+						key="textField-39"/>
+					<box topBorder="None" topBorderColor="#000000" topPadding="5" leftBorder="None" leftBorderColor="#000000" leftPadding="10" rightBorder="None" rightBorderColor="#000000" rightPadding="10" bottomBorder="None" bottomBorderColor="#000000" bottomPadding="5"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Targeting :"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="942"
+						width="700"
+						height="19"
+						key="staticText-5"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Oblique" isItalic="true"/>
+					</textElement>
+				<text><![CDATA[PS: The suggestions by the Consultant Team are a guidance based on company's recent past performance and not a guarantee for success.]]></text>
+				</staticText>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="10"  isSplitAllowed="true" >
+				<line direction="TopDown">
+					<reportElement
+						x="-20"
+						y="5"
+						width="740"
+						height="0"
+						key="line-1"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="15"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" pattern="MMMMM dd, yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="-20"
+						y="0"
+						width="148"
+						height="15"
+						forecolor="#FFFFFF"
+						backcolor="#006699"
+						key="textField-3"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="128"
+						y="0"
+						width="437"
+						height="15"
+						forecolor="#FFFFFF"
+						backcolor="#006699"
+						key="textField-4"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Biziga Labs Pvt. Ltd."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="565"
+						y="0"
+						width="110"
+						height="15"
+						forecolor="#FFFFFF"
+						backcolor="#006699"
+						key="textField-5"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="675"
+						y="0"
+						width="45"
+						height="15"
+						forecolor="#FFFFFF"
+						backcolor="#006699"
+						key="textField-6"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

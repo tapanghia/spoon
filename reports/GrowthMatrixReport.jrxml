@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="Growth Matrix Report"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Landscape"
+		 pageWidth="740"
+		 pageHeight="610"
+		 columnWidth="680"
+		 columnSpacing="0"
+		 leftMargin="20"
+		 rightMargin="20"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="period" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<queryString><![CDATA[select team_name, brand_name, rel_market_share as xAxis, market_growth as yAxis from marklabsws.rep_growth_matrix where period = $P{period}]]></queryString>
+
+	<field name="team_name" class="java.lang.String"/>
+	<field name="brand_name" class="java.lang.String"/>
+	<field name="xAxis" class="java.lang.Float"/>
+	<field name="yAxis" class="java.lang.Float"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="60"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="-20"
+						y="0"
+						width="740"
+						height="35"
+						forecolor="#FFFFFF"
+						backcolor="#006699"
+						key="staticText-1"
+						isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="24" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Growth Matrix - BCG Matrix    ]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="-20"
+						y="35"
+						width="740"
+						height="25"
+						forecolor="#FFFFFF"
+						backcolor="#70A9C6"
+						key="textField-1"
+						isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="Times New Roman" pdfFontName="Helvetica-BoldOblique" size="18" isBold="true" isItalic="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Period: " + $P{period} + "        "]]></textFieldExpression>
+				</textField>
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="15"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="10"  isSplitAllowed="true" >
+				<line direction="TopDown">
+					<reportElement
+						x="-20"
+						y="5"
+						width="740"
+						height="0"
+						key="line-1"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="15"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" pattern="MMMMM dd, yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="-20"
+						y="0"
+						width="148"
+						height="15"
+						forecolor="#FFFFFF"
+						backcolor="#006699"
+						key="textField-3"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="128"
+						y="0"
+						width="437"
+						height="15"
+						forecolor="#FFFFFF"
+						backcolor="#006699"
+						key="textField-4"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Biziga Labs Pvt. Ltd."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="565"
+						y="0"
+						width="110"
+						height="15"
+						forecolor="#FFFFFF"
+						backcolor="#006699"
+						key="textField-5"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="675"
+						y="0"
+						width="45"
+						height="15"
+						forecolor="#FFFFFF"
+						backcolor="#006699"
+						key="textField-6"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="450"  isSplitAllowed="true" >
+				<rectangle>
+					<reportElement
+						x="30"
+						y="0"
+						width="334"
+						height="205"
+						key="rectangle-1"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="364"
+						y="0"
+						width="333"
+						height="205"
+						key="rectangle-2"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="30"
+						y="205"
+						width="334"
+						height="205"
+						key="rectangle-3"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="364"
+						y="205"
+						width="333"
+						height="205"
+						key="rectangle-4"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<elementGroup><!--  Start: 1 !-->
+				<scatterChart>
+					<chart  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="0"
+						width="700"
+						height="450"
+						key="element-1"
+						positionType="FixRelativeToBottom"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+						<chartLegend textColor="#000000" backgroundColor="#FFFFFF" >
+					</chartLegend>
+					</chart>
+					<xyDataset>
+						<dataset >
+						</dataset>
+						<xySeries>
+							<seriesExpression><![CDATA[$F{team_name}]]></seriesExpression>
+							<xValueExpression><![CDATA[$F{xAxis}]]></xValueExpression>
+							<yValueExpression><![CDATA[$F{yAxis}]]></yValueExpression>
+							<labelExpression><![CDATA[$F{brand_name} + " (" + $F{xAxis} + "," + $F{yAxis} + ")"]]></labelExpression>
+				<itemHyperlink >
+						<hyperlinkTooltipExpression><![CDATA[$F{brand_name} + " (" + $F{xAxis} + "," + $F{yAxis} + ")"]]></hyperlinkTooltipExpression>
+
+						<hyperlinkParameter name="hoverTitle">
+							<hyperlinkParameterExpression><![CDATA[$F{brand_name} + " (" + $F{xAxis} + "," + $F{yAxis} + ")"]]></hyperlinkParameterExpression>
+						</hyperlinkParameter>
+				</itemHyperlink>
+						</xySeries>
+					</xyDataset>
+					<scatterPlot isShowLines="false" >
+						<plot labelRotation="3.0" >
+							<seriesColor seriesOrder="0" color="#FFFFFF"/>
+							<seriesColor seriesOrder="1" color="#FF00FF"/>
+							<seriesColor seriesOrder="2" color="#9F1F1F"/>
+							<seriesColor seriesOrder="3" color="#009933"/>
+							<seriesColor seriesOrder="4" color="#CC6600"/>
+							<seriesColor seriesOrder="5" color="#0033FF"/>
+							<seriesColor seriesOrder="6" color="#009999"/>
+							<seriesColor seriesOrder="7" color="#FB1111"/>
+							<seriesColor seriesOrder="8" color="#D7DF2C"/>
+							<seriesColor seriesOrder="9" color="#FF6600"/>
+							<seriesColor seriesOrder="10" color="#925C5C"/>
+							<seriesColor seriesOrder="11" color="#0EE915"/>
+							<seriesColor seriesOrder="12" color="#E521D2"/>
+							<seriesColor seriesOrder="13" color="#F5F013"/>
+							<seriesColor seriesOrder="14" color="#34E0DC"/>
+							<seriesColor seriesOrder="15" color="#F65017"/>
+							<seriesColor seriesOrder="16" color="#891313"/>
+							<seriesColor seriesOrder="17" color="#822D7C"/>
+							<seriesColor seriesOrder="18" color="#B9E22A"/>
+							<seriesColor seriesOrder="19" color="#38D6A6"/>
+</plot>
+						<xAxisFormat>
+							<axisFormat labelColor="#FFFFFF" tickLabelColor="#FFFFFF" axisLineColor="#FFFFFF" >
+							</axisFormat>
+						</xAxisFormat>
+						<yAxisFormat>
+							<axisFormat labelColor="#FFFFFF" tickLabelColor="#FFFFFF" axisLineColor="#FFFFFF" >
+							</axisFormat>
+						</yAxisFormat>
+					</scatterPlot>
+				</scatterChart>
+				</elementGroup><!-- End 1 !-->
+				<staticText>
+					<reportElement
+						x="30"
+						y="0"
+						width="89"
+						height="23"
+						forecolor="#333333"
+						key="staticText-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[  Star]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="30"
+						y="385"
+						width="98"
+						height="25"
+						forecolor="#333333"
+						key="staticText-3"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[  Cash Cows]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="661"
+						y="385"
+						width="36"
+						height="25"
+						forecolor="#333333"
+						key="staticText-4"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Dogs  ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="605"
+						y="0"
+						width="92"
+						height="25"
+						forecolor="#333333"
+						key="staticText-5"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Question Mark]]></text>
+				</staticText>
+			</band>
+		</summary>
+</jasperReport>
