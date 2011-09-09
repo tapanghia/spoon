@@ -5,9 +5,9 @@
 		 name="DemandForecastReport"
 		 columnCount="1"
 		 printOrder="Vertical"
-		 orientation="Landscape"
+		 orientation="Portrait"
 		 pageWidth="740"
-		 pageHeight="400"
+		 pageHeight="2500"
 		 columnWidth="680"
 		 columnSpacing="0"
 		 leftMargin="20"
@@ -26,7 +26,7 @@
 	<parameter name="period" isForPrompting="false" class="java.lang.String">
 		<defaultValueExpression ><![CDATA["4"]]></defaultValueExpression>
 	</parameter>
-	<queryString><![CDATA[select id, period, segment, actual_demand, forecast_demand, (expected_growth * 100) as expected_growth from marklabsws.rep_demand_forecast WHERE period = $P{period}]]></queryString>
+	<queryString><![CDATA[select id, period, segment, actual_demand, forecast_demand, (expected_growth * 100) as expected_growth from rep_demand_forecast WHERE period = $P{period}]]></queryString>
 
 	<field name="id" class="java.lang.Integer"/>
 	<field name="period" class="java.lang.Integer"/>

@@ -29,7 +29,7 @@
 	<parameter name="teamName" isForPrompting="false" class="java.lang.String">
 		<defaultValueExpression ><![CDATA["Alpha"]]></defaultValueExpression>
 	</parameter>
-	<queryString><![CDATA[select * from marklabsws.rep_expert_advice WHERE period = $P{period} and team_name = $P{teamName}]]></queryString>
+	<queryString><![CDATA[select * from rep_expert_advice WHERE period = $P{period} and team_name = $P{teamName}]]></queryString>
 
 	<field name="id" class="java.lang.Integer"/>
 	<field name="period" class="java.lang.Integer"/>
@@ -345,7 +345,7 @@
 					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font fontName="Arial" pdfFontName="Helvetica-Oblique" size="12" isBold="false" isItalic="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{awareness}.equalsIgnoreCase("")? "No Major Issue":"The brand awareness for Brand "+$F{awareness}+" is low in your target segment. You might consider increasing the advertisement expenses or properly adjusting your target segment allocation and your medium selection. " ]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{awareness}.equalsIgnoreCase("")? "No Major Issue":"The brand awareness for Brand "+$F{awareness}+" is low in your target segment. You might consider increasing the advertisement expenses or properly adjusting your target segment allocation and your medium selection. "]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -377,7 +377,7 @@
 					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font fontName="Arial" pdfFontName="Helvetica-Oblique" size="12" isBold="false" isItalic="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{pricing}.equalsIgnoreCase("")? "No Major Issue":"The Retail Price for Brand "+$F{pricing}+" is low compared to your cost price. You might consider increasing the Price and communicating Value to your consumers through MDS Economy objective. You might loose on volumes but you shall increase your profit margins." ]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{pricing}.equalsIgnoreCase("")? "No Major Issue":"The Retail Price for Brand "+$F{pricing}+" is low compared to your cost price. You might consider increasing the Price and communicating Value to your consumers through MDS Economy objective. You might loose on volumes but you shall increase your profit margins."]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -489,7 +489,7 @@
 					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font fontName="Arial" pdfFontName="Helvetica-Oblique" size="12" isBold="false" isItalic="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{allocation}.equalsIgnoreCase("")?"No Major Issue":"The target segment allocation for Brand "+$F{allocation}+" is not appropriate leading to wastage of advertisement budget. You might consider reallocating percentages to your target segment selection based on your product features." ]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{allocation}.equalsIgnoreCase("")?"No Major Issue":"The target segment allocation for Brand "+$F{allocation}+" is not appropriate leading to wastage of advertisement budget. You might consider reallocating percentages to your target segment selection based on your product features."]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
