@@ -63,5 +63,8 @@ public class Constants {
 	public static final String REPORT_TEAM_PURCHASE_MAP_LISTING = "reportTeamPurchaseMapListing";
 	
 	
+	// Sales Force
+	public static final String PREVIOUS_PERIOD_BRANDS_FOR_SALES_FORCE = "previousPeriodBrandsForSalesForce";
+	public static final String PREVIOUS_PERIOD_BRAND_SALES_FORCE_MAP = "previousPeriodBrandSalesForceMap";
 	
 }

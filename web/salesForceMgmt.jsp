@@ -12,20 +12,26 @@
 <% 
 	AverageMarginOffered averMarginOffered = (AverageMarginOffered) request.getAttribute(Constants.AVERAGE_MARGIN_OFFERED);
 	Map<Brand, MarginOffered> marginOfferedForBrands = (Map<Brand, MarginOffered>) request.getAttribute(Constants.MARGIN_OFFERED_FOR_BRANDS);
-	Map<Brand, SalesForce> salesForceForBrands = (Map<Brand, SalesForce>) request.getAttribute(Constants.SALESFORCE_FOR_BRANDS);	
+	Map<Brand, SalesForce> salesForceForBrands = (Map<Brand, SalesForce>) request.getAttribute(Constants.SALESFORCE_FOR_BRANDS);
 		
 	boolean brandExists = false;
 	List<Brand> resultBrands =  (List<Brand>)request.getAttribute(Constants.TO_DISPLAY_BRANDS);
 	if (resultBrands != null && resultBrands.size() > 0) {
 		brandExists = true;
+	}	
+	
+	// New code
+	
+	int currentPeriod = ((Integer)request.getSession().getAttribute(Constants.CURRENT_PERIOD));
+	Map<Brand, SalesForce> salesForceForPreviousPeriodBrandsMap = 
+		(Map<Brand, SalesForce>) request.getAttribute(Constants.PREVIOUS_PERIOD_BRAND_SALES_FORCE_MAP);
+	List<Brand> previousPeriodBrands = (List<Brand>)request.getAttribute(Constants.PREVIOUS_PERIOD_BRANDS_FOR_SALES_FORCE);
+	
+	boolean previousPeriodBrandExists = false;
+	if (previousPeriodBrands != null && previousPeriodBrands.size() > 0) {
+		previousPeriodBrandExists = true;
 	}
 	
-	Map<Brand, SalesForcePercentage> brandSalesForcePercentageMap = 
-		(Map<Brand, SalesForcePercentage>)request.getAttribute(Constants.BRAND_SALESFORCE_PERCENTAGE_MAP); 
-
-	long totalSuperMarketSalesForce = (Long) request.getAttribute(Constants.TOTAL_SUPERMARKET_SALESFORCE);
-	long totalGenStoreSalesForce = (Long) request.getAttribute(Constants.TOTAL_GENSTORE_SALESFORCE);
-	long totalKiranaStoreSalesForce = (Long) request.getAttribute(Constants.TOTAL_KIRANASTORESALESFORCE);
 %>
 
 <script type="text/javascript">
@@ -74,20 +80,16 @@ $(document).ready(function(){
         if ((textInputArray[i].name).indexOf("SuperMarket_SalesForce_") != -1) {
           var temp = (textInputArray[i].name).lastIndexOf("_"); 
           var brandId = (textInputArray[i].name).substring(temp+1, (textInputArray[i].name).length);
-          var superMarketTotalSalesForce = salesForceIframeForm.SuperMarket_TotalSalesForce.value;
-          var superMarketSalesForceValue = (textInputArray[i].value/100) * superMarketTotalSalesForce;
+          var superMarketSalesForceValue = textInputArray[i].value;
           brandSalesEffortInputData = 
-          brandSalesEffortInputData + brandId + '_' + 'SuperMarketSalesForce' + '_' + superMarketSalesForceValue + ';;';  
+	          brandSalesEffortInputData + brandId + '_' + 'SuperMarketSalesForce' + '_' + superMarketSalesForceValue + ';;';  
         }
         
         // Sales Force for Brands in General Stores
         if ((textInputArray[i].name).indexOf("GeneralStore_SalesForce_") != -1) {
           var temp = (textInputArray[i].name).lastIndexOf("_");
           var brandId = (textInputArray[i].name).substring(temp+1, (textInputArray[i].name).length);
-          var generalStoreTotalSalesForce = salesForceIframeForm.GeneralStore_TotalSalesForce.value;
-        
-          var genStoreSalesForceValue = (textInputArray[i].value/100) * generalStoreTotalSalesForce;
-  
+          var genStoreSalesForceValue = textInputArray[i].value;
           brandSalesEffortInputData = 
             brandSalesEffortInputData + brandId + '_' + 'GeneralStoreSalesForce' + '_' + genStoreSalesForceValue + ';;';
         }
@@ -96,11 +98,9 @@ $(document).ready(function(){
         if ((textInputArray[i].name).indexOf("KiranaStore_SalesForce_") != -1) {
           var temp = (textInputArray[i].name).lastIndexOf("_");
           var brandId = (textInputArray[i].name).substring(temp+1, (textInputArray[i].name).length);
-          var kiranaStoreTotalSalesForce = salesForceIframeForm.KiranaStore_TotalSalesForce.value;
-          var kiranaStoreSalesForceValue = (textInputArray[i].value/100) * kiranaStoreTotalSalesForce;
-    
+          var kiranaStoreSalesForceValue = textInputArray[i].value;
           brandSalesEffortInputData = 
-          brandSalesEffortInputData + brandId + '_' + 'KiranaStoreSalesForce' + '_' + kiranaStoreSalesForceValue + ';;';
+	          brandSalesEffortInputData + brandId + '_' + 'KiranaStoreSalesForce' + '_' + kiranaStoreSalesForceValue + ';;';
         }
       }
     }
@@ -119,46 +119,40 @@ $(document).ready(function(){
 
 $("input.generate").click(function(){
 
-var sum1 = 0;
-var sum2 = 0;
-var sum3 = 0;
-var sum4 = 0;
 var a = 0;
 var b = 0;
 var c = 0;
 var d = 0;
-
+var costTotal = 0;
+var totalSuperMarketSF = 0;
+var totalGeneralStoreSF = 0;
+var totalKiranaStoreSF = 0;
 
 <%
 Iterator<Brand> itr3 = resultBrands.iterator();
 			      while(itr3.hasNext()){
 					  Brand thisBrand = itr3.next(); 
-					  SalesForcePercentage salesForcePerct = brandSalesForcePercentageMap.get(thisBrand);
+					  SalesForce salesForcePerct = salesForceForBrands.get(thisBrand);
 			 %>
 
 	a = $("#SuperMarket_SalesForce_<%=thisBrand.getId() %>").val();
 	b = $("#GeneralStore_SalesForce_<%=thisBrand.getId() %>").val();
 	c = $("#KiranaStore_SalesForce_<%=thisBrand.getId() %>").val();
 
-	var e = $("#SuperMarket_TotalSalesForce").val();
-	var f = $("#GeneralStore_TotalSalesForce").val();
-	var g = $("#KiranaStore_TotalSalesForce").val();
-
-	d = ((parseFloat(a) / 100)*parseInt(e)+(parseFloat(b) / 100)*parseInt(f)+(parseFloat(c) / 100)*parseInt(g))*20000*(1+0.05*<%=request.getSession().getAttribute(Constants.CURRENT_PERIOD)%>);
-
-
-      sum1 = sum1 + parseFloat(a);
-      sum2 = sum2 + parseFloat(b);
-      sum3 = sum3 + parseFloat(c);
-      sum4 = sum4 + parseFloat(d);
-
+	d = (parseInt(a)+parseInt(b)+parseInt(c))*20000*(1+0.05*<%=request.getSession().getAttribute(Constants.CURRENT_PERIOD)%>);
 	$("#costSalesForce_<%=thisBrand.getId() %>").val(d);
 
-<% } %>
-	$("#superMarketTotal").val(sum1);
-	$("#genStoreTotal").val(sum2);
-	$("#kirStoreTotal").val(sum3);
-	$("#costTotal").val(sum4);
+	costTotal = costTotal + parseInt(d);
+	totalSuperMarketSF = totalSuperMarketSF + parseInt(a);
+	totalGeneralStoreSF = totalGeneralStoreSF + parseInt(b)
+	totalKiranaStoreSF = totalKiranaStoreSF + parseInt(c);
+	
+ <% } %>
+
+	$("#superMarketTotal").val(totalSuperMarketSF);
+	$("#genStoreTotal").val(totalGeneralStoreSF);
+	$("#kirStoreTotal").val(totalKiranaStoreSF);
+	$("#costTotal").val(costTotal);
 
 
 });
@@ -207,24 +201,20 @@ Iterator<Map.Entry<Brand, MarginOffered>> brandMarginItr2 = marginOfferedForBran
 				Iterator<Brand> itr2 = resultBrands.iterator();
 			      while(itr2.hasNext()){
 					  Brand thisBrand = itr2.next(); 
-					  SalesForcePercentage salesForcePerct = brandSalesForcePercentageMap.get(thisBrand);
 %>
 				SuperMarket_SalesForce_<%=thisBrand.getId() %>: {
       			required: true,
       			number: true,
-				range: [0, 100]
     			},
 				GeneralStore_SalesForce_<%=thisBrand.getId() %>: {
       			required: true,
       			number: true,
-				range: [0, 100]
     			},
 				KiranaStore_SalesForce_<%=thisBrand.getId() %>: {
       			required: true,
       			number: true,
-				range: [0, 100]
-    			},
-<% } %>
+    			},    			
+<% }%>
 
 				costTotal: {
       			number: true
@@ -340,14 +330,23 @@ Iterator<Map.Entry<Brand, MarginOffered>> brandMarginItr2 = marginOfferedForBran
 					<span class="label">Margin Offered for <b><%=thisBrand.getBrandName() %> (%)</b></span>
 					</div>
 					<div class="colx5-center1">
-						<span class="label"></span><input type="text" maxlength="3" name="SuperMarket_MarginOffered_<%=thisBrand.getId() %>" id="SuperMarket_MarginOffered_<%=thisBrand.getId() %>" value = "<%= ((thisBrandMarginOffered != null)?thisBrandMarginOffered.getSupermarket_mo():"")%>" size="10">
+						<span class="label"></span>
+						<input type="text" maxlength="3" name="SuperMarket_MarginOffered_<%=thisBrand.getId() %>" 
+							id="SuperMarket_MarginOffered_<%=thisBrand.getId() %>" 
+							value = "<%= ((thisBrandMarginOffered != null)?thisBrandMarginOffered.getSupermarket_mo():"")%>" size="10">
 					</div>
 					<div class="colx5-center2">
-						<span class="label"></span><input type="text" maxlength="3" name="GeneralStore_MarginOffered_<%=thisBrand.getId() %>" id="GeneralStore_MarginOffered_<%=thisBrand.getId() %>" value = "<%= ((thisBrandMarginOffered != null)?thisBrandMarginOffered.getGeneralStore_mo():"")%>" size="10"> 
+						<span class="label"></span>
+						<input type="text" maxlength="3" name="GeneralStore_MarginOffered_<%=thisBrand.getId() %>" 
+							id="GeneralStore_MarginOffered_<%=thisBrand.getId() %>" 
+							value = "<%= ((thisBrandMarginOffered != null)?thisBrandMarginOffered.getGeneralStore_mo():"")%>" size="10"> 
 
 					</div>
 					<div class="colx5-center3">
-						<span class="label"></span><input type="text" maxlength="3" name="KiranaStore_MarginOffered_<%=thisBrand.getId() %>" id="KiranaStore_MarginOffered_<%=thisBrand.getId() %>" value = "<%= ((thisBrandMarginOffered != null)?thisBrandMarginOffered.getKiranaStore_mo():"")%>" size="10"> 
+						<span class="label"></span>
+						<input type="text" maxlength="3" name="KiranaStore_MarginOffered_<%=thisBrand.getId() %>" 
+							id="KiranaStore_MarginOffered_<%=thisBrand.getId() %>" 
+							value = "<%= ((thisBrandMarginOffered != null)?thisBrandMarginOffered.getKiranaStore_mo():"")%>" size="10"> 
 
 					</div>
 					<div class="colx5-right">
@@ -363,64 +362,142 @@ No Brands Exist
 <fieldset>
 					<legend>Sales Force Management</legend>				
 					<div class="columns">
-        				<div class="colx5-left">
-					<span class="label"></span>
-					</div>
-					<div class="colx5-center1">
-						<span class="label">Super Markets</span>	
-					</div>
-					<div class="colx5-center2">
-						<span class="label">General Stores</span>
-					</div>
-					<div class="colx5-center3">
-						<span class="label">Kirana Stores</span>
-					</div>
-					<div class="colx5-right">
-						<span class="label">Sales Force Costs</span>
-					</div>
+	        			<div class="colx5-left">
+							<span class="label"></span>
+						</div>
+						<div class="colx5-center1">
+							<span class="label">Super Markets</span>	
+						</div>
+						<div class="colx5-center2">
+							<span class="label">General Stores</span>
+						</div>
+						<div class="colx5-center3">
+							<span class="label">Kirana Stores</span>
+						</div>
+						<div class="colx5-right">
+							<span class="label">Sales Force Costs</span>
+						</div>
 					</div>
 
-<div class="columns">
-        				<div class="colx5-left">
-					<span class="label">Number of Sales People</span>
-					</div>
-					<div class="colx5-center1">
-						<span class="label"></span><input type="text" maxlength="3" name="SuperMarket_TotalSalesForce" id="SuperMarket_TotalSalesForce" value="<%=totalSuperMarketSalesForce%>" size="10"/>	
-					</div>
-					<div class="colx5-center2">
-						<span class="label"></span><input type="text" maxlength="3" name="GeneralStore_TotalSalesForce" id="GeneralStore_TotalSalesForce" value="<%=totalGenStoreSalesForce%>" size="10"/> 
+					<%
+					if (currentPeriod > 0 && previousPeriodBrandExists) {
+						//	Header for displaying Previous period brand Sales Force
+					%>	
+						<div class="columns">
+		        			<div class="colx5-left">
+								<span class="label">Period <%= (currentPeriod -1) %></span>
+							</div>
+							<div class="colx5-center1">
+							</div>
+							<div class="colx5-center2">
+							</div>
+							<div class="colx5-center3">
+							</div>
+							<div class="colx5-right">
+							</div>
+						</div>
+			 		<% 	
+						Iterator<Brand> itr = previousPeriodBrands.iterator();
+						while(itr.hasNext()){
+							Brand previousPeriodBrand = itr.next(); 
+							SalesForce salesForcePreviousPeriod = salesForceForPreviousPeriodBrandsMap.get(previousPeriodBrand);
+							
+							long totalSalesForceForThisBrand = 
+								new Double(((salesForcePreviousPeriod != null)?salesForcePreviousPeriod.getSupermarket_sf():0) +
+								((salesForcePreviousPeriod != null)?salesForcePreviousPeriod.getGeneralStore_sf():0) +
+								((salesForcePreviousPeriod != null)?salesForcePreviousPeriod.getKiranaStore_sf():0)).longValue();
+					%>
+							<div class="columns">
+								<div class="colx5-left">
+								<span class="label">Sales Force for <b><%=previousPeriodBrand.getBrandName() %></b></span>
+								</div>
+								<div class="colx5-center1">
+									<span class="label"></span>
+									<input type="text" maxlength="3" disabled class="past"
+										name="SuperMarket_SalesForce_PreviousPeriod_<%=previousPeriodBrand.getId() %>" 
+										id="SuperMarket_SalesForce_PreviousPeriod_<%=previousPeriodBrand.getId() %>" 
+										value = "<%= ((salesForcePreviousPeriod != null)?new Double(salesForcePreviousPeriod.getSupermarket_sf()).longValue():"")%>" size="10"> 
+								</div>
+								<div class="colx5-center2">
+									<span class="label"></span>
+									<input type="text" maxlength="3" disabled class="past"
+										name="GeneralStore_SalesForce_PreviousPeriod_<%=previousPeriodBrand.getId() %>" 
+										id="GeneralStore_SalesForce_PreviousPeriod_<%=previousPeriodBrand.getId() %>" 
+										value = "<%= ((salesForcePreviousPeriod != null)?new Double(salesForcePreviousPeriod.getGeneralStore_sf()).longValue():"")%>" size="10">  
+			
+								</div>
+								<div class="colx5-center3">
+									<span class="label"></span>
+									<input type="text" maxlength="3" disabled class="past"
+										name="KiranaStore_SalesForce_PreviousPeriod_<%=previousPeriodBrand.getId() %>" 
+										id="KiranaStore_SalesForce_PreviousPeriod_<%=previousPeriodBrand.getId() %>" 
+										value = "<%= ((salesForcePreviousPeriod != null)?new Double(salesForcePreviousPeriod.getKiranaStore_sf()).longValue():"")%>" size="10">  
+			
+								</div>
+								<div class="colx5-right">
+									<span class="label"></span>
+									<input type="text" maxlength="3" disabled class="past" 
+										name="costSalesForce_PreviousPeriod_<%=previousPeriodBrand.getId() %>" 
+										id="costSalesForce_PreviousPeriod_<%=previousPeriodBrand.getId() %>" 
+										value = <%=  totalSalesForceForThisBrand%> disabled class="past" size="10"/>
+								</div>
+							</div>
+					<%									
+						}
+					}	
 
-					</div>
-					<div class="colx5-center3">
-						<span class="label"></span><input type="text" maxlength="3" name="KiranaStore_TotalSalesForce" id="KiranaStore_TotalSalesForce" value="<%=totalKiranaStoreSalesForce%>" size="10"/></div>
-					<div class="colx5-right">
-						<span class="label"></span><input type="button" class="button generate" value="Generate" onClick="javascript:saveSalesForceInput();">
-					</div>
-					</div>
-<% 
 				  if(brandExists){
+					  
+					%>  
+				<div class="columns">
+	        			<div class="colx5-left">
+							<span class="label">Period <%= currentPeriod %></span>
+						</div>
+						<div class="colx5-center1">
+						</div>
+						<div class="colx5-center2">
+						</div>
+						<div class="colx5-center3">
+						</div>
+						<div class="colx5-right">
+							<span class="label"></span>
+							<input type="button" class="button generate" value="Generate">
+						</div>
+					</div>	  
+					  
+			<%	  
             Iterator<Brand> itr = resultBrands.iterator();
 			      while(itr.hasNext()){
 					  Brand thisBrand = itr.next(); 
-					  SalesForcePercentage salesForcePerct = brandSalesForcePercentageMap.get(thisBrand);
+					  SalesForce salesForceThisPeriodBrand = salesForceForBrands.get(thisBrand);
 			 %>
-<div class="columns">
-<div class="colx5-left">
-					<span class="label">% of Effort <b><%=thisBrand.getBrandName() %></b></span>
+					<div class="columns">
+					<div class="colx5-left">
+					<span class="label">Sales Force for <b><%=thisBrand.getBrandName() %></b></span>
 					</div>
 					<div class="colx5-center1">
-						<span class="label"></span><input type="text" maxlength="3" name="SuperMarket_SalesForce_<%=thisBrand.getId() %>" id="SuperMarket_SalesForce_<%=thisBrand.getId() %>" value = "<%= ((salesForcePerct != null)?salesForcePerct.getSuperMarketPercentage():"")%>" size="10"> 
+						<span class="label"></span>
+						<input type="text" maxlength="3" name="SuperMarket_SalesForce_<%=thisBrand.getId() %>" 
+							id="SuperMarket_SalesForce_<%=thisBrand.getId() %>" 
+							value = "<%= ((salesForceThisPeriodBrand != null)?new Double(salesForceThisPeriodBrand.getSupermarket_sf()).longValue():"")%>" size="10"> 
 					</div>
 					<div class="colx5-center2">
-						<span class="label"></span><input type="text" maxlength="3" name="GeneralStore_SalesForce_<%=thisBrand.getId() %>" id="GeneralStore_SalesForce_<%=thisBrand.getId() %>" value = "<%= ((salesForcePerct != null)?salesForcePerct.getGenStorePercentage():"")%>" size="10">  
+						<span class="label"></span>
+						<input type="text" maxlength="3" name="GeneralStore_SalesForce_<%=thisBrand.getId() %>" 
+							id="GeneralStore_SalesForce_<%=thisBrand.getId() %>" 
+							value = "<%= ((salesForceThisPeriodBrand != null)?new Double(salesForceThisPeriodBrand.getGeneralStore_sf()).longValue():"")%>" size="10">  
 
 					</div>
 					<div class="colx5-center3">
-						<span class="label"></span><input type="text" maxlength="3" name="KiranaStore_SalesForce_<%=thisBrand.getId() %>" id="KiranaStore_SalesForce_<%=thisBrand.getId() %>" value = "<%= ((salesForcePerct != null)?salesForcePerct.getKiranaStorePercentage():"")%>" size="10">  
-
+						<span class="label"></span>
+						<input type="text" maxlength="3" name="KiranaStore_SalesForce_<%=thisBrand.getId() %>" 
+							id="KiranaStore_SalesForce_<%=thisBrand.getId() %>" 
+							value = "<%= ((salesForceThisPeriodBrand != null)?new Double(salesForceThisPeriodBrand.getKiranaStore_sf()).longValue():"")%>" size="10">  
 					</div>
 					<div class="colx5-right">
-						<span class="label"></span><input type="text" maxlength="3" class="past" name="costSalesForce_<%=thisBrand.getId() %>" id="costSalesForce_<%=thisBrand.getId() %>" disabled size="10"/>
+						<span class="label"></span>
+						<input type="text" maxlength="3" class="past" name="costSalesForce_<%=thisBrand.getId() %>" 
+							id="costSalesForce_<%=thisBrand.getId() %>" disabled size="10"/>
 					</div>
 					</div>
 			<% }
@@ -430,24 +507,29 @@ No Brands Exist
 
 <div class="columns">
         				<div class="colx5-left">
-					<span class="label">Total</span>
+					<span class="label">Total Sales Force</span>
 					</div>
 					<div class="colx5-center1">
-						<span class="label"></span><input type="text" maxlength="3" name="superMarketTotal" id="superMarketTotal" size="10" disabled class="past">
+						<span class="label"></span>
+						<input type="text" maxlength="3" name="superMarketTotal" id="superMarketTotal" size="10" disabled class="past">
 					</div>
 					<div class="colx5-center2">
-						<span class="label"></span><input type="text" maxlength="3" name="genStoreTotal" id="genStoreTotal" size="10" disabled class="past">
+						<span class="label"></span>
+						<input type="text" maxlength="3" name="genStoreTotal" id="genStoreTotal" size="10" disabled class="past">
 					</div>
 					<div class="colx5-center3">
-						<span class="label"></span><input type="text" maxlength="3" name="kirStoreTotal" id="kirStoreTotal" size="10" disabled class="past"></div>
+						<span class="label"></span>
+						<input type="text" maxlength="3" name="kirStoreTotal" id="kirStoreTotal" size="10" disabled class="past">
+					</div>
 					<div class="colx5-right">
-						<span class="label"></span><input type="text" maxlength="3" size="10" name="costTotal" id="costTotal" disabled class="past">
+						<span class="label"></span>
+						<input type="text" maxlength="3" size="10" name="costTotal" id="costTotal" disabled class="past">
 					</div>
 					</div>
 				</fieldset>
 <div calss="columns">
-	<input type="button" class="button save" value="Save" onClick="javascript:saveSalesForceInput();">
-  	<input type="button" class="button cancel" value="Cancel" onClick="javascript:cancelSalesForceInput();">
+	<input type="button" class="button save" value="Save">
+  	<input type="button" class="button cancel" value="Cancel">
 </div>				
 			</div>										
 		</div>

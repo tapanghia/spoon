@@ -236,13 +236,21 @@ public class SalesTeamController extends MultiActionController {
 			}
 		}
 		
+		// ********** Save is done, populate code starts from here
+		
+		
 		List<Brand> resultBrands = brandService.getAllBrandsForTeamCurrentPeriod(loggedInTeam, currPeriod);
 		AverageMarginOffered averMarginOffered = marginOfferedService.getAverageMarginOffered();
 		
 		Map<Brand, MarginOffered> marginOfferedForBrands = marginOfferedService.getMarginOfferedForBrands(resultBrands);
 		Map<Brand, SalesForce> salesForceForBrands = salesForceService.getSalesForceForBrands(resultBrands);
 		
-		long superMarketSalesForce = 0, generalStoreSalesForce = 0, kiranaStoreSalesForce = 0;
+		// Sales Force for previous period
+		List<Brand> previousPeriodBrands = brandService.getAllBrandsForTeamCurrentPeriod(loggedInTeam, (currPeriod - 1));
+		Map<Brand, SalesForce> salesForceForPreviousPeriodBrands = salesForceService.getSalesForceForBrands(previousPeriodBrands);
+		
+		
+		/*long superMarketSalesForce = 0, generalStoreSalesForce = 0, kiranaStoreSalesForce = 0;
 		
 		Iterator<Map.Entry<Brand, SalesForce>> salesForceForBrandsItr = salesForceForBrands.entrySet().iterator();
 		while (salesForceForBrandsItr.hasNext()) {
@@ -270,18 +278,24 @@ public class SalesTeamController extends MultiActionController {
 				brandSalesForcePercentageMap.put(entry.getKey(), salesForcePercentage);
 			}
 		}
-
+*/
 		mav.addObject(Constants.TO_DISPLAY_BRANDS, resultBrands);
 		mav.addObject(Constants.AVERAGE_MARGIN_OFFERED, averMarginOffered);
 		mav.addObject(Constants.MARGIN_OFFERED_FOR_BRANDS, marginOfferedForBrands);
 		mav.addObject(Constants.SALESFORCE_FOR_BRANDS, salesForceForBrands);	
 
-		mav.addObject(Constants.BRAND_SALESFORCE_PERCENTAGE_MAP, brandSalesForcePercentageMap);
+		mav.addObject(Constants.PREVIOUS_PERIOD_BRANDS_FOR_SALES_FORCE, previousPeriodBrands);
+		mav.addObject(Constants.PREVIOUS_PERIOD_BRAND_SALES_FORCE_MAP, salesForceForPreviousPeriodBrands);	
+
+		
+		
+		
+/*		mav.addObject(Constants.BRAND_SALESFORCE_PERCENTAGE_MAP, brandSalesForcePercentageMap);
 		mav.addObject(Constants.TOTAL_SUPERMARKET_SALESFORCE, superMarketSalesForce);
 		mav.addObject(Constants.TOTAL_GENSTORE_SALESFORCE, generalStoreSalesForce);
 		mav.addObject(Constants.TOTAL_KIRANASTORESALESFORCE, kiranaStoreSalesForce);
 
-		
+*/		
 		
 		return mav;
 	}
