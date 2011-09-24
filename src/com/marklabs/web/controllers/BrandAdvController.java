@@ -99,7 +99,7 @@ public class BrandAdvController extends MultiActionController{
 			BrandAdvertisement thisPeriodBrandAdv = brandAdvertisementService.getBrandAdvOnBrand(thisBrand);
 			PerceptualObj thisPeriodBrandPerceptualObj = perceptualObjService.getPerceptualObjInputForBrand(thisBrand);
 			thisPeriodBrandPerceptualObj.setObjective1(roundTwoDecimals(thisPeriodBrandPerceptualObj.getObjective1()));
-			thisPeriodBrandPerceptualObj.setObjective2(roundTwoDecimals(thisPeriodBrandPerceptualObj.getObjective1()));
+			thisPeriodBrandPerceptualObj.setObjective2(roundTwoDecimals(thisPeriodBrandPerceptualObj.getObjective2()));
 			
 			// Now getting the Brand with the same name in the previous period. And then will get its Adv
 			Brand previousPeriodBrand = 
@@ -124,7 +124,7 @@ public class BrandAdvController extends MultiActionController{
 			BrandAdvertisement thisPeriodBrandAdv = brandAdvertisementService.getBrandAdvOnBrand(thisBrand);
 			PerceptualObj thisPeriodBrandPerceptualObj = perceptualObjService.getPerceptualObjInputForBrand(thisBrand);
 			thisPeriodBrandPerceptualObj.setObjective1(roundTwoDecimals(thisPeriodBrandPerceptualObj.getObjective1()));
-			thisPeriodBrandPerceptualObj.setObjective2(roundTwoDecimals(thisPeriodBrandPerceptualObj.getObjective1()));
+			thisPeriodBrandPerceptualObj.setObjective2(roundTwoDecimals(thisPeriodBrandPerceptualObj.getObjective2()));
 			
 			// Now getting the Brand with the same name in the previous period. And then will get its Adv
 			Brand previousPeriodBrand = 

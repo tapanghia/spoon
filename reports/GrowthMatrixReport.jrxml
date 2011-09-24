@@ -26,7 +26,7 @@
 	<parameter name="period" isForPrompting="false" class="java.lang.String">
 		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
 	</parameter>
-	<queryString><![CDATA[select team_name, brand_name, rel_market_share as xAxis, market_growth as yAxis from rep_growth_matrix where period = $P{period}]]></queryString>
+	<queryString><![CDATA[select team_name, brand_name, rel_market_share as xAxis, market_growth as yAxis from marklabsws.rep_growth_matrix where period = $P{period}]]></queryString>
 
 	<field name="team_name" class="java.lang.String"/>
 	<field name="brand_name" class="java.lang.String"/>
