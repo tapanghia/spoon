@@ -439,7 +439,8 @@ No Brands Exist
 									<input type="text" maxlength="3" disabled class="past" 
 										name="costSalesForce_PreviousPeriod_<%=previousPeriodBrand.getId() %>" 
 										id="costSalesForce_PreviousPeriod_<%=previousPeriodBrand.getId() %>" 
-										value = <%=  totalSalesForceForThisBrand%> disabled class="past" size="10"/>
+										value = <%=  (totalSalesForceForThisBrand)*20000*(1+0.05* (((Integer)request.getSession().getAttribute(Constants.CURRENT_PERIOD)) - 1))%> 
+										disabled class="past" size="10"/>
 								</div>
 							</div>
 					<%									
