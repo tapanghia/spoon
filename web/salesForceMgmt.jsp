@@ -118,7 +118,6 @@ $(document).ready(function(){
   });
 
 $("input.generate").click(function(){
-
 var a = 0;
 var b = 0;
 var c = 0;
@@ -134,15 +133,14 @@ Iterator<Brand> itr3 = resultBrands.iterator();
 					  Brand thisBrand = itr3.next(); 
 					  SalesForce salesForcePerct = salesForceForBrands.get(thisBrand);
 			 %>
-
 	a = $("#SuperMarket_SalesForce_<%=thisBrand.getId() %>").val();
 	b = $("#GeneralStore_SalesForce_<%=thisBrand.getId() %>").val();
 	c = $("#KiranaStore_SalesForce_<%=thisBrand.getId() %>").val();
 
-	Window.alert(parseInt(a)+parseInt(b)+parseInt(c));
-	Window.alert(1+0.05*<%=((Integer)request.getSession().getAttribute(Constants.CURRENT_PERIOD))%>);
-	Window.alert(20000*(1+0.05*<%=((Integer)request.getSession().getAttribute(Constants.CURRENT_PERIOD))%>);
-	Window.alert(parseInt(a)+parseInt(b)+parseInt(c))*20000*(1+0.05*<%=((Integer)request.getSession().getAttribute(Constants.CURRENT_PERIOD))%>);
+	alert(parseInt(a)+parseInt(b)+parseInt(c));
+	alert(1+0.05*<%=((Integer)request.getSession().getAttribute(Constants.CURRENT_PERIOD))%>);
+	alert(20000*(1+0.05*<%=((Integer)request.getSession().getAttribute(Constants.CURRENT_PERIOD))%>));
+	alert(parseInt(a)+parseInt(b)+parseInt(c))*20000*(1+0.05*<%=((Integer)request.getSession().getAttribute(Constants.CURRENT_PERIOD))%>);
 
 	d = (parseInt(a)+parseInt(b)+parseInt(c))*20000*(1+0.05*<%=((Integer)request.getSession().getAttribute(Constants.CURRENT_PERIOD))%>);
 	$("#costSalesForce_<%=thisBrand.getId() %>").val(d);
