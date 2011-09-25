@@ -182,17 +182,17 @@ Iterator<Map.Entry<Brand, MarginOffered>> brandMarginItr2 = marginOfferedForBran
 %>			
 				SuperMarket_MarginOffered_<%=thisBrand.getId() %>: {
       			required: true,
-      			number: true,
+      			digits: true,
 				range: [0, 100]
     			},
 				GeneralStore_MarginOffered_<%=thisBrand.getId() %>: {
       			required: true,
-      			number: true,
+      			digits: true,
 				range: [0, 100]
     			},
 				KiranaStore_MarginOffered_<%=thisBrand.getId() %>: {
       			required: true,
-      			number: true,
+      			digits: true,
 				range: [0, 100]
     			},
 <% }
@@ -202,15 +202,15 @@ Iterator<Map.Entry<Brand, MarginOffered>> brandMarginItr2 = marginOfferedForBran
 %>
 				SuperMarket_SalesForce_<%=thisBrand.getId() %>: {
       			required: true,
-      			number: true,
+      			digits: true,
     			},
 				GeneralStore_SalesForce_<%=thisBrand.getId() %>: {
       			required: true,
-      			number: true,
+      			digits: true,
     			},
 				KiranaStore_SalesForce_<%=thisBrand.getId() %>: {
       			required: true,
-      			number: true,
+      			digits: true,
     			},    			
 <% }%>
 
@@ -411,34 +411,34 @@ No Brands Exist
 								</div>
 								<div class="colx5-center1">
 									<span class="label"></span>
-									<input type="text" maxlength="3" disabled class="past"
+									<p><span class="relative"><input type="text" maxlength="3" disabled class="past"
 										name="SuperMarket_SalesForce_PreviousPeriod_<%=previousPeriodBrand.getId() %>" 
 										id="SuperMarket_SalesForce_PreviousPeriod_<%=previousPeriodBrand.getId() %>" 
-										value = "<%= ((salesForcePreviousPeriod != null)?new Double(salesForcePreviousPeriod.getSupermarket_sf()).longValue():"")%>" size="10"> 
+										value = "<%= ((salesForcePreviousPeriod != null)?new Double(salesForcePreviousPeriod.getSupermarket_sf()).longValue():"")%>" size="10"><span class="check-past"></span></span></p> 
 								</div>
 								<div class="colx5-center2">
 									<span class="label"></span>
-									<input type="text" maxlength="3" disabled class="past"
+									<p><span class="relative"><input type="text" maxlength="3" disabled class="past"
 										name="GeneralStore_SalesForce_PreviousPeriod_<%=previousPeriodBrand.getId() %>" 
 										id="GeneralStore_SalesForce_PreviousPeriod_<%=previousPeriodBrand.getId() %>" 
-										value = "<%= ((salesForcePreviousPeriod != null)?new Double(salesForcePreviousPeriod.getGeneralStore_sf()).longValue():"")%>" size="10">  
+										value = "<%= ((salesForcePreviousPeriod != null)?new Double(salesForcePreviousPeriod.getGeneralStore_sf()).longValue():"")%>" size="10"><span class="check-past"></span></span></p>  
 			
 								</div>
 								<div class="colx5-center3">
 									<span class="label"></span>
-									<input type="text" maxlength="3" disabled class="past"
+									<p><span class="relative"><input type="text" maxlength="3" disabled class="past"
 										name="KiranaStore_SalesForce_PreviousPeriod_<%=previousPeriodBrand.getId() %>" 
 										id="KiranaStore_SalesForce_PreviousPeriod_<%=previousPeriodBrand.getId() %>" 
-										value = "<%= ((salesForcePreviousPeriod != null)?new Double(salesForcePreviousPeriod.getKiranaStore_sf()).longValue():"")%>" size="10">  
+										value = "<%= ((salesForcePreviousPeriod != null)?new Double(salesForcePreviousPeriod.getKiranaStore_sf()).longValue():"")%>" size="10"><span class="check-past"></span></span></p>  
 			
 								</div>
 								<div class="colx5-right">
 									<span class="label"></span>
-									<input type="text" maxlength="3" disabled class="past" 
+									<p><span class="relative"><input type="text" maxlength="3" disabled class="past" 
 										name="costSalesForce_PreviousPeriod_<%=previousPeriodBrand.getId() %>" 
 										id="costSalesForce_PreviousPeriod_<%=previousPeriodBrand.getId() %>" 
-										value = <%=  (totalSalesForceForThisBrand)*20000*(1+0.05* (((Integer)request.getSession().getAttribute(Constants.CURRENT_PERIOD)) - 1))%> 
-										disabled class="past" size="10"/>
+										value = <%=  Math.round((totalSalesForceForThisBrand)*20000*(1+0.05* (((Integer)request.getSession().getAttribute(Constants.CURRENT_PERIOD)) - 1)))%> 
+										disabled class="past" size="10"/><span class="check-past"></span></span></p>
 								</div>
 							</div>
 					<%									
