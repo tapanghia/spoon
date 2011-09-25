@@ -140,9 +140,10 @@ Iterator<Brand> itr3 = resultBrands.iterator();
 	alert(parseInt(a)+parseInt(b)+parseInt(c));
 	alert(1+0.05*<%=((Integer)request.getSession().getAttribute(Constants.CURRENT_PERIOD))%>);
 	alert(20000*(1+0.05*<%=((Integer)request.getSession().getAttribute(Constants.CURRENT_PERIOD))%>));
-	alert(parseInt(a)+parseInt(b)+parseInt(c))*20000*(1+0.05*<%=((Integer)request.getSession().getAttribute(Constants.CURRENT_PERIOD))%>);
+	alert((parseInt(a)+parseInt(b)+parseInt(c))*20000*(1+0.05*<%=((Integer)request.getSession().getAttribute(Constants.CURRENT_PERIOD))%>));
 
 	d = (parseInt(a)+parseInt(b)+parseInt(c))*20000*(1+0.05*<%=((Integer)request.getSession().getAttribute(Constants.CURRENT_PERIOD))%>);
+	alert(d);
 	$("#costSalesForce_<%=thisBrand.getId() %>").val(d);
 
 	costTotal = costTotal + parseInt(d);
