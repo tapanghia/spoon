@@ -50,8 +50,8 @@
 
 
 						<span style="color:#0083C3">Welcome to the R&amp;D Department</span>.
-						<p style="text-align: justify;">We constitute a team of fight 
-						hundred people headed by <span style="color:#0083C3"><i>Dr. Alex Jordan</i>.</span></p>
+						<p style="text-align: justify;">We constitute a team of fifty 
+						people headed by <span style="color:#0083C3"><i>Dr. Alex Jordan</i>.</span></p>
 						<p style="text-align: justify;">As consumer preferences evolve, the company has to <span style="color:#0083C3"><i>keep on innovating</i></span> 
 						to stay ahead of competition. Onus for this falls on the shoulders of 
 						the scientists at R&amp;D department who are always involved in cutting 
