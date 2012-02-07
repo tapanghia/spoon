@@ -515,7 +515,9 @@ function SetSliderValue(sliderId, textBoxControl) {
 						<span class="label"></span><div id="bluebloods"></div>	
 					</div>
 					<div class="colx3-right">
-						<span class="label"></span><input type="text" id="amount" name="bluebloods_targetSeg" class="tarSegFld bbSegTotal" onKeyUp="SetSliderValue('#bluebloods', this)">
+						<span class="label"></span>
+						<input type="text" id="amount" name="bluebloods_targetSeg" class="tarSegFld bbSegTotal" 
+							onKeyUp="SetSliderValue('#bluebloods', this)">
 					</div>
 					</div>
 

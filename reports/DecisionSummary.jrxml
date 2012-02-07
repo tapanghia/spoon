@@ -1,0 +1,1865 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="Brand Result Report"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="740"
+		 pageHeight="1150"
+		 columnWidth="680"
+		 columnSpacing="0"
+		 leftMargin="20"
+		 rightMargin="20"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<subDataset name="brandResult" >
+
+		<parameter name="period" isForPrompting="false" class="java.lang.String">
+			<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
+		</parameter>
+		<parameter name="teamName" isForPrompting="false" class="java.lang.String">
+			<defaultValueExpression ><![CDATA["Alpha"]]></defaultValueExpression>
+		</parameter>
+		<queryString><![CDATA[(select q1.brand_name as "Brand Name", q1.rp_name as "Base Research Project", q1.brand_period as "period", q1.brand_prod_level as "value", "BProduction Level" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q1)
+
+union
+
+(select q2.brand_name as "Brand Name", q2.rp_name as "Base Research Project", q2.brand_period as "period", q2.brand_retail_price as "value", "DRecommended Retail Price" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q2)
+
+union
+
+(select q3.brand_name as "Brand Name", q3.rp_name as "Base Research Project", q3.brand_period as "period", q3.adv_media_expense as "value", "FAdvertising Media Expense" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q3)
+
+union
+
+(select q4.brand_name as "Brand Name", q4.rp_name as "Base Research Project", q4.brand_period as "period", q4.adv_research_expense as "value", "GAdvertising Research Expense" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q4)
+
+union
+
+(select q5.brand_name as "Brand Name", q5.rp_name as "Base Research Project", q5.brand_period as "period", q5.bluebloods_ts as "value", "IBluebloods" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q5)
+
+union
+
+(select q6.brand_name as "Brand Name", q6.rp_name as "Base Research Project", q6.brand_period as "period", q6.raffles_ts as "value", "JRaffles" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q6)
+
+union
+
+(select q7.brand_name as "Brand Name", q7.rp_name as "Base Research Project", q7.brand_period as "period", q7.wannabees_ts as "value", "KWannabees" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q7)
+
+union
+
+(select q8.brand_name as "Brand Name", q8.rp_name as "Base Research Project", q8.brand_period as "period", q8.strugglers_ts as "value", "LStrugglers" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q8)
+
+union
+
+(select q9.brand_name as "Brand Name", q9.rp_name as "Base Research Project", q9.brand_period as "period", q9.deprived_ts as "value", "MDeprived" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q9)
+
+union
+
+(select q10.brand_name as "Brand Name", q10.rp_name as "Base Research Project", q10.brand_period as "period", q10.print_medium as "value", "OPrint" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q10)
+
+union
+
+(select q11.brand_name as "Brand Name", q11.rp_name as "Base Research Project", q11.brand_period as "period", q11.tele_medium as "value", "PTelevision" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q11)
+
+union
+
+(select q12.brand_name as "Brand Name", q12.rp_name as "Base Research Project", q12.brand_period as "period", q12.radio_medium as "value", "QRadio" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q12)
+
+union
+
+(select q13.brand_name as "Brand Name", q13.rp_name as "Base Research Project", q13.brand_period as "period", q13.internet_medium as "value", "RInternet" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q13)
+
+union
+
+(select q14.brand_name as "Brand Name", q14.rp_name as "Base Research Project", q14.brand_period as "period", -1 as "value", "AProduction" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q14)
+
+union
+
+(select q15.brand_name as "Brand Name", q15.rp_name as "Base Research Project", q15.brand_period as "period", -1 as "value", "CPricing" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q15)
+
+union
+
+(select q16.brand_name as "Brand Name", q16.rp_name as "Base Research Project", q16.brand_period as "period", -1 as "value", "EAdvertisement" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q16)
+
+union
+
+(select q17.brand_name as "Brand Name", q17.rp_name as "Base Research Project", q17.brand_period as "period", -1 as "value", "HTarget Segments (%)" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q17)
+
+union
+
+(select q18.brand_name as "Brand Name", q18.rp_name as "Base Research Project", q18.brand_period as "period", -1 as "value", "NMedium Selection (%)" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q18)
+
+union
+
+(select q19.brand_name as "Brand Name", q19.rp_name as "Base Research Project", q19.brand_period as "period", -1 as "value", "SPerceptual Objectives" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q19)
+
+union
+
+(select q20.brand_name as "Brand Name", q20.rp_name as "Base Research Project", q20.brand_period as "period", q20.po_scale as "value", "TScale" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q20)
+
+union
+
+(select q21.brand_name as "Brand Name", q21.rp_name as "Base Research Project", q21.brand_period as "period", q21.po_dimension1 as "value", "UDimension1" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q21)
+
+union
+
+(select q22.brand_name as "Brand Name", q22.rp_name as "Base Research Project", q22.brand_period as "period", q22.po_objective1 as "value", "VObjective" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q22)
+
+union
+
+(select q23.brand_name as "Brand Name", q23.rp_name as "Base Research Project", q23.brand_period as "period", q23.po_dimension2 as "value", "WDimension2" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q23)
+
+union
+
+(select q24.brand_name as "Brand Name", q24.rp_name as "Base Research Project", q24.brand_period as "period", q24.po_objective2 as "value", "XObjective" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q24)
+
+union
+
+(select q25.brand_name as "Brand Name", q25.rp_name as "Base Research Project", q25.brand_period as "period", -1 as "value", "YMargin Offered (%)" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q25)
+union
+(select q26.brand_name as "Brand Name", q26.rp_name as "Base Research Project", q26.brand_period as "period", q26.mo_supermarket as "value", "ZSuper Markets" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q26)
+union
+(select q27.brand_name as "Brand Name", q27.rp_name as "Base Research Project", q27.brand_period as "period", q27.mo_generalstore as "value", "aGeneral Stores" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q27)
+union
+(select q28.brand_name as "Brand Name", q28.rp_name as "Base Research Project", q28.brand_period as "period", q28.mo_kiranastore as "value", "bKirana Stores" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q28)
+
+union
+(select q29.brand_name as "Brand Name", q29.rp_name as "Base Research Project", q29.brand_period as "period", -1 as "value", "cSales Force" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q29)
+
+union
+(select q30.brand_name as "Brand Name", q30.rp_name as "Base Research Project", q30.brand_period as "period", q30.sf_supermarket as "value", "dSuper Markets" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q30)
+union
+(select q31.brand_name as "Brand Name", q31.rp_name as "Base Research Project", q31.brand_period as "period", q31.sf_generalstore as "value", "dGeneral Stores" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q31)
+union
+(select q32.brand_name as "Brand Name", q32.rp_name as "Base Research Project", q32.brand_period as "period", q32.sf_kiranastore as "value", "dKirana Stores" as "label" from (select teams.id as team_id, teams.teamname as team_name, rp.id as rp_id, rp.projectname as rp_name, rp.currentperiod as rp_currentperiod, rp.projectfinishperiod as rp_projfinishperiod, brands.id as brand_id, brands.brandname as brand_name, brands.period as brand_period,
+
+brandspecs.productionlevel as brand_prod_level, brandspecs.retailprice as brand_retail_price, 
+
+brand_adv.adv_media_budget as adv_media_expense, brand_adv.adv_research_budget as adv_research_expense,
+
+brand_adv.seg_blueblood_pr as bluebloods_ts, brand_adv.seg_raffles_pr as raffles_ts, brand_adv.seg_wannabees_pr as wannabees_ts,
+
+brand_adv.seg_strugglers_pr as strugglers_ts, brand_adv.seg_deprived_pr as deprived_ts, brand_adv.med_print_pr as print_medium,
+
+brand_adv.med_television_pr as tele_medium, brand_adv.med_radio_pr as radio_medium, brand_adv.med_internet_pr as internet_medium,
+
+per.scale as po_scale, per.dimension1 as po_dimension1, per.dimension2 as po_dimension2, per.objective1 as po_objective1, 
+
+per.objective2 as po_objective2, mo.supermarket_mo as mo_supermarket, mo.generalstore_mo as mo_generalstore, mo.kiranastore_mo as mo_kiranastore, sf.supermarket_sf as sf_supermarket, sf.generalstore_sf as sf_generalstore, sf.kiranastore_sf as sf_kiranastore
+
+from teams inner join researchproject rp on (rp.teamid = teams.id)
+
+inner join brands on (rp.id = brands.researchprojectid)
+
+left outer join brandspecs on (brandspecs.brandid = brands.id)
+
+left outer join brandadvertisement brand_adv on (brand_adv.brandid = brands.id)
+
+left outer join perceptualobj per on (per.brandid = brands.id)
+
+left outer join marginoffered mo on (mo.brandid = brands.id)
+
+left outer join salesforce sf on (sf.brandid = brands.id)
+
+where teams.teamname like $P{teamName} and rp.currentperiod = $P{period} and brands.deleteflag = 'N' and brands.period = $P{period}) as q32)]]></queryString>
+
+		<field name="Brand Name" class="java.lang.String"/>
+		<field name="Base Research Project" class="java.lang.String"/>
+		<field name="period" class="java.lang.Integer"/>
+		<field name="value" class="java.lang.String"/>
+		<field name="label" class="java.lang.String"/>
+
+	</subDataset>
+
+	<parameter name="period" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="teamName" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["Alpha"]]></defaultValueExpression>
+	</parameter>
+	<queryString><![CDATA[select 1 from dual]]></queryString>
+
+	<field name="1" class="java.lang.Long"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="60"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="-20"
+						y="0"
+						width="740"
+						height="35"
+						forecolor="#FFFFFF"
+						backcolor="#006699"
+						key="staticText-1"
+						isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="24" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Decision Summary Report]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="380"
+						y="35"
+						width="340"
+						height="25"
+						forecolor="#FFFFFF"
+						backcolor="#70A9C6"
+						key="textField-1"
+						isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Times New Roman" pdfFontName="Helvetica-Bold" size="18" isBold="true" isItalic="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Period: " + $P{period} + "        "]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="-20"
+						y="35"
+						width="400"
+						height="25"
+						forecolor="#FFFFFF"
+						backcolor="#70A9C6"
+						key="textField-17"
+						isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Times New Roman" pdfFontName="Helvetica-Bold" size="18" isBold="true" isItalic="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["    Team: " + $P{teamName}]]></textFieldExpression>
+				</textField>
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="1025"  isSplitAllowed="true" >
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="0"
+						width="740"
+						height="30"
+						backcolor="#516C79"
+						key="rectangle-1"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="30"
+						width="740"
+						height="30"
+						backcolor="#516C79"
+						key="rectangle-2"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="60"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-3"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="120"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-4"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="180"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-5"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="240"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-6"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="300"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-7"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="360"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-8"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="420"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-9"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="480"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-10"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="540"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-11"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="90"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-12"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="150"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-13"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="210"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-14"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="270"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-15"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="330"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-16"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="390"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-17"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="450"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-18"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="510"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-19"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="570"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-20"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="600"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-21"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="630"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-22"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="660"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-23"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="690"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-24"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="720"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-25"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="750"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-26"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="780"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-27"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="810"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-28"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="840"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-29"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="870"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-30"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="900"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-31"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="930"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-32"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="960"
+						width="740"
+						height="30"
+						backcolor="#CCCCFF"
+						key="rectangle-33"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="-20"
+						y="990"
+						width="740"
+						height="30"
+						backcolor="#E6D7FF"
+						key="rectangle-34"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch" pen="None"/>
+				</rectangle>
+				<crosstab >
+					<reportElement
+						x="-20"
+						y="0"
+						width="740"
+						height="1020"
+						key="crosstab-1"/>
+					<crosstabDataset>
+						<dataset >
+							<datasetRun subDataset="brandResult">
+								<datasetParameter  name="period">
+									<datasetParameterExpression><![CDATA[$P{period}]]></datasetParameterExpression>
+								</datasetParameter>
+								<datasetParameter  name="teamName">
+									<datasetParameterExpression><![CDATA[$P{teamName}]]></datasetParameterExpression>
+								</datasetParameter>
+								<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+							</datasetRun>
+						</dataset>
+					</crosstabDataset>
+					<crosstabHeaderCell>						<cellContents mode="Transparent">
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="0"
+						width="265"
+						height="30"
+						forecolor="#FFFFFF"
+						backcolor="#516C79"
+						key="staticText-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
+					</textElement>
+				<text><![CDATA[     Brands
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="30"
+						width="265"
+						height="30"
+						forecolor="#FFFFFF"
+						backcolor="#516C79"
+						key="staticText-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
+					</textElement>
+				<text><![CDATA[     Base R&D Project]]></text>
+				</staticText>
+						</cellContents>
+					</crosstabHeaderCell>					<rowGroup name="label" width="265">
+						<bucket>
+							<bucketExpression class="java.lang.String"><![CDATA[$F{label}]]></bucketExpression>
+						</bucket>
+						<crosstabRowHeader>
+						<cellContents mode="Transparent">
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="0"
+						width="265"
+						height="30"
+						forecolor="#FFFFFF"
+						backcolor="#ABB2B8"
+						key="textField">
+							<printWhenExpression><![CDATA[((($V{label}.substring(1).equalsIgnoreCase("Production")) || ($V{label}.substring(1).equalsIgnoreCase("Pricing")) || ($V{label}.substring(1).equalsIgnoreCase("Advertisement")) || ($V{label}.substring(1).equalsIgnoreCase("Target Segments (%)")) || ($V{label}.substring(1).equalsIgnoreCase("Medium Selection (%)")) || ($V{label}.substring(1).equalsIgnoreCase("Perceptual Objectives")) || ($V{label}.substring(1).equalsIgnoreCase("Margin Offered (%)")) || ($V{label}.substring(1).equalsIgnoreCase("Sales Force")) || ($V{label}.substring(1).equalsIgnoreCase("Marketing")))?new Boolean("false"):new Boolean("true"))]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="13"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["         "+ $V{label}.substring(1)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="0"
+						width="265"
+						height="30"
+						forecolor="#FFFFFF"
+						backcolor="#829FAD"
+						key="textField-18">
+							<printWhenExpression><![CDATA[((($V{label}.substring(1).equalsIgnoreCase("Production")) || ($V{label}.substring(1).equalsIgnoreCase("Pricing")) || ($V{label}.substring(1).equalsIgnoreCase("Advertisement")) || ($V{label}.substring(1).equalsIgnoreCase("Target Segments (%)")) || ($V{label}.substring(1).equalsIgnoreCase("Medium Selection (%)")) || ($V{label}.substring(1).equalsIgnoreCase("Perceptual Objectives")) || ($V{label}.substring(1).equalsIgnoreCase("Margin Offered (%)")) || ($V{label}.substring(1).equalsIgnoreCase("Sales Force")) || ($V{label}.substring(1).equalsIgnoreCase("Marketing")))?new Boolean("true"):new Boolean("false"))]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="13" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["     "+$V{label}.substring(1)]]></textFieldExpression>
+				</textField>
+						</cellContents>
+						</crosstabRowHeader>
+					</rowGroup>
+					<columnGroup name="Brand Name" height="30" headerPosition="Center">
+						<bucket>
+							<bucketExpression class="java.lang.String"><![CDATA[$F{Brand Name}]]></bucketExpression>
+						</bucket>
+						<crosstabColumnHeader>
+						<cellContents mode="Transparent">
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="0"
+						width="95"
+						height="30"
+						forecolor="#FFFFFF"
+						backcolor="#516C79"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="13" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$V{Brand Name}+"    "]]></textFieldExpression>
+				</textField>
+						</cellContents>
+						</crosstabColumnHeader>
+					</columnGroup>
+					<columnGroup name="Base Research Project" height="30">
+						<bucket>
+							<bucketExpression class="java.lang.String"><![CDATA[$F{Base Research Project}]]></bucketExpression>
+						</bucket>
+						<crosstabColumnHeader>
+						<cellContents mode="Transparent">
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="0"
+						width="95"
+						height="30"
+						forecolor="#FFFFFF"
+						backcolor="#516C79"
+						key="textField-18"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="13" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$V{Base Research Project}+"    "]]></textFieldExpression>
+				</textField>
+						</cellContents>
+						</crosstabColumnHeader>
+					</columnGroup>
+
+					<measure name="value_Nothing" class="java.lang.String">
+						<measureExpression><![CDATA[$F{value}]]></measureExpression>
+					</measure>
+					<crosstabCell width="95" height="30">
+						<cellContents mode="Transparent">
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+				<textField isStretchWithOverflow="false" pattern="#,##0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="0"
+						y="0"
+						width="85"
+						height="30"
+						backcolor="#FFFFFF"
+						key="textField">
+							<printWhenExpression><![CDATA[((($V{label}.substring(1).equalsIgnoreCase("Production")) || ($V{label}.substring(1).equalsIgnoreCase("Pricing")) || ($V{label}.substring(1).equalsIgnoreCase("Advertisement")) || ($V{label}.substring(1).equalsIgnoreCase("Target Segments (%)")) || ($V{label}.substring(1).equalsIgnoreCase("Medium Selection (%)")) || ($V{label}.substring(1).equalsIgnoreCase("Perceptual Objectives")) || ($V{label}.substring(1).equalsIgnoreCase("Margin Offered (%)")) || ($V{label}.substring(1).equalsIgnoreCase("Sales Force")) || ($V{label}.substring(1).equalsIgnoreCase("Marketing")))?new Boolean("false"):new Boolean("true"))]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" size="12" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$V{value_Nothing}]]></textFieldExpression>
+				</textField>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell width="0" height="30" columnTotalGroup="Brand Name">
+						<cellContents mode="Transparent">
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell width="95" height="0" rowTotalGroup="label">
+						<cellContents mode="Transparent">
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell width="0" height="0" rowTotalGroup="label" columnTotalGroup="Brand Name">
+						<cellContents mode="Transparent">
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell width="0" height="30" columnTotalGroup="Base Research Project">
+						<cellContents mode="Transparent">
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell width="0" height="0" rowTotalGroup="label" columnTotalGroup="Base Research Project">
+						<cellContents mode="Transparent">
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+						</cellContents>
+					</crosstabCell>
+					<whenNoDataCell>						<cellContents mode="Transparent">
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+						</cellContents>
+					</whenNoDataCell>					</crosstab>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="10"  isSplitAllowed="true" >
+				<line direction="TopDown">
+					<reportElement
+						x="-20"
+						y="5"
+						width="740"
+						height="0"
+						key="line-1"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="15"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" pattern="MMMMM dd, yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="-20"
+						y="0"
+						width="148"
+						height="15"
+						forecolor="#FFFFFF"
+						backcolor="#006699"
+						key="textField-3"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="128"
+						y="0"
+						width="437"
+						height="15"
+						forecolor="#FFFFFF"
+						backcolor="#006699"
+						key="textField-4"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Biziga Labs Pvt. Ltd."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="565"
+						y="0"
+						width="110"
+						height="15"
+						forecolor="#FFFFFF"
+						backcolor="#006699"
+						key="textField-5"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="675"
+						y="0"
+						width="45"
+						height="15"
+						forecolor="#FFFFFF"
+						backcolor="#006699"
+						key="textField-6"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>
