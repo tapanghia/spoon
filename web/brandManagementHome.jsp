@@ -11,14 +11,14 @@ $(document).ready(function(){
   $("input.save").click(function(){
   	var numOfBrands = <%=resultBrands.size()%>;
   	
-  	if (numOfBrands < 5) {
+  	if (numOfBrands < 3) {
 	    var winParam = window.open('brandManagement.htm?do=addNewBrand','searchBrand',
 	      'width=400,height=250,top=50,left=100,resizable=no,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no');
 	    if (winParam != "")
 	      winParam.focus ();
     }  
     else {
-    	alert("No new brand can be created as you have already created 5 brands. ");
+    	alert("No new brand can be created as you have already created 3 brands. ");
     }
   });
   $("input.edit").click(function(){
