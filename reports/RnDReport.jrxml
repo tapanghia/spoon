@@ -25,7 +25,7 @@
 
 	<parameter name="period" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="teamName" isForPrompting="false" class="java.lang.String"/>
-	<queryString><![CDATA[select * from rep_project_characteristics WHERE period = $P{period} and team = $P{teamName} and periodavailable <= period order by periodavailable]]></queryString>
+	<queryString><![CDATA[select * from rep_project_characteristics WHERE team = $P{teamName} and period = $P{period} and (period - periodavailable >= -1) order by periodavailable]]></queryString>
 
 	<field name="id" class="java.lang.Integer"/>
 	<field name="period" class="java.lang.Integer"/>
@@ -107,7 +107,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Times New Roman" size="18"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Period: " + $F{period}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Period: " + $P{period}]]></textFieldExpression>
 				</textField>
 			</band>
 		</title>
