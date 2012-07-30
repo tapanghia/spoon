@@ -1,4 +1,12 @@
 <%@ include file="header.jsp" %>
+<%
+	boolean isAdminUserLoggedIn2 = false;
+  	if (session.getAttribute(Constants.IS_ADMIN_USER_LOGGED_IN) != null &&
+  		((Boolean)session.getAttribute(Constants.IS_ADMIN_USER_LOGGED_IN)).booleanValue())
+  		isAdminUserLoggedIn2 = true;
+	
+
+%>
 <article class="container_12">
 		
 		<section class="grid_3">
@@ -47,6 +55,7 @@
 		
 		<section class="grid_9">
 			<div class="block-border"><div class="block-content">
+			<%if(!isAdminUserLoggedIn2) {%>
 				<h1>Team Home</h1>
 						<span style="color:#0083C3">Hi&nbsp;<i>Team,</i>&nbsp;&nbsp;Welcome to MarkLabs.</span><br><br>
 						<p style="text-align: justify;"><span style="color:#0083C3"><i>MarkLabs</span></i> is an emerging economy growing at breath-neck pace. 
@@ -85,6 +94,22 @@
 						departments are presented to you on this page under different tabs on 
 						the top of the page. </p>
 						<span style="color:#0083C3"><i>All the very best for an exciting time ahead&nbsp;!!!</i></span>
+						<%} else {%>
+					<h1>Admin Home</h1>
+						<span style="color:#0083C3">Welcome to Instructor Page.</span><br><br>
+						<p style="text-align: justify;">We understand that an instructor needs to be up-to-date with the performance of each team. Also he/she should be able to provide them insights about their performance at any moment during the simulation. Therefore we have created this section so that you can monitor the progress of all the teams at the same time.</p>
+						<p style="text-align: justify;">There are 2 sections: <span style="color:#0083C3">Company Reports</span> and <span style="color:#0083C3">Industry Reports.</span></p>
+						<p style="text-align: justify;">In the <span style="color:#0083C3">Company Reports</span> section, you will be able to view the performance report of each company separately. These would include the Decision Summary, Team Performance, Brand Performance and the RnD report. Another report that you have access to in this section is called Expert Advice Report. This is an extremely important report for you as an instructor as it points out the deficiencies/mistakes of  the teams on each of the input decisions. It could be extremely useful to glance at this report during discussions with the team.</p>
+						<p style="text-align: justify;">The second section is <span style="color:#0083C3">Industry Reports</span>. This contains primarily 4 kinds of information:</span>
+						<li>Industry results (Market share, Distribution Coverage etc.)</li>
+						<li>Consumer Survey results (Purchase Intention, Perception map etc.)</li>
+						<li>Predictions (Demand Forecast)</li>
+						<li>Comparative reports ( Margin, Sales Force, Ad Expense)</li>
+						</p>
+						
+						<br><br>						
+						<p style="text-align: justify;">All these reports will help you understand the strategies that the companies are employing and how those are panning out in the market. Get started by clicking on any of the reports on the left.</p>
+						<%}%>	
 						</div></div></section>
 <div class="clear"></div>
 		

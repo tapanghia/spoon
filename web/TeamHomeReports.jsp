@@ -8,6 +8,13 @@
 	int currentPeriod = (Integer)session.getAttribute(Constants.CURRENT_PERIOD);
 	String reportName = request.getParameter("reportName");
 	String teamName = (String)session.getAttribute(Constants.TEAM_NAME);
+	
+	boolean isAdminUserLoggedIn1 = false;
+  	if (session.getAttribute(Constants.IS_ADMIN_USER_LOGGED_IN) != null &&
+  		((Boolean)session.getAttribute(Constants.IS_ADMIN_USER_LOGGED_IN)).booleanValue())
+  		isAdminUserLoggedIn1 = true;
+  		
+  	String[] teamNameArray = (String[]) session.getAttribute(Constants.TEAM_NAME_ARRAY);	
 %>
 
 <script type="text/javascript">
@@ -132,9 +139,16 @@ function runReport() {
 						<%}%>
 					</select>
 					<%}%>
-					<%if(reportParametersList.contains("teamName")){ %>
+					<%if(reportParametersList.contains("teamName") && !isAdminUserLoggedIn1){ %>
 					<!--label>Team:</label-->
 					<input type="hidden" name="teamName" id="teamName" value="<%=teamName%>">
+					<%} else if (reportParametersList.contains("teamName") && isAdminUserLoggedIn1){%>
+						<label>Team:</label>
+						<select id="teamName" name="teamName">
+						<%for (String teamNameStr : teamNameArray) {%>
+							<option id="<%=teamNameStr %>" value="<%=teamNameStr %>"><%=teamNameStr%></option>
+						<%}%>
+					</select>
 					<%}%>
 					<%if(reportParametersList.contains("mdsMapX")){ %>
 					<label>MDS X-Axis:</label>

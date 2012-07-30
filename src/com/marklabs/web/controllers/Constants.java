@@ -19,6 +19,7 @@ public class Constants {
 	//Messages constants
 	public final static String LOGIN_UNSUCCESSFUL = "Login Unsuccessful";
 	public final static String TEAM_DETAILS_SAVED = "Team details saved successfully";
+	public final static String NO_TEAM_DETAILS_FOUND = "No Teams found.";
 
 	//Current Period Constants
 	public final static String CURRENT_PERIOD = "currentPeriod";
@@ -66,5 +67,10 @@ public class Constants {
 	// Sales Force
 	public static final String PREVIOUS_PERIOD_BRANDS_FOR_SALES_FORCE = "previousPeriodBrandsForSalesForce";
 	public static final String PREVIOUS_PERIOD_BRAND_SALES_FORCE_MAP = "previousPeriodBrandSalesForceMap";
+	
+	// Admin portal
+	public static final String IS_ADMIN_USER_LOGGED_IN = "adminUserLoggedIn";
+	public static final String ADMIN_USERNAME = "Admin";
+	public static final String TEAM_NAME_ARRAY = "teamNameArray";
 	
 }

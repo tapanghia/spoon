@@ -11,6 +11,11 @@
     currentLink = (String)session.getAttribute("CURRENT_LINK");
     currentLink = currentLink.toLowerCase();
   }
+  
+  boolean isAdminUserLoggedIn = false;
+  if (session.getAttribute(Constants.IS_ADMIN_USER_LOGGED_IN) != null &&
+  	((Boolean)session.getAttribute(Constants.IS_ADMIN_USER_LOGGED_IN)).booleanValue())
+  	isAdminUserLoggedIn = true;
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,14 +88,16 @@
 					<li><a href="javascript:window.open('basicDescription.jsp?', 'resizable=no, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no');" title="Help">Basic Description</a></li>
 				</ul>
 			</li>
-			<!--li class="write <%= (currentLink.equalsIgnoreCase("researchproject"))?"current":"" %>"><a href="researchProject.htm" title="R&D Team">R&DTeam</a>
+			
+		<%if (!isAdminUserLoggedIn) {%>	
+			<li class="write <%= (currentLink.equalsIgnoreCase("researchproject"))?"current":"" %>"><a href="researchProject.htm" title="R&D Team">R&DTeam</a>
 				<ul>
 					<li><a href="researchProject.htm" title="R&D Team Home">R&D Team Home</a></li>
 					<li><a href="reports.htm?reportName=RnDReport" title="View R&D Reports">View R&D Reports</a></li>
 					<li><a href="researchProject.htm?do=addResearchProject" title="Add Research Project">Add Research Project</a></li>
 					<li><a href="researchProject.htm?do=getResearchProjectsForTeam" title="View/Edit Research Projects">View/Edit Research Projects</a></li>
 				</ul>
-			</li-->
+			</li>
 			<li class="comments <%= (currentLink.equalsIgnoreCase("marketing"))?"current":"" %>"><a href="marketingTeam.htm" title="Marketing Team">MarketingTeam</a>
 				<ul>
 					<li><a href="marketingTeam.htm" title="MarketingTeam">Marketing Team</a></li>
@@ -118,6 +125,8 @@
 					<!-- li><a href="#" title="Proposed Marketing Plan">Proposed Marketing Plan</a></li-->
 				</ul>
 			</li>
+		<%}%>	
+			
 		</ul>
 	</nav>
 	<!-- End main nav -->
@@ -138,10 +147,11 @@
 			<button type="button" onclick=""><%=((request.getSession().getAttribute(Constants.TEAM_NAME)!= null)? ("Team " + request.getSession().getAttribute(Constants.TEAM_NAME)):"NA") %></button>
 		</div>
 		
+		<%if (!isAdminUserLoggedIn) {%>
 		<div class="float-right"> 
 			<button type="button" class="red"><%= ((request.getSession().getAttribute(Constants.CURRENT_PERIOD)!= null)? ("Period " + (Integer)request.getSession().getAttribute(Constants.CURRENT_PERIOD)):"")%></button> 
 			<button type="button" class="red"><%= ((request.getSession().getAttribute(Constants.CURRENT_BUDGET)!= null)? ("Budget: " + request.getSession().getAttribute(Constants.CURRENT_BUDGET)):"")%></button> 
 		</div>
-			
+		<%}%>	
 	</div></div>
 	<!-- End control bar -->

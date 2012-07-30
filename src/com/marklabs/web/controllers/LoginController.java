@@ -95,29 +95,82 @@ public class LoginController extends MultiActionController {
 					return mav;
 		}
 		else {
-			//validating the credentials provided as input by the user.
-			isTeamAuthenticated = teamService.isTeamAuthenticated(teamUserName, teamPassword);
-			if (!(isTeamAuthenticated)){
-				ModelAndView mav = new ModelAndView("newLogin");
-				mav.addObject("credentialsInvalidMessage", Constants.LOGIN_UNSUCCESSFUL);
-				return mav;
-			}
-			else {
-				//Populating the session with the Team Details
+			
+			// checking for admin user
+			if (teamUserName.equalsIgnoreCase(Constants.ADMIN_USERNAME) &&
+					teamPassword.equalsIgnoreCase(Constants.ADMIN_USERNAME)) {
+				Team team = createAdminTeam();
 				
-				Team team = teamService.getTeamDetails(teamUserName, teamPassword);
 				session.setAttribute(Constants.TEAM_ID, team.getId()+"");
 				session.setAttribute(Constants.TEAM_NAME, team.getTeamName());
 				session.setAttribute(Constants.TEAM_USERNAME, team.getTeamUserName());
 				session.setAttribute(Constants.CURRENT_PERIOD, new Integer(team.getCurrentTeamPeriod()));
 				session.setAttribute(Constants.CURRENT_BUDGET, team.getTeamCurrentPeriodBudget());
 				session.setAttribute(Constants.TEAM_OBJECT, team);
-				response.sendRedirect("teamHome.htm");
 				
-				//return new ModelAndView("dashBoard");
+				// session attributes for admin 
+				session.setAttribute(Constants.IS_ADMIN_USER_LOGGED_IN, new Boolean(true));
+				
+				
+				Team[] allTeams = teamService.getAllTeams();
+				if (allTeams == null || allTeams.length <= 0) {
+					ModelAndView mav = new ModelAndView("newLogin");
+					mav.addObject("credentialsInvalidMessage", Constants.NO_TEAM_DETAILS_FOUND);
+					return mav;
+				}
+				
+				String[] teamNameArray = new String[allTeams.length];
+				int teamCounter = 0;
+				int maxPeriod = 0;
+				for (Team teamObject : allTeams) {
+					teamNameArray[teamCounter++] = teamObject.getTeamName();
+					if (teamObject.getCurrentTeamPeriod() > maxPeriod)
+						maxPeriod = teamObject.getCurrentTeamPeriod();
+				}
+				session.setAttribute(Constants.CURRENT_PERIOD, maxPeriod);
+				session.setAttribute(Constants.TEAM_NAME_ARRAY, teamNameArray);
+				
+				response.sendRedirect("teamHome.htm");
 				return null;
+
+			}
+			// for all other users
+			else {
+				//validating the credentials provided as input by the user.
+				isTeamAuthenticated = teamService.isTeamAuthenticated(teamUserName, teamPassword);
+				if (!(isTeamAuthenticated)){
+					ModelAndView mav = new ModelAndView("newLogin");
+					mav.addObject("credentialsInvalidMessage", Constants.LOGIN_UNSUCCESSFUL);
+					return mav;
+				}
+				else {
+					//Populating the session with the Team Details
+					Team team = teamService.getTeamDetails(teamUserName, teamPassword);
+					session.setAttribute(Constants.TEAM_ID, team.getId()+"");
+					session.setAttribute(Constants.TEAM_NAME, team.getTeamName());
+					session.setAttribute(Constants.TEAM_USERNAME, team.getTeamUserName());
+					session.setAttribute(Constants.CURRENT_PERIOD, new Integer(team.getCurrentTeamPeriod()));
+					session.setAttribute(Constants.CURRENT_BUDGET, team.getTeamCurrentPeriodBudget());
+					session.setAttribute(Constants.TEAM_OBJECT, team);
+					response.sendRedirect("teamHome.htm");
+					
+					//return new ModelAndView("dashBoard");
+					return null;
+				}
 			}
 		}
+	}
+	
+	
+	private Team createAdminTeam() {
+		Team adminTeam = new Team();
+		adminTeam.setId(0);
+		adminTeam.setCurrentTeamPeriod(0);
+		adminTeam.setTeamCurrentPeriodBudget(0);
+		adminTeam.setTeamName(Constants.ADMIN_USERNAME);
+		adminTeam.setTeamPassword(Constants.ADMIN_USERNAME);
+		adminTeam.setTeamUserName(Constants.ADMIN_USERNAME);
+		return adminTeam;
 	}
 	
 	/**

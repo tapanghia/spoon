@@ -428,17 +428,42 @@ public class ResearchProjectController extends MultiActionController {
 	}
 	
 	public ModelAndView deleteResearchProject (HttpServletRequest request, HttpServletResponse response) {
+
+		Team loggedInTeam = (Team)request.getSession().getAttribute(Constants.TEAM_OBJECT);
+		long teamCurrentBudget = (Long)request.getSession().getAttribute(Constants.CURRENT_BUDGET);
+		
 		String deletedResearchProjectIdString = request.getParameter("deletedResearchProjectId");
 		if (deletedResearchProjectIdString != null) {
 			long deletedResearchProjectId = Long.parseLong(deletedResearchProjectIdString);
 		
 			ResearchProject toDeleteResearchProj = 
 				researchProjectService.getResearcProjectByID(deletedResearchProjectId);
-			researchProjectService.deleteResearchProject(toDeleteResearchProj);
 			
-			//Removing the deleted Project from Session
-			request.getSession().removeAttribute(Constants.SELECTED_RESEARCH_PROJECT);
+			// Tracking the old required budget at requested base cost of budget deduction purposes
+			long toDeleteResearchProjReqBudgetAtReqBaseCost = 0;
+			if (toDeleteResearchProj != null) {
+				toDeleteResearchProjReqBudgetAtReqBaseCost = toDeleteResearchProj.getRequiredBudgetAtReqBC();
+				
+				// Need not update the research project if the budget is negative
+				long updatedBudget = teamCurrentBudget + toDeleteResearchProjReqBudgetAtReqBaseCost;
+				
+				if (updatedBudget > 0) {
+					// Deleting the project entry
+					researchProjectService.deleteResearchProject(toDeleteResearchProj);
+					
+					//Removing the deleted Project from Session
+					request.getSession().removeAttribute(Constants.SELECTED_RESEARCH_PROJECT);					
+					
+					request.getSession().removeAttribute(Constants.CURRENT_BUDGET);
+					request.getSession().setAttribute(Constants.CURRENT_BUDGET, updatedBudget);
+								
+					loggedInTeam.setTeamCurrentPeriodBudget(updatedBudget);
+					teamService.updateTeam(loggedInTeam);
+				}
+			}
 		}
+		
+		
 		
 		long loggedInTeamId = Long.parseLong((String)request.getSession().getAttribute(Constants.TEAM_ID));
 		int currentPeriod = ((Integer) request.getSession().getAttribute(Constants.CURRENT_PERIOD)).intValue();

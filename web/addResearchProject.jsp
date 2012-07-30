@@ -415,7 +415,7 @@ co = teamName.substring(0,1);
 					</div>
 					<div class="colx3-right">
 						<span class="label"></span>	
-						<input type="text" id="amount" name="design" onKeyUp="SetSliderValue('#design', this)">
+						<input type="text" id="amount" name="design" onKeyUp="SetSliderValue('#design', this)" readonly class="past">
 					</div>
 					</div>
 
@@ -430,7 +430,7 @@ co = teamName.substring(0,1);
 					</div>
 					<div class="colx3-right">
 						<span class="label"></span>	
-						<input type="text" id="amount2" name="fragrance" onKeyUp="SetSliderValue('#fragrance', this)">
+						<input type="text" id="amount2" name="fragrance" onKeyUp="SetSliderValue('#fragrance', this)" readonly class="past">
 					</div>
 					</div>
 
@@ -445,7 +445,7 @@ co = teamName.substring(0,1);
 					</div>
 					<div class="colx3-right">
 						<span class="label"></span>	
-						<input type="text" id="amount3" name="persistence" onKeyUp="SetSliderValue('#persistence', this)">
+						<input type="text" id="amount3" name="persistence" onKeyUp="SetSliderValue('#persistence', this)" readonly class="past">
 					</div>
 					</div>
 
@@ -460,7 +460,7 @@ co = teamName.substring(0,1);
 					</div>
 					<div class="colx3-right">
 						<span class="label"></span>	
-						<input type="text" id="amount4" name="packaging" onKeyUp="SetSliderValue('#packaging', this)">
+						<input type="text" id="amount4" name="packaging" onKeyUp="SetSliderValue('#packaging', this)" readonly class="past">
 					</div>
 					</div>
 
@@ -475,7 +475,7 @@ co = teamName.substring(0,1);
 					</div>
 					<div class="colx3-right">
 						<span class="label"></span>	
-						<input type="text" id="amount5" name="safety" onKeyUp="SetSliderValue('#safety', this)">
+						<input type="text" id="amount5" name="safety" onKeyUp="SetSliderValue('#safety', this)" readonly class="past">
 					</div>
 					</div>
 
@@ -516,7 +516,7 @@ co = teamName.substring(0,1);
 					</div>
 					<div class="colx3-center">
 						<span class="label"></span>	
-						<input type="text" id="budgetRequired" name="budgetRequired">
+						<input type="text" id="budgetRequired" name="budgetRequired" readonly class="past">
 					</div>
 					<div class="colx3-right">
 						<span class="label"></span>

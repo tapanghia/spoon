@@ -64,15 +64,29 @@ $(document).ready(function(){
   
   $("input.update").click(function(){
     
-    //todo to be cleaned up.
-    var editProjIframeForm = document.getElementById( "editAddResearchProjForm" );
-    var researchProjectId = editProjIframeForm.selectResearchProjId.value;
-    editProjIframeForm.action = 
-    	"<%=CONTEXTPATH%>/researchProject.htm?do=updateResearchProject&updatedResearchProjectId="+researchProjectId;
-    
-    //if valid submit the form.
-      editProjIframeForm.submit();
+    if (myValidation()) {
+	    //todo to be cleaned up.
+	    var editProjIframeForm = document.getElementById( "editAddResearchProjForm" );
+	    var researchProjectId = editProjIframeForm.selectResearchProjId.value;
+	    editProjIframeForm.action = 
+	    	"<%=CONTEXTPATH%>/researchProject.htm?do=updateResearchProject&updatedResearchProjectId="+researchProjectId;
+	    
+	    //if valid submit the form.
+	    editProjIframeForm.submit();
+    }
   });
+  
+  function myValidation() {
+  	//alert(minBaseCost.value);
+  	//alert(requestedBaseCost.value);
+  	//alert(budgetRequired.value);
+  	//alert(budgetRequiredAtMinBaseCost.value);
+  	
+  	if (minBaseCost.value != "" && requestedBaseCost.value != "" && budgetRequired.value != "" && budgetRequiredAtMinBaseCost.value != "") 
+  		return true;
+  	else 
+  		return false;
+  }
   
   $('#generateMinBaseCost').click(function(event) {
     $.ajax({
@@ -114,7 +128,7 @@ $.validator.setDefaults({
 
 $(document).ready(function() {
 	
-$("#addResearchProjForm").validate({
+$("#editAddResearchProjForm").validate({
 		rules: {
 			design: {
       			required: true,
@@ -300,8 +314,8 @@ function SetSliderValue(sliderId, textBoxControl) {
 			<% if (doesProjectExist) {
 				for (int i = 0; i < existingResearchProjects.length; i++ ) {
 			%>
-				   <li <% if (selectedProject != null && selectedProject.getId() == existingResearchProjects[i].getId()) { %> class="current" <%}%>
-						<a href="researchProject.htm?do=getResearchProjectsForTeam&selectedProjectId=<%=existingResearchProjects[i].getId()%>" title="<%= existingResearchProjects[i].getProjectName() %>"><span><%= existingResearchProjects[i].getProjectName() %></span></a>
+				   <li <% if (selectedProject != null && selectedProject.getId() == existingResearchProjects[i].getId()) { %> class="current" <%}%>>
+						<a href="researchProject.htm?do=getResearchProjectsForTeam&selectedProjectId=<%=existingResearchProjects[i].getId()%>" title="<%= existingResearchProjects[i].getProjectName() %>"<span><%= existingResearchProjects[i].getProjectName() %></span></a>
 				</li>
 			<% }
 			} %>
@@ -324,7 +338,7 @@ function SetSliderValue(sliderId, textBoxControl) {
 					</div>
 					<div class="colx3-right">
 						<span class="label"></span>	
-						<input type="text" id="amount" name="design" value="<%=design %>" onKeyUp="SetSliderValue('#design', this)">
+						<input type="text" id="amount" name="design" value="<%=design %>" onKeyUp="SetSliderValue('#design', this)" readonly class="past">
 					</div>
 					</div>
 
@@ -339,7 +353,7 @@ function SetSliderValue(sliderId, textBoxControl) {
 					</div>
 					<div class="colx3-right">
 						<span class="label"></span>	
-						<input type="text" id="amount2" name="fragrance" value="<%=fragrance %>" onKeyUp="SetSliderValue('#fragrance', this)">
+						<input type="text" id="amount2" name="fragrance" value="<%=fragrance %>" onKeyUp="SetSliderValue('#fragrance', this)" readonly class="past">
 					</div>
 					</div>
 
@@ -354,7 +368,7 @@ function SetSliderValue(sliderId, textBoxControl) {
 					</div>
 					<div class="colx3-right">
 						<span class="label"></span>	
-						<input type="text" id="amount3" name="persistence" value="<%=persistence %>" onKeyUp="SetSliderValue('#persistence', this)">
+						<input type="text" id="amount3" name="persistence" value="<%=persistence %>" onKeyUp="SetSliderValue('#persistence', this)" readonly class="past">
 					</div>
 					</div>
 
@@ -369,7 +383,7 @@ function SetSliderValue(sliderId, textBoxControl) {
 					</div>
 					<div class="colx3-right">
 						<span class="label"></span>	
-						<input type="text" id="amount4" name="packaging" value="<%=packaging %>" onKeyUp="SetSliderValue('#packaging', this)">
+						<input type="text" id="amount4" name="packaging" value="<%=packaging %>" onKeyUp="SetSliderValue('#packaging', this)" readonly class="past">
 					</div>
 					</div>
 
@@ -384,7 +398,7 @@ function SetSliderValue(sliderId, textBoxControl) {
 					</div>
 					<div class="colx3-right">
 						<span class="label"></span>	
-						<input type="text" id="amount5" name="safety" value="<%=safety %>" onKeyUp="SetSliderValue('#safety', this)">
+						<input type="text" id="amount5" name="safety" value="<%=safety %>" onKeyUp="SetSliderValue('#safety', this)" readonly class="past">
 					</div>
 					</div>
 
@@ -395,7 +409,7 @@ function SetSliderValue(sliderId, textBoxControl) {
 					</div>
 					<div class="colx3-center">
 						<span class="label"></span>	
-						<input type="text" id="minBaseCost" name="minBaseCost" value="<%=minBaseCost %>">
+						<input type="text" id="minBaseCost" name="minBaseCost" value="<%=minBaseCost %>" class="past" readonly>
 					</div>
 					<div class="colx3-right">
 						<span class="label"></span><input name="generateMinBaseCost" id="generateMinBaseCost" type="button" class="button generate" value="Generate" />
@@ -424,7 +438,7 @@ function SetSliderValue(sliderId, textBoxControl) {
 					</div>
 					<div class="colx3-center">
 						<span class="label"></span>	
-						<input type="text" id="budgetRequired" name="budgetRequired" value="<%=requiredBudgetAtMinBaseCost %>">
+						<input type="text" id="budgetRequired" name="budgetRequired" value="<%=requiredBudgetAtMinBaseCost %>" class="past">
 					</div>
 					<div class="colx3-right">
 						<span class="label"></span>	
